@@ -1,0 +1,12 @@
+UserLogOn();
+if((GetCurrentUserName() == "s")){
+	System.IsAdministratorLoggedIn = true;
+	Manual_Control.showManualNavBar = 1;
+//	LoadSave.LoadAllData();
+}
+if((GetCurrentUserName() == "p")){
+	System.IsAdministratorLoggedIn = true;
+	System.IsQuantumLoggedIn = true;
+	Manual_Control.showManualNavBar = 1;
+//	LoadSave.LoadAllData();
+}

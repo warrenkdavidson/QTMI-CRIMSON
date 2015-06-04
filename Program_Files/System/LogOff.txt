@@ -1,0 +1,4 @@
+System.IsAdministratorLoggedIn = false;
+System.IsQuantumLoggedIn = false;
+UserLogOff();
+GotoPage(Operator);
