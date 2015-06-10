@@ -1,0 +1,4 @@
+LayerCountDown.startTimeFront = 0;
+LayerCountDown.isCountingFront = 1;
+LayerCountDown.startTimeBack = 0;
+LayerCountDown.isCountingBack = 1;

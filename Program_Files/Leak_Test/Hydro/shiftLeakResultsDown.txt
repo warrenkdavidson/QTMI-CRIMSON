@@ -1,0 +1,11 @@
+int logIndex;
+for (logIndex = System.Constants.HydroVacLogCount-2; logIndex >= 0; logIndex--)
+{
+	Leak_Test.Hydro.HMI.resultsLog.date[logIndex+1] = Leak_Test.Hydro.HMI.resultsLog.date[logIndex];
+	Leak_Test.Hydro.HMI.resultsLog.processPressure[logIndex+1] = Leak_Test.Hydro.HMI.resultsLog.processPressure[logIndex];
+	Leak_Test.Hydro.HMI.resultsLog.Timeout[logIndex+1] = Leak_Test.Hydro.HMI.resultsLog.Timeout[logIndex];	
+	Leak_Test.Hydro.HMI.resultsLog.timeoutPressure[logIndex+1] = Leak_Test.Hydro.HMI.resultsLog.timeoutPressure[logIndex];	
+	Leak_Test.Hydro.HMI.resultsLog.PumpTimer[logIndex+1] = Leak_Test.Hydro.HMI.resultsLog.PumpTimer[logIndex];
+	Leak_Test.Hydro.HMI.resultsLog.result[logIndex+1] = Leak_Test.Hydro.HMI.resultsLog.result[logIndex];
+	
+}

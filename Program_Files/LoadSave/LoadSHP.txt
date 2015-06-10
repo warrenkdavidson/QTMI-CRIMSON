@@ -1,0 +1,38 @@
+cstring filename = System.Constants.DataDirectory + "/shp.CSV";
+
+int fileHandle = OpenFile(filename, 0);
+
+ReadFileLine(fileHandle); // ignore header
+
+Deposition.Recipe.NextAvailableRecipe = 0;
+
+
+
+int processIndex;
+int placeholder;
+cstring line;
+cstring ignored;
+cstring name;
+
+
+	line = ReadFileLine(fileHandle);
+	
+	Utility.Tokenize(line, ',');
+	
+	// The order of data items must match those in SaveProcesses
+	
+	placeholder = Utility.TextToIntBoolean(Utility.NextToken());
+	placeholder = TextToInt(Utility.NextToken(), 10);  
+	placeholder = TextToInt(Utility.NextToken(), 10); 
+	placeholder = TextToInt(Utility.NextToken(), 10);
+	placeholder = TextToInt(Utility.NextToken(), 10);
+	placeholder = TextToInt(Utility.NextToken(), 10);
+	placeholder = TextToInt(Utility.NextToken(), 10); 
+	placeholder = TextToInt(Utility.NextToken(), 10); 
+	System.Settings.SHP.CoolingPressure_SP = TextToInt(Utility.NextToken(), 10); 
+	placeholder = TextToInt(Utility.NextToken(), 10);
+	placeholder = TextToInt(Utility.NextToken(), 10);
+	
+
+
+CloseFile(fileHandle);

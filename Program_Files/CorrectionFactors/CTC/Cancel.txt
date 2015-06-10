@@ -1,0 +1,9 @@
+CorrectionFactors.CTC.NormalizeCTC();
+
+// Set UI buttons to NO FACTOR
+System.CorrectionFactors.CTC.UI.lensIndex = 3;
+//System.CorrectionFactors.CTC.UI.thickness = 4;
+
+//Sleep(10000);
+
+HidePopup();

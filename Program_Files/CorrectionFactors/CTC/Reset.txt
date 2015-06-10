@@ -1,0 +1,5 @@
+System.CorrectionFactors.CTC.CTC_index = 1000;
+System.CorrectionFactors.CTC.CTC_thickness = 1000;
+
+
+

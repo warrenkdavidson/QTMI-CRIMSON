@@ -1,0 +1,15 @@
+int returnValue = 0;
+
+if(LayerCountDown.isCountingFront){
+	if(LayerCountDown.startTimeFront == 0){
+		int scaledTotalTime = (int)((float)LayerCountDown.totalFront/10.0);
+		LayerCountDown.startTimeFront = GetNow()+scaledTotalTime;
+	}
+	returnValue = LayerCountDown.startTimeFront - GetNow();
+	if(returnValue == 1){	
+		LayerCountDown.startTimeFront = 0;
+		LayerCountDown.isCountingFront = false;
+	}
+	return returnValue;
+}else
+	return returnValue;

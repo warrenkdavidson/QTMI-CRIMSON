@@ -1,0 +1,16 @@
+int returnValue = 0;
+
+if(LayerCountDown.isCountingBack){
+	if(LayerCountDown.startTimeBack == 0){
+		int scaledTotalTime = (int)((float)LayerCountDown.totalBack/10.0);	
+		LayerCountDown.startTimeBack = GetNow()+scaledTotalTime;
+	}
+	returnValue = LayerCountDown.startTimeBack - GetNow();
+	if(returnValue == 1){	
+		LayerCountDown.startTimeBack = 0;
+		LayerCountDown.isCountingBack = false;
+	}
+	return returnValue;
+}else
+	return returnValue;
+

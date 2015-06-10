@@ -1,0 +1,10 @@
+if(Deposition.Material.Edit.Copying == 1){
+	if(Deposition.Material.Name[stepIndex] != "") 
+		ShowPopup(System.popups.Deposition.SorrySpotHasName);
+	else
+		Editing.Material.SelectSpotForCopy(stepIndex);
+}else{
+Editing.Material.CopyMaterialToScratch(stepIndex);
+GotoPage(Deposition.Edit_Material);
+}
+

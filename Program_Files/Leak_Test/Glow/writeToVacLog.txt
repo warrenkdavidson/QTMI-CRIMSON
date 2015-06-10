@@ -1,0 +1,10 @@
+Leak_Test.Glow.shiftLeakResultsDown();
+
+Leak_Test.Glow.HMI.resultsLog.date[0] = Utility.TimeString();
+Leak_Test.Glow.HMI.resultsLog.processPressure[0] = Utility.ConvertGlowCount(Leak_Test.Glow.PLC.processPressure);
+Leak_Test.Glow.HMI.resultsLog.Timeout[0] = Leak_Test.Glow.PLC.maxTime*100;
+Leak_Test.Glow.HMI.resultsLog.timeoutPressure[0] = Utility.ConvertGlowCount(Leak_Test.Glow.PLC.timeoutPressure);
+Leak_Test.Glow.HMI.resultsLog.PumpTimer[0] = Leak_Test.Glow.PLC.PumpTimer;
+Leak_Test.Glow.HMI.resultsLog.result[0] = Leak_Test.Glow.PLC.result;
+
+Leak_Test.Glow.saveVacLog();

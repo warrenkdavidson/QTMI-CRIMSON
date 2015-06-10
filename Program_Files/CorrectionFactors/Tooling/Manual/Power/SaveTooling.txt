@@ -1,0 +1,28 @@
+cstring directory = System.Constants.DataDirectory;
+cstring filename = directory + "/ToolP.csv";
+
+DeleteFile(OpenFile(filename, 1));
+
+CreateDirectory(directory);
+CreateFile(filename);
+int fileHandle = OpenFile(filename, 1);
+
+
+
+// The header line is there for human readability
+WriteFileLine(fileHandle, "Front 1, Front 2, Front 3, Back 1, Back 1, Back 3");
+
+// The order of data items must match those in LoadSettings
+
+
+
+WriteFileLine(fileHandle, IntToText(System.CorrectionFactors.ToolingFactors.Manual.Power.Front, 10, 4)
+	+ ", " + IntToText(System.CorrectionFactors.ToolingFactors.Manual.Power.Front_1, 10, 4)
+	+ ", " + IntToText(System.CorrectionFactors.ToolingFactors.Manual.Power.Front_2, 10, 4)
+	+ ", " + IntToText(System.CorrectionFactors.ToolingFactors.Manual.Power.Back, 10, 4)	
+	+ ", " + IntToText(System.CorrectionFactors.ToolingFactors.Manual.Power.Back_1, 10, 4)
+	+ ", " + IntToText(System.CorrectionFactors.ToolingFactors.Manual.Power.Back_2, 10, 4)
+	+ ", " + IntToText(System.CorrectionFactors.ToolingFactors.Manual.Power.loggerVersion, 10, 4)		
+);
+
+CloseFile(fileHandle);

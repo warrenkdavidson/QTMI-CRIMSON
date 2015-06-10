@@ -1,0 +1,4 @@
+int port = System.Constants.LMSPort;
+
+//Acknowledge 
+PortWrite(port, 6);

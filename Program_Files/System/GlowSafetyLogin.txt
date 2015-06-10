@@ -1,0 +1,9 @@
+UserLogOn();
+
+if((GetCurrentUserName() == "so")){
+	System.IsAdministratorLoggedIn = true;
+	System.GlowSafetyConfirmation = true;
+	System.IsQuantumLoggedIn = true;
+	Manual_Control.showManualNavBar = 1;
+	HideAllPopups();
+}

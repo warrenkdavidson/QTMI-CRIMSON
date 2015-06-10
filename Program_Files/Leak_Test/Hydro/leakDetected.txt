@@ -1,0 +1,18 @@
+if (Leak_Test.Hydro.PLC.PumpTimer <= Leak_Test.Hydro.PLC.maxTime*100){
+	Leak_Test.Hydro.PLC.result = "No Leak";
+	}
+
+if (Leak_Test.Hydro.PLC.PumpTimer > Leak_Test.Hydro.PLC.maxTime*100 && Leak_Test.Hydro.PLC.PumpTimer <= 8000){
+	Leak_Test.Hydro.PLC.result = "Small Leak";
+	Leak_Test.Hydro.writeToVacLog();
+	}
+	
+if (Leak_Test.Hydro.PLC.PumpTimer > 8000){
+	Leak_Test.Hydro.PLC.result = "Large Leak";
+	Leak_Test.Hydro.writeToVacLog();
+	}
+	
+if (Leak_Test.Hydro.PLC.result == "")
+	Leak_Test.Hydro.PLC.lastRunTime = "";
+	
+else	Leak_Test.Hydro.PLC.lastRunTime = Utility.TimeString();

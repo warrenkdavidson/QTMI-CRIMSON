@@ -1,0 +1,49 @@
+int port = System.Constants.LMSPort;
+
+// <FS>
+PortWrite(port, 28);
+cstring message = "REQ=" + AsText(System.LMS.LMS_SessionId);
+
+// Grab message for testing
+System.LMS.Test_Vars.AR_Coat.AcoatRequest_1 = message;
+
+PortPrint(port, message);
+// <CR/LF>
+PortWrite(port, 13);
+PortWrite(port, 10);
+PortPrint(port, "JOB="+AsText(System.LMS.recipeId));
+
+// Grab message for testing
+System.LMS.Test_Vars.AR_Coat.AcoatRequest_2 = "JOB="+AsText(System.LMS.recipeId);
+
+// <CR/LF>
+PortWrite(port, 13);
+PortWrite(port, 10);
+// <RS> <GS>
+PortWrite(port, 30);
+PortWrite(port, 29);
+
+Sleep(1000);
+// Read Input
+System.LMS.LMSJobResponse = PortInput(port, 6, 29, 30, 255);
+
+// Grab message for testing
+System.LMS.Test_Vars.AR_Coat.AcoatResponse = System.LMS.LMSJobResponse;
+
+if(System.LMS.LMSJobResponse != ""){
+	LMS.sendAck();
+}
+
+LMS.ARCoat.parseAcoat();	    
+
+System.development_vars.MadeItString = System.LMS.LMSAcoat;
+int RecipeID = LMS.ARCoat.getRecipeIdFromAcoat(System.LMS.LMSAcoat);
+
+// Set Tray number
+Deposition.Recipe.Tray[RecipeID] = System.LMS.recipeId;
+
+System.development_vars.MadeIt2 = RecipeID;
+
+if(RecipeID != -1){
+	LMS.ARCoat.feedRecipeToMachine(RecipeID);
+}

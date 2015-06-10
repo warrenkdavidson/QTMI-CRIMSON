@@ -1,0 +1,49 @@
+// Save the scratch process back to the master Process array.
+
+// Save to the index remembered in CopyProcessToScratch (or the new one specified during Save As)
+int materialIndex = Deposition.Material.Scratch.Index;
+int POrV = Deposition.Material.Scratch.Attributes.PID_POrV;
+
+Deposition.Material.Name[materialIndex] = Deposition.Material.Scratch.Name;
+Deposition.Material.Attributes.FrontMag1[materialIndex] = Deposition.Material.Scratch.Attributes.FrontMag1;
+Deposition.Material.Attributes.FrontMag2[materialIndex] = Deposition.Material.Scratch.Attributes.FrontMag2;
+Deposition.Material.Attributes.FrontMag3[materialIndex] = Deposition.Material.Scratch.Attributes.FrontMag3;
+Deposition.Material.Attributes.BackMag1[materialIndex] = Deposition.Material.Scratch.Attributes.BackMag1;
+Deposition.Material.Attributes.BackMag2[materialIndex] = Deposition.Material.Scratch.Attributes.BackMag2;
+Deposition.Material.Attributes.BackMag3[materialIndex] = Deposition.Material.Scratch.Attributes.BackMag3;
+Deposition.Material.Attributes.PowerFront[materialIndex] = Deposition.Material.Scratch.Attributes.PowerFront;
+Deposition.Material.Attributes.PowerFrontMode[materialIndex] = Deposition.Material.Scratch.Attributes.PowerFrontMode;
+Deposition.Material.Attributes.PowerBack[materialIndex] = Deposition.Material.Scratch.Attributes.PowerBack;
+Deposition.Material.Attributes.PowerBackMode[materialIndex] = Deposition.Material.Scratch.Attributes.PowerBackMode;
+Deposition.Material.Attributes.FrequencyFront[materialIndex] = Deposition.Material.Scratch.Attributes.FrequencyFront;
+Deposition.Material.Attributes.FrequencyBack[materialIndex] = Deposition.Material.Scratch.Attributes.FrequencyBack;
+Deposition.Material.Attributes.ReverseTimeFront[materialIndex] = Deposition.Material.Scratch.Attributes.ReverseTimeFront;
+Deposition.Material.Attributes.ReverseTimeBack[materialIndex] = Deposition.Material.Scratch.Attributes.ReverseTimeBack;
+Deposition.Material.Attributes.Stabilization[materialIndex] = Deposition.Material.Scratch.Attributes.Stabilization;
+Deposition.Material.Attributes.O2SCCM[materialIndex] = Deposition.Material.Scratch.Attributes.O2SCCM;
+Deposition.Material.Attributes.ArFrontSCCM[materialIndex] = Deposition.Material.Scratch.Attributes.ArFrontSCCM;
+Deposition.Material.Attributes.ArBackSCCM[materialIndex] = Deposition.Material.Scratch.Attributes.ArBackSCCM;
+if(POrV) 
+	Deposition.Material.Attributes.Pressure[materialIndex] = Deposition.Material.Scratch.Attributes.Pressure/10;
+else
+	Deposition.Material.Attributes.Pressure[materialIndex] = 0;
+Deposition.Material.Attributes.PercentO2[materialIndex] = Deposition.Material.Scratch.Attributes.PercentO2;
+Deposition.Material.Attributes.Proportional[materialIndex] = Deposition.Material.Scratch.Attributes.Proportional;
+Deposition.Material.Attributes.Integral[materialIndex] = Deposition.Material.Scratch.Attributes.Integral;
+Deposition.Material.Attributes.Derivative[materialIndex] = Deposition.Material.Scratch.Attributes.Derivative;
+Deposition.Material.Attributes.SampleRate[materialIndex] = Deposition.Material.Scratch.Attributes.SampleRate;
+Deposition.Material.Attributes.DepositTimeFront[materialIndex] = Deposition.Material.Scratch.Attributes.DepositTimeFront;
+Deposition.Material.Attributes.DepositTimeBack[materialIndex] = Deposition.Material.Scratch.Attributes.DepositTimeBack;
+Deposition.Material.Attributes.PreBurn[materialIndex] = Deposition.Material.Scratch.Attributes.PreBurn;	
+Deposition.Material.Attributes.ConditionTarget[materialIndex] = Deposition.Material.Scratch.Attributes.ConditionTarget;
+Deposition.Material.Attributes.ThicknessRate[materialIndex] = Deposition.Material.Scratch.Attributes.ThicknessRate;
+Deposition.Material.Attributes.MaxPowerWarning[materialIndex] = Deposition.Material.Scratch.Attributes.MaxPowerWarning;
+Deposition.Material.Attributes.MaxPowerLimit[materialIndex] = Deposition.Material.Scratch.Attributes.MaxPowerLimit;
+Deposition.Material.Attributes.PredPID[materialIndex] = Deposition.Material.Scratch.Attributes.PredPID;
+Deposition.Material.Attributes.PIDControl[materialIndex] = Deposition.Material.Scratch.Attributes.PIDControl;
+Deposition.Material.Attributes.Layer[materialIndex] = Deposition.Material.Scratch.Attributes.Layer;
+Deposition.Material.Attributes.POrV[materialIndex] = Deposition.Material.Scratch.Attributes.PID_POrV;
+Deposition.Material.Attributes.UsePID[materialIndex] = Deposition.Material.Scratch.Attributes.UsePID;
+Deposition.Material.Attributes.PIDSetpointTolerance[materialIndex] = Deposition.Material.Scratch.Attributes.PIDSetpointTolerance;
+Deposition.Material.Attributes.ARMinSCCM_PID[materialIndex] = Deposition.Material.Scratch.Attributes.ArMinSCCM_PID;
+Deposition.Material.Attributes.ARMaxSCCM_PID[materialIndex] = Deposition.Material.Scratch.Attributes.ArMaxSCCM_PID;

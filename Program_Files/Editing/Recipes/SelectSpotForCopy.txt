@@ -1,0 +1,8 @@
+// Save the Scratch process back to the next available slot in the master process array
+
+// Don't allow processes that don't have names
+
+
+Deposition.Recipe.Scratch.Index = Index;
+Editing.Recipes.SaveRecipeNoPrompt();
+Deposition.Recipe.Edit.Copying = 0;

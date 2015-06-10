@@ -1,0 +1,5 @@
+cstring name = Editing.Material.MaterialName(Deposition.Recipe.Scratch.Step.MaterialID[stepIndex]);
+if(name == "") Deposition.Recipe.Scratch.Step.MaterialID[stepIndex] = -1;
+
+return name == "" ? "<Select>" : name;
+

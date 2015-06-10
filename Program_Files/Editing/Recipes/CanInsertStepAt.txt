@@ -1,0 +1,7 @@
+// Determine whether or not there is room for another step to be added to the scratch Process.
+// Also used to determine whether the '+' button should be shown.
+
+// The first condition indicates that index corresponds to an existing step or one past the last one.
+// The second condition indicates that we haven't used up our maximum number of steps yet.
+return stepIndex <= Deposition.Recipe.Scratch.NextAvailableStep && Deposition.Recipe.Scratch.NextAvailableStep < System.Constants.StepsPerRecipe;
+

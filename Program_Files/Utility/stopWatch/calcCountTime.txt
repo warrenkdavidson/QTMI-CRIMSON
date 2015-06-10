@@ -1,0 +1,7 @@
+if (Utility.countDown.timing){
+	Utility.countDown.countTime = Utility.countDown.startTime - GetNowTime();
+	if(Utility.countDown.countTime == 0){
+			Utility.countDown.timing = 0;
+	}
+	return Utility.countDown.countTime;
+}

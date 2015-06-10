@@ -1,0 +1,26 @@
+cstring statusMessage = "";
+float currentPressure = 0.0;
+int statusId = System.Startup_Status_Msgs.Startup_DEP;
+
+if(statusId == 0)
+statusMessage = "Close DEP Rough and Vent Valves";
+if(statusId == 1)
+statusMessage = "Start DEP Rough Pump";
+if(statusId == 2)
+statusMessage = "Open DEP Rough Valve";
+if(statusId == 3)
+statusMessage = "Delay";
+if(statusId == 4)
+statusMessage = "Starting Turbo";
+if(statusId == 5)
+statusMessage = "Check for Turbo Error";
+if(statusId == 6){
+statusMessage = "Waiting for DEP to get to Startup Pressure";
+currentPressure = Utility.ConvertDepositionCount(Manual_Control.Deposition.Pressure);
+}
+if(statusId == 8)
+statusMessage = "Checking Turbo Speed";
+
+
+System.Startup_Status_Msgs.Startup_Lower_Status_Msg = statusMessage;
+System.Startup_Status_Msgs.Startup_Current_Pressure = currentPressure;

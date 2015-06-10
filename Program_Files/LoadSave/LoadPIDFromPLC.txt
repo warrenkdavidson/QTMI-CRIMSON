@@ -1,0 +1,19 @@
+Deposition.PID.Scratch.Settings.PrePIDTime = Deposition.PID.Write.PrePIDTime;
+Deposition.PID.Scratch.Settings.PercentO2 = Deposition.PID.Write.PercentO2;
+Deposition.PID.Scratch.Settings.ArFrontSCCM = Deposition.PID.Write.ArFrontSCCM;
+Deposition.PID.Scratch.Settings.ArBackSCCM = Deposition.PID.Write.ArBackSCCM;
+Deposition.PID.Scratch.Settings.O2SCCM = Deposition.PID.Write.O2SCCM;
+
+Deposition.PID.Scratch.Settings.POrV_Mode = Deposition.PID.Write.POrV_Mode;
+Deposition.PID.Scratch.Settings.PID_Tolerance = Deposition.PID.Write.PID_tolerance;
+Deposition.PID.Scratch.Settings.Voltage = Deposition.PID.Write.Pressure;
+
+
+Deposition.PID.Scratch.Settings.PercentO2 = Deposition.PID.Write.PercentO2;
+Deposition.PID.Scratch.Settings.Pressure_E = Utility.ConvertGlowCount(Deposition.PID.Write.Pressure);
+
+
+Deposition.PID.Scratch.Settings.Proportional = Deposition.PID.Write.Proportional;
+Deposition.PID.Scratch.Settings.Integral = Deposition.PID.Write.Integral;
+Deposition.PID.Scratch.Settings.Derivative = Deposition.PID.Write.Derivative;
+Deposition.PID.Scratch.Settings.SampleRate = Deposition.PID.Write.SampleRate;

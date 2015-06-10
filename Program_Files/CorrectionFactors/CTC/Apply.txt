@@ -1,0 +1,5 @@
+ Operator.applyTF = 1;
+CorrectionFactors.CTC.Apply_index();
+CorrectionFactors.CTC.Apply_thickness();
+//Sleep(10000);
+//Operator.AfterCTC();

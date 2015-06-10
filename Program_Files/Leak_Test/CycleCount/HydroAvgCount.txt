@@ -1,0 +1,16 @@
+//Calculate Average counts per minute for Hydro Chamber
+
+int i;
+float sumHydro = 0;
+
+for (i=0; i < 60; i++){
+	sumHydro += Leak_Test.CycleCount.HydroCountArray[i];
+	}
+
+if (Leak_Test.CycleCount.ElapsedMin < 60)
+	Leak_Test.CycleCount.HydroAvgCount = sumHydro/Leak_Test.CycleCount.ElapsedMin;
+	
+else 	Leak_Test.CycleCount.HydroAvgCount = sumHydro/60.0;
+
+
+Leak_Test.CycleCount.saveArray();

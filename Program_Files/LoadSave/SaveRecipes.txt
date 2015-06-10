@@ -1,0 +1,34 @@
+cstring directory = System.Constants.DataDirectory;
+cstring filename = directory + "/Recipe.csv";
+
+DeleteFile(OpenFile(filename, 1));
+
+CreateDirectory(directory);
+CreateFile(filename);
+int fileHandle = OpenFile(filename, 1);
+
+// The header line is there for human readability
+WriteFileLine(fileHandle, "Name, Invalid, Acoat, Glow Time, Glow Pressure, Hydro Front Time, Hydro Back Time, Overcoat Time, Total Steps, Is Red");
+
+int processIndex;
+for (processIndex = 0; processIndex != System.Constants.RecipeCount; ++processIndex)
+{
+	// The order of data items must match those in LoadProcesses
+	
+	WriteFileLine(fileHandle, Deposition.Recipe.Name[processIndex]
+		+ ", " + Deposition.Recipe.Invalid[processIndex].AsText  
+		+ ", " + Deposition.Recipe.Acoat[processIndex] 
+		+ ", " + Deposition.Recipe.GlowTime[processIndex].AsText 
+		+ ", " + Deposition.Recipe.GlowPressure[processIndex].AsText 		
+		+ ", " + Deposition.Recipe.HydroFrontTime[processIndex].AsText
+		+ ", " + Deposition.Recipe.HydroBackTime[processIndex].AsText
+		+ ", " + Deposition.Recipe.OvercoatTime[processIndex].AsText
+		+ ", " + Deposition.Recipe.TotalSteps[processIndex].AsText
+		+ ", " + Deposition.Recipe.isRed[processIndex].AsText  
+				);
+}
+
+CloseFile(fileHandle);
+
+LoadSave.SaveSteps();
+LoadSave.SaveMaterials();

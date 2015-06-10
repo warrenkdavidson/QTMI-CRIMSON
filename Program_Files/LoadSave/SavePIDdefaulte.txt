@@ -1,0 +1,21 @@
+cstring directory = System.Constants.DataDirectory;
+cstring filename = directory + "/Piddef.csv";
+
+DeleteFile(OpenFile(filename, 1));
+
+CreateDirectory(directory);
+CreateFile(filename);
+int fileHandle = OpenFile(filename, 1);
+
+// The header line is there for human readability
+WriteFileLine(fileHandle, "Proportional, Integral, Derivative, Sample Rate");
+
+// The order of data items must match those in LoadSettings
+
+WriteFileLine(fileHandle, Deposition.PID.Scratch.Defaulte.Proportional.AsText
+	+ ", " + Deposition.PID.Scratch.Defaulte.Integral.AsText
+	+ ", " + Deposition.PID.Scratch.Defaulte.Derivative.AsText
+	+ ", " + Deposition.PID.Scratch.Defaulte.SampleRate.AsText
+	);
+
+CloseFile(fileHandle);

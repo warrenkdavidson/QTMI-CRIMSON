@@ -1,0 +1,8 @@
+// Prompt the operator for the material for a given Step in the scratch Process.
+
+Deposition.Material.Attributes.Proportional[materialId] = Deposition.PID.Scratch.Settings.Proportional;
+Deposition.Material.Attributes.Integral[materialId] = Deposition.PID.Scratch.Settings.Integral;
+Deposition.Material.Attributes.Derivative[materialId] = Deposition.PID.Scratch.Settings.Derivative;
+Deposition.Material.Attributes.SampleRate[materialId] = Deposition.PID.Scratch.Settings.SampleRate;
+
+LoadSave.SaveMaterials();

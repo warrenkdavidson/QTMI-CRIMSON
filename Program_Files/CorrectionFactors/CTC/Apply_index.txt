@@ -1,0 +1,22 @@
+ Operator.applyTF = 1;
+
+if(System.CorrectionFactors.CTC.UI.lensIndex == 3){
+	System.CorrectionFactors.CTC.CTC_index = System.CorrectionFactors.CTC.AdjustmentFactors.Index_NoFactor;
+	System.Process_Run_Log.indexLabel = System.CorrectionFactors.Labels.Index.NoFactor;
+} 
+if(System.CorrectionFactors.CTC.UI.lensIndex == 0){
+	System.CorrectionFactors.CTC.CTC_index = System.CorrectionFactors.CTC.AdjustmentFactors.Index_low;
+	System.Process_Run_Log.indexLabel = System.CorrectionFactors.Labels.Index.FirstTerm;
+} 	
+if(System.CorrectionFactors.CTC.UI.lensIndex == 1){
+	System.CorrectionFactors.CTC.CTC_index = System.CorrectionFactors.CTC.AdjustmentFactors.Index_mid;
+	System.Process_Run_Log.indexLabel = System.CorrectionFactors.Labels.Index.SecondTerm;
+}
+if(System.CorrectionFactors.CTC.UI.lensIndex == 2){
+	System.CorrectionFactors.CTC.CTC_index = System.CorrectionFactors.CTC.AdjustmentFactors.Index_hi;
+	System.Process_Run_Log.indexLabel = System.CorrectionFactors.Labels.Index.ThirdTerm;
+}
+
+Deposition.Recipe.CTC_index[Operator.UI.selectedRecipeIndex] = System.CorrectionFactors.CTC.CTC_index;
+
+Queue.lensIndex[Queue.lensPosition] = System.CorrectionFactors.CTC.CTC_index;

@@ -1,0 +1,17 @@
+
+
+LMS.SessionId.requestInitialization();
+
+// Try again, if no response
+if(System.LMS.LMSScratchResponse == "")
+	LMS.SessionId.requestInitialization();
+	
+LMS.sendAck();
+
+LMS.SessionId.identifyMachine();
+
+LMS.sendAck();
+
+LMS.SessionId.parseSessionId();
+
+

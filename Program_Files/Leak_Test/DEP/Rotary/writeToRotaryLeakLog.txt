@@ -1,0 +1,12 @@
+Leak_Test.DEP.Rotary.shiftLeakResultsDown();
+
+Leak_Test.DEP.Rotary.HMI.resultsLog.date[0] = Utility.TimeString();
+Leak_Test.DEP.Rotary.HMI.resultsLog.staticTolerance[0] = Leak_Test.DEP.Rotary.PLC.staticTolerance;
+Leak_Test.DEP.Rotary.HMI.resultsLog.dynamicTolerance[0] = Leak_Test.DEP.Rotary.PLC.dynamicTolerance;
+Leak_Test.DEP.Rotary.HMI.resultsLog.beginningPressure[0] = Utility.ConvertDepositionCount(Leak_Test.DEP.Rotary.PLC.beginningPressure);
+Leak_Test.DEP.Rotary.HMI.resultsLog.sampledPressure[0] = Utility.ConvertDepositionCount(Leak_Test.DEP.Rotary.PLC.sampledPressure);
+Leak_Test.DEP.Rotary.HMI.resultsLog.greatestDelta[0] = Leak_Test.DEP.Rotary.PLC.greatestDelta;
+Leak_Test.DEP.Rotary.HMI.resultsLog.result[0] = Leak_Test.DEP.Rotary.PLC.result;
+
+
+Leak_Test.DEP.Rotary.saveRotaryLeakLog();

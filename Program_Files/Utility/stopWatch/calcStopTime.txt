@@ -1,0 +1,5 @@
+if (Utility.stopWatch.timing)
+	Utility.stopWatch.countTime = GetNowTime() - Utility.stopWatch.startTime;
+	return Utility.stopWatch.countTime; 
+if (!Utility.stopWatch.timing)
+	return Utility.stopWatch.countTime;

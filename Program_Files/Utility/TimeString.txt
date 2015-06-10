@@ -1,0 +1,14 @@
+cstring timeNowString;
+int timeNowSec;
+timeNowSec = GetNow();
+int month = GetMonth(timeNowSec);
+int day = GetDate(timeNowSec);
+int year = GetYear(timeNowSec);
+
+int hour = GetHour(timeNowSec);
+int min = GetMin(timeNowSec);
+int second = GetSec(timeNowSec);
+
+timeNowString = IntToText(month, 10, 2)+"/"+IntToText(day, 10, 2)+"/"+IntToText(year, 10, 4);
+timeNowString += " "+IntToText(hour, 10, 2)+":"+IntToText(min, 10, 2)+":"+IntToText(second, 10, 2);
+return timeNowString;

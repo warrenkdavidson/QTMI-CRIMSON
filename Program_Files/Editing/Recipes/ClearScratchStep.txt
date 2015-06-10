@@ -1,0 +1,8 @@
+// Clear out the scratch Step at stepIndex.
+
+Deposition.Recipe.Scratch.Step.MaterialID[stepIndex] = 0;
+Deposition.Recipe.Scratch.Step.FrontTime[stepIndex] = 0;
+Deposition.Recipe.Scratch.Step.BackTime[stepIndex] = 0;
+Deposition.Recipe.Scratch.Step.FrontThickness[stepIndex] = 0;
+Deposition.Recipe.Scratch.Step.BackThickness[stepIndex] = 0;
+

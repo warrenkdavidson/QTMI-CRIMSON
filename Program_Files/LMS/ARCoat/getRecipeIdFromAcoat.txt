@@ -1,0 +1,26 @@
+//System.development_vars.MadeItString = "yep";
+
+System.development_vars.MadeItString = Deposition.Recipe.Acoat[1]+"yep"+acoat;
+int processIndex;
+int returnValue = 0;
+cstring thisAcoat;
+
+
+//for (processIndex = 0; processIndex != System.Constants.RecipeCount; ++processIndex)
+for (processIndex = 0; processIndex != System.Constants.RecipeCount; ++processIndex)
+{
+//System.development_vars.MadeItString = "hello";
+//System.development_vars.MadeItString = Deposition.Recipe.Acoat[processIndex];
+	thisAcoat = Deposition.Recipe.Acoat[processIndex];
+//	System.development_vars.MadeItString = thisAcoat;
+//	System.development_vars.MadeItString2 = acoat;
+	if(thisAcoat == acoat){	
+	returnValue = processIndex;
+//	System.development_vars.MadeIt = returnValue;
+	}
+}
+
+return returnValue;
+
+
+

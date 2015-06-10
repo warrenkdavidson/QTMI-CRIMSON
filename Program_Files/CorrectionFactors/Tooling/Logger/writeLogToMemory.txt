@@ -1,0 +1,23 @@
+System.CorrectionFactors.ToolingFactors.Logger.DateTime[System.CorrectionFactors.ToolingFactors.Logger.loggerIndex] = Utility.TimeString();
+
+System.CorrectionFactors.ToolingFactors.Logger.PowerF[System.CorrectionFactors.ToolingFactors.Logger.loggerIndex] = System.CorrectionFactors.ToolingFactors.Manual.Power.Front;
+System.CorrectionFactors.ToolingFactors.Logger.PowerF_1[System.CorrectionFactors.ToolingFactors.Logger.loggerIndex] = System.CorrectionFactors.ToolingFactors.Manual.Power.Front_1;
+System.CorrectionFactors.ToolingFactors.Logger.PowerF_2[System.CorrectionFactors.ToolingFactors.Logger.loggerIndex] = System.CorrectionFactors.ToolingFactors.Manual.Power.Front_2;
+System.CorrectionFactors.ToolingFactors.Logger.PowerB[System.CorrectionFactors.ToolingFactors.Logger.loggerIndex] = System.CorrectionFactors.ToolingFactors.Manual.Power.Back;
+System.CorrectionFactors.ToolingFactors.Logger.PowerB_1[System.CorrectionFactors.ToolingFactors.Logger.loggerIndex] = System.CorrectionFactors.ToolingFactors.Manual.Power.Back_1;
+System.CorrectionFactors.ToolingFactors.Logger.PowerB_2[System.CorrectionFactors.ToolingFactors.Logger.loggerIndex] = System.CorrectionFactors.ToolingFactors.Manual.Power.Back_2;
+
+System.CorrectionFactors.ToolingFactors.Logger.KwhrsF[System.CorrectionFactors.ToolingFactors.Logger.loggerIndex] = System.Pinnacle_PS.Front_CIO.Chrome_Target_Life_Value;
+System.CorrectionFactors.ToolingFactors.Logger.KwhrsF_1[System.CorrectionFactors.ToolingFactors.Logger.loggerIndex] = System.Pinnacle_PS.Front_CIO.Low_Index_Target_Life_Value;
+System.CorrectionFactors.ToolingFactors.Logger.KwhrsF_2[System.CorrectionFactors.ToolingFactors.Logger.loggerIndex] = System.Pinnacle_PS.Front_CIO.High_Index_Target_Life_Value;
+System.CorrectionFactors.ToolingFactors.Logger.KwhrsB[System.CorrectionFactors.ToolingFactors.Logger.loggerIndex] = System.Pinnacle_PS.Back_CIO.Chrome_Target_Life_Value; 
+System.CorrectionFactors.ToolingFactors.Logger.KwhrsB_1[System.CorrectionFactors.ToolingFactors.Logger.loggerIndex] = System.Pinnacle_PS.Back_CIO.Low_Index_Target_Life_Value;
+System.CorrectionFactors.ToolingFactors.Logger.KwhrsB_2[System.CorrectionFactors.ToolingFactors.Logger.loggerIndex] = System.Pinnacle_PS.Back_CIO.High_Index_Target_Life_Value;
+
+System.CorrectionFactors.ToolingFactors.Logger.loggerIndex++;
+System.CorrectionFactors.ToolingFactors.Logger.DateTime[System.CorrectionFactors.ToolingFactors.Logger.loggerIndex] = "";
+if(System.CorrectionFactors.ToolingFactors.Logger.loggerIndex == System.Constants.ToolingLogCount){
+	System.CorrectionFactors.ToolingFactors.Logger.loggerIndex = 0;
+	System.CorrectionFactors.ToolingFactors.Logger.DateTime[0] = "";
+	CorrectionFactors.Tooling.Logger.logBackupToDisk();
+}

@@ -1,0 +1,1 @@
+return System.CorrectionFactors.Position_Sensor.Front_cal - frontMeasure;

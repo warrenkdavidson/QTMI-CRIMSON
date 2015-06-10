@@ -1,0 +1,4 @@
+ShowPopup(System.popups.Manual.System_Auto_Process_Halted);
+Sleep(3000);
+HidePopup();
+

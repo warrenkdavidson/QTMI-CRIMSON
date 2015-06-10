@@ -1,0 +1,12 @@
+int logIndex;
+for (logIndex = System.Constants.VacCycleCount-2; logIndex >= 0; logIndex--)
+{
+	Leak_Test.CycleCount.GlowCountArray[logIndex+1] = Leak_Test.CycleCount.GlowCountArray[logIndex];
+ 	Leak_Test.CycleCount.HydroCountArray[logIndex+1] = Leak_Test.CycleCount.HydroCountArray[logIndex];
+}
+
+Leak_Test.CycleCount.GlowCountArray[0] = Leak_Test.CycleCount.GlowCount;
+Leak_Test.CycleCount.HydroCountArray[0] = Leak_Test.CycleCount.HydroCount;
+
+Leak_Test.CycleCount.HydroAvgCount();
+Leak_Test.CycleCount.GlowAvgCount();

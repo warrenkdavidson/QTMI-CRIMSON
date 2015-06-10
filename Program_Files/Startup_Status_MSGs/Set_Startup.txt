@@ -1,0 +1,91 @@
+cstring statusMessage = "";
+float currentPressure = 0.0;
+int statusId = System.Startup_Status_Msgs.Startup;
+
+if(statusId == 0)
+statusMessage = "Closing VAT Valves";
+if(statusId == 1)
+statusMessage = "Checking VAT Valves";
+if(statusId == 2)
+statusMessage = "Closing Rough Valves and Vent Valves";
+if(statusId == 3)
+statusMessage = "Checking Rough Valves and Vent Valves";
+if(statusId == 4)
+statusMessage = "Start Glow/Hydro Rough Pump";
+if(statusId == 5)
+statusMessage = "Open Glow Rough Valve";
+if(statusId == 6)
+statusMessage = "Checking Glow Rough Valve Opening";
+if(statusId == 7){
+statusMessage = "Waiting for Glow to get to Startup Pressure.";
+currentPressure = Utility.ConvertGlowCount(Manual_Control.Glow.Pressure);
+}
+if(statusId == 8)
+statusMessage = "Retry";
+if(statusId == 9)
+statusMessage = "Close Glow Rough Valve";
+if(statusId == 0x10)
+statusMessage = "Checking Glow Rough Valve Closure";
+if(statusId == 0x11)
+statusMessage = "Opening Hydro Rough Valve";
+if(statusId == 0x12)
+statusMessage = "Checking Hydro Rough Valve Opening";
+if(statusId == 0x13){
+statusMessage = "Waiting for Hydro to get to Startup Pressure";
+currentPressure = Utility.ConvertGlowCount(Manual_Control.HydroOc.Pressure);
+}
+if(statusId == 0x14)
+statusMessage = "Retry";
+if(statusId == 0x15)
+statusMessage = "Close Hydro Rough Valve and ISO Valve";
+if(statusId == 0x16)
+statusMessage = "Checking Hydro Rough Valve Closing";
+if(statusId == 0x17)
+statusMessage = "Dispensing Hydro Front";
+if(statusId == 0x19)
+statusMessage = "Open Hydro Rough Valve and ISO Valve";
+if(statusId == 0x20)
+statusMessage = "Check Hydro Rough Valve Opening";
+if(statusId == 0x21){
+statusMessage = "Waiting for Hydro to get to Startup Pressure";
+currentPressure = Utility.ConvertGlowCount(Manual_Control.HydroOc.Pressure);
+}
+if(statusId == 0x23)
+statusMessage = "Close Hydro Rough Valve and ISO Valve";
+if(statusId == 0x24)
+statusMessage = "Checking Hydro Rough Valve and ISO Valve";
+if(statusId == 0x25)
+statusMessage = "Dispensing Hydro Back";
+if(statusId == 0x27)
+statusMessage = "Open Hydro Rough Valve and ISO Valve";
+if(statusId == 0x28)
+statusMessage = "Checking Hydro Rough Valve and ISO Valve Open";
+if(statusId == 0x29){
+statusMessage = "Waiting for Hydro to get to Startup Pressure";
+currentPressure = Utility.ConvertGlowCount(Manual_Control.HydroOc.Pressure);
+}
+if(statusId == 0x31)
+statusMessage = "Close Hydro Rough Valve and ISO Valve";
+if(statusId == 0x32)
+statusMessage = "Checking Hydro Rough Valve and ISO Valve Close";
+if(statusId == 0x33)
+statusMessage = "Dispensing Overcoat";
+if(statusId == 0x35)
+statusMessage = "Open Hydro Rough Valve and ISO Valve";
+if(statusId == 0x36)
+statusMessage = "Checking Hydro Rough Valve and ISO Valve Open";
+if(statusId == 0x37){
+statusMessage = "Waiting for Hydro to get to Startup Pressure";
+currentPressure = Utility.ConvertGlowCount(Manual_Control.HydroOc.Pressure);
+}
+if(statusId == 0x38)
+statusMessage = "Close Hydro Rough Valve and ISO Valve";
+if(statusId == 0x40)
+statusMessage = "Waiting on Deposition Startup";
+if(statusId == 0x42)
+statusMessage = "Starting Wheel Removal Cycle";
+if(statusId == 0x44)
+statusMessage = "Startup Mode Complete";
+
+System.Startup_Status_Msgs.Startup_Upper_Status_Msg = statusMessage; 
+System.Startup_Status_Msgs.Startup_Current_Pressure = currentPressure;

@@ -1,0 +1,9 @@
+//Move Recipe ID and INDEX from OUTSIDE to INSIDE, if we don't have a INSIDE Recipe ready for the PLC
+Queue.recipeID[0] = Queue.recipeID[1];
+Queue.lensIndex[0] = Queue.lensIndex[1];
+//Wait 100 ms
+Sleep(100);
+
+//Then deletes the params in the outside position of the array:
+Queue.recipeID[1] = -1;
+Queue.lensIndex[1] = -1;

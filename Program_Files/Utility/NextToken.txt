@@ -1,0 +1,19 @@
+// Tokenize() and NextToken are loosely based on the C library function strtok().
+
+cstring line = Utility.Tokenizer.Line;
+int position = Find(line, Utility.Tokenizer.Separator, 0);
+if (position == -1)
+{
+	// No separator character found; we clear out the line, because there's nothing left to tokenize.
+	// We then strip leading and trailing whitespace from whatever was there and return it as the last token.
+	Utility.Tokenizer.Line = "";
+ 	return Utility.TrimBlanks(line);
+}
+
+// The token is the left-most part of the line; we strip leading and trailing whitespace from it.
+cstring result = Utility.TrimBlanks(Left(line, position));
+// Update the Line tag with the rest of the original line (after the separator)
+Utility.Tokenizer.Line = Right(line, Len(line) - (position + 1));
+// And return the token we found
+return result;
+

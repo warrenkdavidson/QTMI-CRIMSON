@@ -1,0 +1,47 @@
+cstring directory = System.Constants.DataDirectory;
+cstring filename = directory + "/Hours.csv";
+
+DeleteFile(OpenFile(filename, 1));
+
+CreateDirectory(directory);
+CreateFile(filename);
+int fileHandle = OpenFile(filename, 1);
+
+// The header line is there for human readability
+WriteFileLine(fileHandle, "Turbo On, Water Chiller Run Time, Glow/Hydro RP On, Dep RP On, DEP Motor Run Time, Rotation Motor O-ring, Glow Hydro RP Oil Life Meter, DEP Rough Pump Oil Life, FS Chrome Target Life SP, FS Low Index Target Life SP, FS High Index Target Life SP, BS Chrome Target Life SP, BS Low Index Target Life SP, BS High Index Target Life SP, FS Chrome Target Life Value, FS Low Index Target Life Value, FS High Index Target Life Value, BS Chrome Target Life Value, BS Low Index Target Life Value, BS High Index Target Life Value, FS Chrome Target Life, FS Low Index Target Life, FS High Index Target Life, BS Chrome Target Life, BS Low Index Target Life, BS High Index Target Life, Lens Count, Lens Count Setpoint, Machine On time, Machine in AutoMode time, Total Processes Run");
+
+WriteFileLine(fileHandle, System.HourMeters.TurboOnHours.AsText
+	+ ", " + System.HourMeters.WaterChillerOnHours.AsText
+	+ ", " + System.HourMeters.GlowHydroRoughOnHours.AsText
+	+ ", " + System.HourMeters.DEPRoughOnHours.AsText
+	+ ", " + System.HourMeters.DEPMotorHourMeter.AsText
+	+ ", " + System.HourMeters.MotorOringOnHours.AsText
+	+ ", " + System.HourMeters.GlowHydroRPOilMeter.AsText
+	+ ", " + System.HourMeters.DepRPOilMeter.AsText
+	+ ", " + System.Pinnacle_PS.Front_CIO.Chrome_Target_Life_sp.AsText
+	+ ", " + System.Pinnacle_PS.Front_CIO.Low_Index_Target_Life_sp.AsText
+	+ ", " + System.Pinnacle_PS.Front_CIO.High_Index_Target_Life_sp.AsText
+	+ ", " + System.Pinnacle_PS.Back_CIO.Chrome_Target_Life_sp.AsText
+	+ ", " + System.Pinnacle_PS.Back_CIO.Low_Index_Target_Life_sp.AsText
+	+ ", " + System.Pinnacle_PS.Back_CIO.High_Index_Target_Life_sp.AsText
+	+ ", " + System.Pinnacle_PS.Front_CIO.Chrome_Target_Life_Value.AsText
+	+ ", " + System.Pinnacle_PS.Front_CIO.Low_Index_Target_Life_Value.AsText
+	+ ", " + System.Pinnacle_PS.Front_CIO.High_Index_Target_Life_Value.AsText
+	+ ", " + System.Pinnacle_PS.Back_CIO.Chrome_Target_Life_Value.AsText
+	+ ", " + System.Pinnacle_PS.Back_CIO.Low_Index_Target_Life_Value.AsText
+	+ ", " + System.Pinnacle_PS.Back_CIO.High_Index_Target_Life_Value.AsText
+	+ ", " + System.Pinnacle_PS.Front_CIO.Chrome_Target_Life_Value.AsText
+	+ ", " + System.Pinnacle_PS.Front_CIO.Low_Index_Target_Life_Value.AsText
+	+ ", " + System.Pinnacle_PS.Front_CIO.High_Index_Target_Life_Value.AsText
+	+ ", " + System.Pinnacle_PS.Back_CIO.Chrome_Target_Life_Value.AsText
+	+ ", " + System.Pinnacle_PS.Back_CIO.Low_Index_Target_Life_Value.AsText
+	+ ", " + System.Pinnacle_PS.Back_CIO.High_Index_Target_Life_Value.AsText
+	+ ", " + System.Settings.Defaults.LensCount.AsText
+	+ ", " + System.Settings.Defaults.LensCount_Setpoint.AsText
+	+ ", " + System.HourMeters.MachineOnTime.AsText
+	+ ", " + System.HourMeters.MachineInAutoModeTime.AsText
+	+ ", " + System.HourMeters.TotalProcessesRun.AsText	
+			);
+
+
+CloseFile(fileHandle);

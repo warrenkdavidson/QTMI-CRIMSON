@@ -1,0 +1,21 @@
+//takes the recipeID and indexID from position 1 of the queue array and sends it to the PLC:
+Operator.InfeedRecipieId =  Queue.recipeID[0];
+Operator.UI.selectedRecipeIndex = Queue.lensIndex[0];
+
+Operator.UI.selectedRecipeIndex = Operator.InfeedRecipieId;
+System.CorrectionFactors.CTC.UI.lensIndex = Operator.UI.selectedRecipeIndex;
+
+CorrectionFactors.CTC.Apply();
+
+//Operator.ConfirmationOfRecipie = true;
+//Operator.ConfirmationOfRecipie = false;
+//Queue.recipeHasntBeenWrittenToPLC = false;
+
+Operator.ReadyToGiveRecipe = true;
+
+Sleep(300);
+
+Sleep(100);
+
+
+

@@ -1,0 +1,51 @@
+
+
+int CTC_index = System.CorrectionFactors.Position_Sensor.testDep.TEST_index;
+//int CTC_thickness = 100; 
+float CTC_positionFront = System.CorrectionFactors.Position_Sensor.Front_cal - System.CorrectionFactors.Position_Sensor.Plc.read.FrontPosition_mm;
+float CTC_positionBack = System.CorrectionFactors.Position_Sensor.Back_cal - System.CorrectionFactors.Position_Sensor.Plc.read.BackPosition_mm; 
+
+// Get index for step, material ID, front and back times
+int stepIndex = Utility.StepIndex(recipeId, Operator.DepositionStepCounter);
+int materialId = Deposition.Recipe.Step.MaterialID[stepIndex];
+
+// Initialize front and back power
+//int frontPower = Deposition.Material.Attributes.PowerFront[materialId];
+//int backPower = Deposition.Material.Attributes.PowerBack[materialId];
+
+// Initialize front and back time
+//int frontTime = Deposition.Recipe.Step.FrontTime[stepIndex];
+//int backTime = Deposition.Recipe.Step.BackTime[stepIndex];
+
+// Get tooling factors for front and back times
+//int timeToolingFront = CorrectionFactors.Tooling.Manual.Time.toolingFactorFront(Deposition.Material.Attributes.PowerFront[materialId], materialId);
+//int timeToolingBack = CorrectionFactors.Tooling.Manual.Time.toolingFactorBack(Deposition.Material.Attributes.PowerBack[materialId], materialId);
+
+// Get tooling factors for front and back powers
+int powerToolingFront = System.CorrectionFactors.Position_Sensor.testDep.TEST_ToolingFront;
+int powerToolingBack = System.CorrectionFactors.Position_Sensor.testDep.TEST_ToolingBack; 
+
+
+// Apply time tooling factor to front and back times
+//frontTime = frontTime*timeToolingFront/100;
+//backTime = backTime*timeToolingBack/100;
+
+
+// Apply thickness CTC factor to back power only (DEPRECATED)
+//backPower = Utility.Round((backPower*CTC_thickness/100));
+
+// Set Vars for viewing while testing
+System.CorrectionFactors.Position_Sensor.testDep.frontTF = ((float)powerToolingFront)/100.0;
+System.CorrectionFactors.Position_Sensor.testDep.backTF = ((float)powerToolingBack)/100.0;
+System.CorrectionFactors.Position_Sensor.testDep.frontIndex = ((float)CTC_index)/100.0;
+System.CorrectionFactors.Position_Sensor.testDep.backIndex = ((float)CTC_index)/100.0;
+System.CorrectionFactors.Position_Sensor.testDep.posToolingF = ((float)(CTC_positionFront*System.CorrectionFactors.Position_Sensor.tfRatioFront));
+System.CorrectionFactors.Position_Sensor.testDep.posToolingB = ((float)(CTC_positionBack*System.CorrectionFactors.Position_Sensor.tfRatioBack));
+System.CorrectionFactors.Position_Sensor.testDep.differenceF = ((float)CTC_positionFront);
+System.CorrectionFactors.Position_Sensor.testDep.differenceB = ((float)CTC_positionBack);
+System.CorrectionFactors.Position_Sensor.testDep.finalToolingF = ((float)powerToolingFront*(float)CTC_index)/10000.0 - ((float)(CTC_positionFront*System.CorrectionFactors.Position_Sensor.tfRatioFront));
+System.CorrectionFactors.Position_Sensor.testDep.finalToolingB = ((float)powerToolingBack*(float)CTC_index)/10000.0 - ((float)(CTC_positionBack*System.CorrectionFactors.Position_Sensor.tfRatioBack));
+// Convert final factors to ints for display on Operator
+System.CorrectionFactors.Position_Sensor.testDep.finalFactorIntF = (int)(System.CorrectionFactors.Position_Sensor.testDep.finalToolingF*1000.0);
+System.CorrectionFactors.Position_Sensor.testDep.finalFactorIntB = (int)(System.CorrectionFactors.Position_Sensor.testDep.finalToolingB*1000.0);
+

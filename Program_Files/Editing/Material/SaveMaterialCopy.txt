@@ -1,0 +1,12 @@
+// Save the Scratch process back to the next available slot in the master process array
+
+// Don't allow processes that don't have names
+//if (!Editing.Material.ValidateScratchMaterial()) return;
+
+//if (!Editing.Material.ValidateMaterialName()) HMI.Deposition.Material.Scratch.Name = HMI.Deposition.Material.Scratch.Name + "_";
+
+GotoPage(Deposition.Select_Material_1);
+//ShowPopup(System.popups.Deposition.SelectACopySpot);
+Deposition.Material.Edit.Copying = 1;
+
+

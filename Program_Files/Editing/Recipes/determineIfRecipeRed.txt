@@ -1,0 +1,25 @@
+
+// First find out if any of the steps have times of Zero for both front and back
+int zerosExists = 0;
+int stepIndex;
+cstring materialName;
+for (stepIndex = 0; stepIndex != System.Constants.StepsPerRecipe; ++stepIndex)
+{
+	// The order of data items must match those in LoadSteps
+	int processStepIndex = Utility.StepIndex(currentIndex, stepIndex);
+	materialName = Editing.Material.MaterialName(Deposition.Recipe.Scratch.Step.MaterialID[processStepIndex]);   
+	if(Deposition.Recipe.Scratch.Step.FrontTime[processStepIndex] == 0 
+	&& Deposition.Recipe.Scratch.Step.BackTime[processStepIndex] == 0
+	&& materialName != "" ){
+	zerosExists = 1;
+	}
+}
+
+// Next, make the recipe red if it has a step with zeros in front and back
+
+if(zerosExists == 1){
+	Deposition.Recipe.isRed[currentIndex] = 1;	
+}else{
+	Deposition.Recipe.isRed[currentIndex] = 0;	
+}
+

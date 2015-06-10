@@ -1,0 +1,18 @@
+Deposition.Recipe.Scratch.totals.frontTimeTotal = 0;
+Deposition.Recipe.Scratch.totals.backTimeTotal = 0;
+
+Deposition.Recipe.Scratch.totals.frontNmTotal = 0; 
+Deposition.Recipe.Scratch.totals.backNmTotal = 0; 
+
+
+//int recipeIndex = Deposition.Recipe.Scratch.Index;
+int stepIndex;
+for (stepIndex = 0; stepIndex != Deposition.Recipe.Scratch.NextAvailableStep; ++stepIndex)
+{
+	Deposition.Recipe.Scratch.totals.frontTimeTotal += Deposition.Recipe.Scratch.Step.FrontTime[stepIndex];
+	Deposition.Recipe.Scratch.totals.backTimeTotal += Deposition.Recipe.Scratch.Step.BackTime[stepIndex];
+	
+	Deposition.Recipe.Scratch.totals.frontNmTotal += Deposition.Recipe.Scratch.Step.FrontThickness[stepIndex];
+	Deposition.Recipe.Scratch.totals.backNmTotal += Deposition.Recipe.Scratch.Step.BackThickness[stepIndex];	
+//	Deposition.Recipe.Scratch.totals.frontNmTotal +=  
+}

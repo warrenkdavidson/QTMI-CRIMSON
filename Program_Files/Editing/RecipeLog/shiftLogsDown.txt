@@ -1,0 +1,7 @@
+int logIndex;
+for (logIndex = System.Constants.ProcessRunLogCount-2; logIndex >= 0; logIndex--)
+{
+	System.Process_Run_Log.Name[logIndex+1] = System.Process_Run_Log.Name[logIndex]; 				
+	System.Process_Run_Log.Date[logIndex+1] = System.Process_Run_Log.Date[logIndex]; 			
+	System.Process_Run_Log.lensIndex[logIndex+1] = System.Process_Run_Log.lensIndex[logIndex];
+}

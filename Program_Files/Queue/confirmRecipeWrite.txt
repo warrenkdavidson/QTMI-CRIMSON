@@ -1,0 +1,7 @@
+Operator.ConfirmationOfRecipie = true;
+Sleep(300);
+Operator.ConfirmationOfRecipie = false;
+Operator.ReadyToGiveRecipe = false;
+Queue.recipeHasntBeenWrittenToPLC = false;
+Operator.UI.selectedRecipeIndex = -1;
+Operator.applyTF = 0;

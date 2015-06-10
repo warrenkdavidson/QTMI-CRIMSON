@@ -1,0 +1,29 @@
+
+cstring filename = System.Constants.DataDirectory + "/CTC.csv";
+
+int fileHandle = OpenFile(filename, 0);
+
+ReadFileLine(fileHandle); // ignore header
+
+cstring line;
+line = ReadFileLine(fileHandle);
+//PLC.System.Settings.Defaults.GlowPowerCurrentMin = 13;	
+
+
+
+if (line == "") return; // no data to read
+
+Utility.Tokenize(line, ',');
+
+// The order of data items must match those in Save Tooling
+
+
+System.CorrectionFactors.CTC.AdjustmentFactors.Index_low = TextToInt(Utility.NextToken(), 10);
+System.CorrectionFactors.CTC.AdjustmentFactors.Index_mid = TextToInt(Utility.NextToken(), 10);
+System.CorrectionFactors.CTC.AdjustmentFactors.Index_hi = TextToInt(Utility.NextToken(), 10);
+System.CorrectionFactors.Position_Sensor.tfRatioFront = TextToFloat(Utility.NextToken());
+System.CorrectionFactors.Position_Sensor.tfRatioBack = TextToFloat(Utility.NextToken());	
+System.CorrectionFactors.CTC.AdjustmentFactors.Index_NoFactor = TextToInt(Utility.NextToken(), 10);
+
+
+CloseFile(fileHandle);

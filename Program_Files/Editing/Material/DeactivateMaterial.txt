@@ -1,0 +1,6 @@
+//   Deactivate oldMaterial, if necessary
+if(oldMaterialId > 0){
+	Deposition.Material.ActiveCount[oldMaterialId]--;
+	if(Deposition.Material.ActiveCount[oldMaterialId] == 0) 
+		Deposition.Material.Active[oldMaterialId] = false;
+}

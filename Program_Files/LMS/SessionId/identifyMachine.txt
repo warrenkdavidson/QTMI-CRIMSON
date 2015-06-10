@@ -1,0 +1,45 @@
+int port = System.Constants.LMSPort;
+
+// Send parameter requests
+// <FS>
+PortWrite(port, 28);
+PortPrint(port, "ANS=INI");
+// <CR/LF>
+PortWrite(port, 13);
+PortWrite(port, 10);
+PortPrint(port, "DEV=COA");
+// <CR/LF>
+PortWrite(port, 13);
+PortWrite(port, 10);
+PortPrint(port, "VEN=GC");
+// <CR/LF>
+PortWrite(port, 13);
+PortWrite(port, 10);
+PortPrint(port, "MODEL=FUSION");
+// <CR/LF>
+PortWrite(port, 13);
+PortWrite(port, 10);
+PortPrint(port, "INFO=1;");
+// <CR/LF>
+PortWrite(port, 13);
+PortWrite(port, 10);
+PortPrint(port, "DEF=Quantum");
+// <CR/LF>
+PortWrite(port, 13);
+PortWrite(port, 10);
+PortPrint(port, "D=ACOAT");
+// <CR/LF>
+PortWrite(port, 13);
+PortWrite(port, 10);
+PortPrint(port, "ENDDEF=Quantum");
+// <CR/LF>
+PortWrite(port, 13);
+PortWrite(port, 10);
+// <RS> <GS>
+PortWrite(port, 30);
+PortWrite(port, 29);
+
+Sleep(3000);
+System.LMS.LMSScratchResponse = PortInput(port, 28, 29, 30, 255);
+System.LMS.Test_Vars.Session_Id.LMSIdentifyMachineResponse = System.LMS.LMSScratchResponse;
+System.LMS.LMSScratchResponse = Left(System.LMS.LMSScratchResponse, 100);

@@ -1,0 +1,8 @@
+if(Deposition.Recipe.Invalid[RecipeID]){
+	Operator.invalidRecipeBarCode();
+}else{
+	Operator.SelectRecipe(RecipeID);
+	Operator.UI.Pop_Up_Visibilty.OperatorRecipieSelect = 1;
+	Operator.PressRecipeButton(RecipeID);
+//	Operator.writeRecipie_1();
+}

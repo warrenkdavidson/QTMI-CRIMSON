@@ -1,0 +1,35 @@
+cstring directory = System.Constants.DataDirectory;
+cstring filename = directory + "/Pid.csv";
+
+DeleteFile(OpenFile(filename, 1));
+
+CreateDirectory(directory);
+CreateFile(filename);
+int fileHandle = OpenFile(filename, 1);
+
+// The header line is there for human readability
+WriteFileLine(fileHandle, "O2SCCM, ArFrontSCCM, "
+	+ "ArBackSCCM, Pressure, PercentO2, AutoTune, PrePID, PrePIDTime, Proportional, Integral, Derivative, "
+	+ "SampleRate, Pressure or Voltage, PID Tolerance, Voltage"
+	);
+
+// The order of data items must match those in LoadSettings
+
+WriteFileLine(fileHandle, Deposition.PID.Scratch.Settings.O2SCCM.AsText
+	+ ", " + Deposition.PID.Scratch.Settings.ArFrontSCCM.AsText
+	+ ", " + Deposition.PID.Scratch.Settings.ArBackSCCM.AsText
+	+ ", " + Deposition.PID.Scratch.Settings.Pressure_E.AsText
+	+ ", " + Deposition.PID.Scratch.Settings.PercentO2.AsText
+	+ ", " + Deposition.PID.Scratch.Settings.AutoTune.AsText
+	+ ", " + Deposition.PID.Scratch.Settings.PrePID.AsText
+	+ ", " + Deposition.PID.Scratch.Settings.PrePIDTime.AsText
+	+ ", " + Deposition.PID.Scratch.Settings.Proportional.AsText
+	+ ", " + Deposition.PID.Scratch.Settings.Integral.AsText
+	+ ", " + Deposition.PID.Scratch.Settings.Derivative.AsText
+	+ ", " + Deposition.PID.Scratch.Settings.SampleRate.AsText
+	+ ", " + Deposition.PID.Scratch.Settings.POrV_Mode.AsText
+	+ ", " + Deposition.PID.Scratch.Settings.PID_Tolerance.AsText
+	+ ", " + Deposition.PID.Scratch.Settings.Voltage.AsText
+	);
+
+CloseFile(fileHandle);

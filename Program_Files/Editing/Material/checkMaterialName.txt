@@ -1,0 +1,16 @@
+int returnVal = 1;
+
+int materialIndex;
+
+for (materialIndex = 1; materialIndex <= System.Constants.MaterialCount; ++materialIndex)
+{
+	if((Deposition.Material.Name[materialIndex] == name) && (materialIndex != index)){ 
+			returnVal = 0;
+	} 
+}
+return returnVal;
+
+
+
+
+

@@ -1,0 +1,3 @@
+//  Now activate newMaterial
+Deposition.Material.ActiveCount[newMaterialId]++;
+Deposition.Material.Active[newMaterialId] = true;

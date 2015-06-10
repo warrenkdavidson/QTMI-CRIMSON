@@ -1,0 +1,9 @@
+// Save the Scratch process back to the next available slot in the master process array
+
+// Don't allow processes that don't have names
+
+
+Deposition.Material.Scratch.Index = Index;
+Editing.Material.SaveMaterialNoPrompt();
+Editing.Material.ClearMaterialScratch();
+Deposition.Material.Edit.Copying = 0;

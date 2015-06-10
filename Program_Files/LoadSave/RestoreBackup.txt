@@ -1,0 +1,29 @@
+// Using the built-in CopyFiles() API seems to go into an infinite loop on some USB drives
+// in some conditions, so we can't rely on it here.  Instead, we use our own CopyFile() 
+// routine to do the job.
+
+CreateDirectory(System.Constants.DataDirectory);
+
+/*
+LoadSave.CopyFile("PIDDEF.CSV", HMI.System.Constants.System.BackupDirectory, HMI.System.Constants.System.DataDirectory);
+LoadSave.CopyFile("RECIPE.CSV", HMI.System.Constants.System.BackupDirectory, HMI.System.Constants.System.DataDirectory);
+LoadSave.CopyFile("STEPS.CSV", HMI.System.Constants.System.BackupDirectory, HMI.System.Constants.System.DataDirectory);
+LoadSave.CopyFile("MATERIAL.CSV", HMI.System.Constants.System.BackupDirectory, HMI.System.Constants.System.DataDirectory);
+*/
+
+if (GetDriveStatus('D') == 5)
+{
+//	CopyFiles(System.Constants.BackupDirectory, System.Constants.DataDirectory, 0);
+	if(CopyFiles(System.Constants.BackupDirectory, System.Constants.DataDirectory, 4))
+	ShowPopup(System.popups.Operator.AllDataRestored);
+	else
+	ShowPopup(System.popups.Operator.TransferError);	
+}else{
+	ShowPopup(System.popups.Operator.NoUSBDisk);
+}
+
+  
+
+LoadSave.LoadAllData();
+
+	

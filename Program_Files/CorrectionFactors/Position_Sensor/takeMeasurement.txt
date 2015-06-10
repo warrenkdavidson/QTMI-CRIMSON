@@ -1,0 +1,44 @@
+//Position_Sensor.Plc.read.FrontPosition = 3600;
+//Position_Sensor.Plc.read.BackPosition = 1700; 
+
+//Position_Sensor.FrontMeasurement = Position_Sensor.Plc.read.FrontPosition_mm;
+//Position_Sensor.BackMeasurement = Position_Sensor.Plc.read.BackPosition_mm;
+
+
+//Sleep(15);
+
+//Position_Sensor.FrontDifference = Position_Sensor.Front_cal - Position_Sensor.Plc.read.FrontPosition_mm;
+//Position_Sensor.BackDifference = Position_Sensor.Back_cal - Position_Sensor.Plc.read.BackPosition_mm;	
+
+//Position_Sensor.Plc.read.FrontPosition_mm = 17.0;
+//Position_Sensor.Plc.read.BackPosition_mm = 2.0;	
+
+
+//Position_Sensor.FrontDifference = Position_Sensor.Plc.read.FrontPosition_mm;
+//Position_Sensor.BackDifference = Position_Sensor.Plc.read.BackPosition_mm;
+
+System.CorrectionFactors.Position_Sensor.FrontDifference = System.CorrectionFactors.Position_Sensor.Front_cal - System.CorrectionFactors.Position_Sensor.Plc.read.FrontPosition_mm;
+System.CorrectionFactors.Position_Sensor.BackDifference = System.CorrectionFactors.Position_Sensor.Back_cal - System.CorrectionFactors.Position_Sensor.Plc.read.BackPosition_mm;	
+				    
+//Deposition.Recipe.CTC_positionFront[recipeId] = System.CorrectionFactors.CTC.CTC_positionFront + (-1.0)*Position_Sensor.FrontDifference/Position_Sensor.Front_cal;
+//Deposition.Recipe.CTC_positionBack[recipeId] = System.CorrectionFactors.CTC.CTC_positionBack + (-1.0)*Position_Sensor.BackDifference/Position_Sensor.Back_cal;
+
+
+//Deposition.Recipe.CTC_positionFront[recipeId] = System.CorrectionFactors.CTC.CTC_positionFront + (-1)*int(Position_Sensor.FrontDifference/Position_Sensor.frontProportionalAdjustment);
+//Deposition.Recipe.CTC_positionBack[recipeId] = System.CorrectionFactors.CTC.CTC_positionBack + (-1)*int(Position_Sensor.BackDifference/Position_Sensor.backProportionalAdjustment);
+
+Deposition.Recipe.CTC_positionFront[recipeId] = int(System.CorrectionFactors.Position_Sensor.FrontDifference*100);
+Deposition.Recipe.CTC_positionBack[recipeId] = int(System.CorrectionFactors.Position_Sensor.BackDifference*100);
+
+
+
+
+
+//Position_Sensor.test.positionFront_final = Deposition.Recipe.CTC_positionFront[recipeId];
+//Position_Sensor.test.positionBack_final = Deposition.Recipe.CTC_positionBack[recipeId];
+
+//Position_Sensor.test.positionFront_start = System.CorrectionFactors.CTC.CTC_positionFront;
+//Position_Sensor.test.positionBack_start = System.CorrectionFactors.CTC.CTC_positionBack;
+
+//Position_Sensor.test.positionFront_adj =  (-1)*int(Position_Sensor.FrontDifference/Position_Sensor.frontProportionalAdjustment);
+//Position_Sensor.test.positionBack_adj =  (-1)*int(Position_Sensor.BackDifference/Position_Sensor.backProportionalAdjustment);

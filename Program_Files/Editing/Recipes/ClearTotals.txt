@@ -1,0 +1,4 @@
+Deposition.Recipe.Scratch.totals.frontTimeTotal = 0;
+Deposition.Recipe.Scratch.totals.backTimeTotal = 0;
+Deposition.Recipe.Scratch.totals.frontNmTotal = 0;
+Deposition.Recipe.Scratch.totals.backNmTotal = 0;

@@ -1,0 +1,5 @@
+int processIndex;
+for (processIndex = 0; processIndex != System.Constants.RecipeCount; ++processIndex)
+{
+	Editing.Recipes.ValidateRecipe(processIndex);
+}

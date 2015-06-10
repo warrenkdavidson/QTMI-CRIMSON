@@ -1,0 +1,8 @@
+int processIndex;
+for (processIndex = 0; processIndex != System.Constants.RecipeCount; ++processIndex)
+{
+	Deposition.Recipe.Invalid[processIndex] = true;
+}
+
+
+

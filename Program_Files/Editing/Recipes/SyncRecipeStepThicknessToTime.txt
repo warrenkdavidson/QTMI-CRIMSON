@@ -1,0 +1,18 @@
+int hasBlank = 0;
+cstring name;
+
+int step;
+for (step = 0; step != System.Constants.StepsPerRecipe; ++step)
+{
+	int recipieStepIndex = Utility.StepIndex(recipeIndex, step);
+	int rate 
+	= Deposition.Material.Attributes.ThicknessRate[Deposition.Recipe.Step.MaterialID[recipieStepIndex]];
+
+				
+	Deposition.Recipe.Step.FrontTime[recipieStepIndex] 
+	= Utility.Round((((float)Deposition.Recipe.Step.FrontThickness[recipieStepIndex]/(float)rate)*100.0));
+	Deposition.Recipe.Step.BackTime[recipieStepIndex]
+	= Utility.Round((((float)Deposition.Recipe.Step.BackThickness[recipieStepIndex]/(float)rate)*100.0));
+}
+
+

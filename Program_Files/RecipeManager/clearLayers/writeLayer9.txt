@@ -1,0 +1,37 @@
+
+RecipeManager.PLC.Layer9.Layer = 0;
+RecipeManager.PLC.Layer9.FrontMag1 = 0;
+RecipeManager.PLC.Layer9.FrontMag2 = 0;
+RecipeManager.PLC.Layer9.FrontMag3 = 0;
+RecipeManager.PLC.Layer9.BackMag1 = 0;
+RecipeManager.PLC.Layer9.BackMag2 = 0;
+RecipeManager.PLC.Layer9.BackMag3 = 0;
+RecipeManager.PLC.Layer9.PID_POrV = 0;
+RecipeManager.PLC.Layer9.UsePID = 0;
+RecipeManager.PLC.Layer9.PowerFront = 0;
+RecipeManager.PLC.Layer9.PowerBack = 0;
+RecipeManager.PLC.Layer9.FrequencyFront = 0;
+RecipeManager.PLC.Layer9.FrequencyBack = 0;
+RecipeManager.PLC.Layer9.ReverseTimeFront = 0;
+RecipeManager.PLC.Layer9.ReverseTimeBack = 0;
+RecipeManager.PLC.Layer9.Stabilization = 0;
+RecipeManager.PLC.Layer9.O2SCCM = 0;
+RecipeManager.PLC.Layer9.ArFrontSCCM = 0;
+RecipeManager.PLC.Layer9.ArBackSCCM = 0;
+RecipeManager.PLC.Layer9.Pressure = 0;
+RecipeManager.PLC.Layer9.PIDSetpointTolerance = 0;
+RecipeManager.PLC.Layer9.Proportional = 0;
+RecipeManager.PLC.Layer9.Integral = 0;
+RecipeManager.PLC.Layer9.Derivative = 0;
+RecipeManager.PLC.Layer9.SampleRate = 0;
+RecipeManager.PLC.Layer9.DepositTimeFront = 0;
+RecipeManager.PLC.Layer9.DepositTimeBack = 0;
+RecipeManager.PLC.Layer9.PreBurn = 0;
+RecipeManager.PLC.Layer9.PowerFrontMode = 0;
+RecipeManager.PLC.Layer9.PowerBackMode = 0;
+RecipeManager.PLC.Layer9.ArMaxSCCM_PID = 0;
+RecipeManager.PLC.Layer9.ArMinSCCM_PID = 0;
+RecipeManager.PLC.Layer9.FinalFactorFront = 0; 
+RecipeManager.PLC.Layer9.FinalFactorBack = 0;
+
+

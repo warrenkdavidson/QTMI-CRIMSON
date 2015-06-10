@@ -1,0 +1,7 @@
+Manual_Control.showManualNavBar = true;
+
+System.bypassStartup = true;
+//Sleep(100);
+//System.bypassStartup = false;	   
+//LoadSave.LoadAllData();
+GotoPage(Operator);

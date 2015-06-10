@@ -1,0 +1,8 @@
+// Save the Scratch process back to the next available slot without a name
+
+// Don't allow processes to be copied to spots without names
+
+//ShowPopup(System.popups.Deposition.SelectACopySpot);
+Deposition.Recipe.Edit.Copying = 1;
+
+Editing.Recipes.gotoRecipePage();

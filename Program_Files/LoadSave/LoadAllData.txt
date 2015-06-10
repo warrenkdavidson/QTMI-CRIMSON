@@ -1,0 +1,60 @@
+CreateDirectory(System.Constants.DataDirectory);
+
+// Let Hardcoater know the Fusion is on.
+Hardcoater.fusionIsOn = 1;
+
+LoadSave.LoadSettings();
+LoadSave.LoadSHP();
+LoadSave.LoadRecipes();
+LoadSave.LoadSteps();
+LoadSave.LoadMaterials();
+LoadSave.LoadPressures();
+
+// Check HMI Battery
+System.CheckHMIBattery();
+
+// Convert old data if validation has never been used.
+LoadSave.ConvertOldDataForValidation();
+
+// Set Default Power Tooling factors.  Set Defaults to 1 if their values are 0
+CorrectionFactors.Tooling.Manual.Power.SetDefaults();
+CorrectionFactors.Tooling.Manual.Power.LoadTooling();
+
+// Load tooling factor log
+CorrectionFactors.Tooling.Logger.readLogFromDisk();
+
+// Set CLTC to 1
+CorrectionFactors.CTC.LoadCTC();
+
+// Load Labels
+CorrectionFactors.CTC.Labels.loadLabels();
+
+// Show Nav bar for Manual PAge
+Manual_Control.showManualNavBar = 1;
+
+// Set selected recipe index to -1 to prevent a premature recipe write 
+Operator.UI.selectedRecipeIndex = -1;
+
+// Run program to blinck DEP wheel
+Manual.blinkDepWheel();
+
+// Convert material thickness rates to 1, if they are currently zero
+Editing.Material.convertThicknessRatesToOne();
+Editing.Material.initializeMaxWarningAndLimit();
+
+//Load Process Log
+LoadSave.LoadProcessRunLog();  
+
+//Load Fast Startup settings
+LoadSave.LoadFastStartup();
+
+//Load Material Tooling 
+MaterialToolingFactor.loadSave.LoadMaterialTooling();
+
+//Load Leak Test Logs
+Leak_Test.Hydro.loadVacLog();
+Leak_Test.Glow.loadVacLog();
+Leak_Test.DEP.Rotary.loadRotaryLeakLog();
+Leak_Test.DEP.Vat2.loadVat2LeakLog();
+Leak_Test.DEP.Vat3.loadVat3LeakLog();
+Leak_Test.CycleCount.loadArray();

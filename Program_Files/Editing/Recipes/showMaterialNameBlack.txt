@@ -1,0 +1,8 @@
+int returnVal = 0;
+
+if(((Deposition.Recipe.Scratch.Step.FrontTime[currentIndex] > 0)
+	||(Deposition.Recipe.Scratch.Step.BackTime[currentIndex] > 0))
+	&& (currentIndex < Deposition.Recipe.Scratch.NextAvailableStep))
+	returnVal = 1;
+	
+return returnVal;

@@ -1,0 +1,5 @@
+// Now read the steps in each recipe to determine if they are valid
+Editing.Material.validateRecipes();
+
+// Write the validation values to disk.
+LoadSave.SaveRecipes();

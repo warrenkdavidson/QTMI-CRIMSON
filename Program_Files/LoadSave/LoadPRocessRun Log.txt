@@ -1,0 +1,28 @@
+cstring filename = System.Constants.DataDirectory + "/PROCLOG.CSV";
+
+int fileHandle = OpenFile(filename, 0);
+
+ReadFileLine(fileHandle); // ignore header
+
+
+
+
+int processIndex;
+cstring line;
+for (processIndex = 0; processIndex != System.Constants.ProcessRunLogCount; ++processIndex)
+{
+
+	line = ReadFileLine(fileHandle);
+	if (line == "") break; // No more data, so we're done
+	
+	Utility.Tokenize(line, ',');
+	
+	// The order of data items must match those in SaveProcesses
+
+	System.Process_Run_Log.Name[processIndex] = Utility.NextToken();
+	System.Process_Run_Log.Date[processIndex] = Utility.NextToken();
+	System.Process_Run_Log.lensIndex[processIndex] = Utility.NextToken();
+}
+
+
+CloseFile(fileHandle);

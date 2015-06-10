@@ -1,0 +1,15 @@
+// Clear out the Process at processIndex.
+
+Deposition.Recipe.Name[recipeIndex] = "";
+Deposition.Recipe.Acoat[recipeIndex] = "";
+Deposition.Recipe.GlowTime[recipeIndex] = 0;
+
+int stepIndex;
+for (stepIndex = 0; stepIndex != System.Constants.StepsPerRecipe; ++stepIndex)
+{
+	Editing.Recipes.ClearStep(Utility.StepIndex(recipeIndex, stepIndex));
+}
+
+Deposition.Recipe.HydroFrontTime[recipeIndex] = 0;
+Deposition.Recipe.HydroBackTime[recipeIndex] = 0;
+Deposition.Recipe.OvercoatTime[recipeIndex] = 0;

@@ -1,0 +1,18 @@
+// Hide button for copying a recipie
+Deposition.Recipe.ShowCopyRecipe = 1;
+
+// Delete a step from the scratch Process
+if (ShowModal(System.popups.Deposition.DeletePrompt) == 0) return;
+
+// Copy all following steps up one slot
+int i;
+for (i = stepIndex + 1; i != Deposition.Recipe.Scratch.NextAvailableStep; ++i)
+{
+	Editing.Recipes.CopyScratchStep(i, i - 1);
+}
+
+// Clear out the former last step
+Editing.Recipes.ClearScratchStep(i - 1);
+
+// Adjust the index of the next unused step
+--Deposition.Recipe.Scratch.NextAvailableStep;

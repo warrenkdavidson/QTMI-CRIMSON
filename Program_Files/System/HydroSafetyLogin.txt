@@ -1,0 +1,9 @@
+UserLogOn();
+
+if((GetCurrentUserName() == "so")){
+	System.IsAdministratorLoggedIn = true;
+	System.IsQuantumLoggedIn = true;
+	System.HydroSafetyConfirmation = true;
+	Manual_Control.showManualNavBar = 1;
+	HideAllPopups();
+}

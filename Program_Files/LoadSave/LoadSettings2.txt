@@ -1,0 +1,27 @@
+cstring filename = System.Constants.DataDirectory + "/Aset2.csv";
+
+int fileHandle = OpenFile(filename, 0);
+
+ReadFileLine(fileHandle); // ignore header
+
+cstring line;
+line = ReadFileLine(fileHandle);
+//line = ReadFileLine(fileHandle);
+//line = ReadFileLine(fileHandle);
+//PLC.System.Settings.Defaults.GlowPowerCurrentMin = 13;	
+
+if (line == "") return; // no data to read
+
+Utility.Tokenize(line, ',');
+
+System.Settings.Defaults.LensCount_Setpoint = TextToInt(Utility.NextToken(), 10);
+System.Settings.Defaults.HydroFire = Utility.TextToIntBoolean(Utility.NextToken());
+System.Settings.Defaults.Vent = Utility.TextToIntBoolean(Utility.NextToken());
+System.HourMeters.GlowHydroOilLimit := TextToInt(Utility.NextToken(), 10);
+System.HourMeters.DepOilLimit := TextToInt(Utility.NextToken(), 10);
+
+
+
+
+
+CloseFile(fileHandle);

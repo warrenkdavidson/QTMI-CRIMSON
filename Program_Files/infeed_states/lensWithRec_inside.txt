@@ -1,0 +1,5 @@
+if(Operator.InfeedWheelSensed_Inside && Queue.recipeID[0] != -1 && Queue.lensIndex[0] != -1){
+	return 1;
+}else{
+	return 0;
+}

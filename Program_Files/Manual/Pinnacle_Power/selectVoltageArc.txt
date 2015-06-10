@@ -1,0 +1,4 @@
+System.Pinnacle_PS.DM_SEND.Front_params.Voltage_arc_trip_level_front = voltageIndex;
+System.Pinnacle_PS.DM_SEND.Back_params.Voltage_arc_trip_level_back = System.Pinnacle_PS.DM_SEND.Front_params.Voltage_arc_trip_level_front;
+
+HidePopup();

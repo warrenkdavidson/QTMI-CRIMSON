@@ -1,0 +1,4 @@
+System.Pinnacle_PS.DM_SEND.Front_params.Arc_shutdown_time_front = shutdownIndex;
+System.Pinnacle_PS.DM_SEND.Back_params.Arc_shutdown_time_back = System.Pinnacle_PS.DM_SEND.Front_params.Arc_shutdown_time_front;
+
+HidePopup();

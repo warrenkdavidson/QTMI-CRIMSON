@@ -1,0 +1,11 @@
+// Using the built-in CopyFiles() API seems to go into an infinite loop on some USB drives
+// in some conditions, so we can't rely on it here.  Instead, we use our own CopyFile() 
+// routine to do the job.
+
+
+
+
+CopyFiles(System.Constants.RootUSB, System.Constants.RootFlash, 1);
+  
+
+

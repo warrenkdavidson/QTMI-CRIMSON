@@ -1,0 +1,27 @@
+cstring filename = System.Constants.DataDirectory + "/CycleAvg.csv";
+
+int fileHandle = OpenFile(filename, 0);
+
+ReadFileLine(fileHandle); // ignore header
+
+
+int processIndex;
+cstring line;
+for (processIndex = 0; processIndex != System.Constants.VacCycleCount; ++processIndex)
+{
+
+	line = ReadFileLine(fileHandle);
+	if (line == "") break; // No more data, so we're done
+	
+	Utility.Tokenize(line, ',');
+	
+	// The order of data items must match those in SaveProcesses
+	
+	Leak_Test.CycleCount.HydroCountArray[processIndex] = TextToInt(Utility.NextToken(), 10);
+	Leak_Test.CycleCount.HydroAvgCount = TextToFloat(Utility.NextToken());		  
+	Leak_Test.CycleCount.GlowCountArray[processIndex] = TextToInt(Utility.NextToken(), 10);
+	Leak_Test.CycleCount.GlowAvgCount = TextToFloat(Utility.NextToken());
+	
+}
+
+CloseFile(fileHandle);

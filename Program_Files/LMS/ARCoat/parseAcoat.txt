@@ -1,0 +1,24 @@
+cstring parsedText = System.LMS.LMSJobResponse;
+// Find position of 5th "=" 
+int character_pos = Find(parsedText, 61, 4);
+int response_len = Len(parsedText);
+int chars_to_retrieve = response_len - character_pos;
+//System.LMS.characterPos = character_pos;
+parsedText = Right(parsedText, chars_to_retrieve-2);
+parsedText = Left(parsedText, 3);
+// Find Position of ";" in Timeout, and grab everything to the left
+//character_pos = Find(parsedText, 59, 0);
+//parsedText = Left(parsedText, character_pos);
+System.LMS.LMSAcoat = parsedText;
+
+//Grab value for testing
+System.LMS.Test_Vars.AR_Coat.AcoatParsed = System.LMS.LMSAcoat;
+//Convert the result to an int, and record the session id
+//System.LMS.LMSScratchResponse = parsedText;
+
+//System.LMS.LMS_SessionId = TextToInt(System.LMS.textId, 10);
+
+//System.LMS.hasLMS = 1;
+
+//if(System.LMS.LMS_SessionId > 0) System.LMS.hasLMS = 1;
+//HMI.WarrenScratch.session_id = TextToInt(HMI.WarrenScratch.LMS_Response_Text, 10);

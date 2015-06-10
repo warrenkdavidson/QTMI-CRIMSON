@@ -1,0 +1,13 @@
+//Calculate Average counts per minute for Glow Chamber
+
+int j;
+float sumGlow = 0;
+
+for (j=0; j < 60; j++){
+	sumGlow += Leak_Test.CycleCount.GlowCountArray[j];
+	}
+
+if (Leak_Test.CycleCount.ElapsedMin < 60)
+	Leak_Test.CycleCount.GlowAvgCount = sumGlow/Leak_Test.CycleCount.ElapsedMin;
+	
+else 	Leak_Test.CycleCount.GlowAvgCount = sumGlow/60.0;

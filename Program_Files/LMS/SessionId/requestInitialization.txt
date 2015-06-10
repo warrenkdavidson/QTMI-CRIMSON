@@ -1,0 +1,16 @@
+int port = System.Constants.LMSPort;
+
+//System.LMS.LMSScratchResponse = "hi"+System.Constants.LMSPort.AsText;
+//Initialization
+PortWrite(port, 28);
+PortPrint(port, "REQ=INI");
+// <CR/LF>
+PortWrite(port, 13);
+PortWrite(port, 10);
+// <RS> <GS>
+PortWrite(port, 30);
+PortWrite(port, 29);
+
+Sleep(1000);
+System.LMS.LMSScratchResponse = PortInput(port, 28, 29, 30, 255);
+System.LMS.Test_Vars.Session_Id.LMSRequestIniResponse = System.LMS.LMSScratchResponse;

@@ -1,0 +1,20 @@
+if(Deposition.Material.Active[materialId]){
+	Editing.Material.findAffectedRecipes(materialId);
+	if (ShowModal(System.popups.Deposition.ActiveMaterial) == 0){
+	 return;
+	}else{
+		Editing.Material.ClearMaterial(materialId);
+		Editing.Material.validateRecipes();
+		LoadSave.SaveMaterials();
+		LoadSave.SaveRecipes();	 
+	}
+}else{
+		Editing.Material.ClearMaterial(materialId);
+		Editing.Material.validateRecipes();
+		LoadSave.SaveMaterials();
+		LoadSave.SaveRecipes();	 
+}
+
+
+
+

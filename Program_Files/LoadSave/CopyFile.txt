@@ -1,0 +1,19 @@
+cstring srcFile = sourceDirectory + "/" + filename;
+cstring destFile = destDirectory + "/" + filename;
+
+CreateDirectory(destDirectory);
+CreateFile(destFile);
+
+int srcHandle = OpenFile(srcFile, 0);
+int destHandle = OpenFile(destFile, 1);
+
+cstring line = ReadFileLine(srcHandle);
+while (line != "")
+{
+	WriteFileLine(destHandle, line);
+	line = ReadFileLine(srcHandle);
+}
+
+CloseFile(srcHandle);
+CloseFile(destHandle);
+

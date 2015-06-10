@@ -1,0 +1,6 @@
+// Compute the actual array index where a step can be found 
+// given the index of the process and step within that process.
+//
+// Steps for each process are grouped together.
+
+return recipeIndex * System.Constants.StepsPerRecipe + stepIndex;

@@ -1,0 +1,47 @@
+cstring filename = System.Constants.DataDirectory + "/RECIPE.CSV";
+
+int fileHandle = OpenFile(filename, 0);
+
+ReadFileLine(fileHandle); // ignore header
+
+Deposition.Recipe.NextAvailableRecipe = 0;
+
+
+
+int processIndex;
+cstring line;
+cstring ignored;
+cstring name;
+for (processIndex = 0; processIndex != System.Constants.RecipeCount; ++processIndex)
+{
+
+	line = ReadFileLine(fileHandle);
+	if (line == "") break; // No more data, so we're done
+	
+	Utility.Tokenize(line, ',');
+	
+	// The order of data items must match those in SaveProcesses
+	
+	name = Utility.NextToken();
+	Deposition.Recipe.Name[processIndex] = name;
+	int thisValid = Utility.TextToIntBoolean(Utility.NextToken());
+	Deposition.Recipe.Acoat[processIndex] = Utility.NextToken();
+	Deposition.Recipe.GlowTime[processIndex]= TextToInt(Utility.NextToken(), 10);
+	Deposition.Recipe.GlowPressure[processIndex]= TextToInt(Utility.NextToken(), 10);	
+	Deposition.Recipe.HydroFrontTime[processIndex] = TextToInt(Utility.NextToken(), 10);
+	Deposition.Recipe.HydroBackTime[processIndex] = TextToInt(Utility.NextToken(), 10);
+	Deposition.Recipe.OvercoatTime[processIndex] = TextToInt(Utility.NextToken(), 10);
+	Deposition.Recipe.TotalSteps[processIndex] = TextToInt(Utility.NextToken(), 10);
+	Deposition.Recipe.isRed[processIndex] = Utility.TextToIntBoolean(Utility.NextToken());
+				
+	if (name != "") 
+	{
+		++Deposition.Recipe.NextAvailableRecipe;
+	}else if(!Deposition.Recipe.Invalid[processIndex]){
+		Deposition.Recipe.Invalid[processIndex] = true;
+	}
+	
+}
+
+
+CloseFile(fileHandle);

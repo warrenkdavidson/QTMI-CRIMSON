@@ -1,0 +1,62 @@
+switch (layer) {
+	case 1:
+		RecipeManager.writeLayers.writeLayer1();
+	  break;
+	case 2:
+		RecipeManager.writeLayers.writeLayer2();
+	  break;
+	case 3:
+		RecipeManager.writeLayers.writeLayer3();
+	  break;
+	case 4:
+		RecipeManager.writeLayers.writeLayer4();
+	  break;
+	case 5:
+		RecipeManager.writeLayers.writeLayer5();
+	  break;
+	case 6:
+		RecipeManager.writeLayers.writeLayer6();
+	  break;
+	case 7:
+		RecipeManager.writeLayers.writeLayer7();
+	  break;
+	case 8:
+		RecipeManager.writeLayers.writeLayer8();
+	  break;
+	case 9:
+		RecipeManager.writeLayers.writeLayer9();
+	  break;
+	case 10:
+		RecipeManager.writeLayers.writeLayer10();
+	  break;
+	case 11:
+		RecipeManager.writeLayers.writeLayer11();
+	  break;
+	case 12:
+		RecipeManager.writeLayers.writeLayer12();
+	  break;
+	case 13:
+		RecipeManager.writeLayers.writeLayer13();
+	  break;
+	case 14:
+		RecipeManager.writeLayers.writeLayer14();
+	  break;
+	case 15:
+		RecipeManager.writeLayers.writeLayer15();
+	  break;
+	case 16:
+		RecipeManager.writeLayers.writeLayer16();
+	  break;
+	case 17:
+		RecipeManager.writeLayers.writeLayer17();
+	  break;
+	case 18:
+		RecipeManager.writeLayers.writeLayer18();
+	  break;
+	case 19:
+		RecipeManager.writeLayers.writeLayer19();
+	  break;
+	case 20:
+		RecipeManager.writeLayers.writeLayer20();
+	  break;
+}

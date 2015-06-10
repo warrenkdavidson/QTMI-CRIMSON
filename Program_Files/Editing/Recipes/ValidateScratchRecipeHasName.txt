@@ -1,0 +1,8 @@
+// Verify that a name has been provided when editing a process
+
+if (Utility.TrimBlanks(Deposition.Recipe.Scratch.Name) == "")
+{
+	ShowPopup(System.popups.Deposition.ItemMustHaveName);
+	return false;
+}
+return true;

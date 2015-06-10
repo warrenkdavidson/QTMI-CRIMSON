@@ -1,0 +1,41 @@
+// Perform the basic process save operation without validation or confirmation prompting.
+// Should only be called when the validation/prompting has already happened, or when we are sure it isn't required.
+
+Editing.Recipes.CopyRecipeFromScratch();
+
+// If copying recipe to a new location, make all step materials active.  
+// Otherwise, just activate the materials that have changed in the recipe while user edited scratch.
+int step;
+if(Deposition.Recipe.Edit.Copying == 1){
+	for (step = 0; step != System.Constants.StepsPerRecipe; ++step)
+	{
+		Editing.Material.ActivateMaterial(Deposition.Recipe.Scratch.Step.MaterialID[step]);
+	}
+}else{
+	for (step = 0; step != System.Constants.StepsPerRecipe; ++step)
+	{
+		if(Deposition.Recipe.Scratch.Step.MaterialID[step] 
+		!= Deposition.Recipe.Scratch.StepForCancel.MaterialID[step]){
+			// Deactivate old material id for step
+			Editing.Material.DeactivateMaterial(Deposition.Recipe.Scratch.StepForCancel.MaterialID[step]);
+			// Activate new material id for step
+			Editing.Material.ActivateMaterial(Deposition.Recipe.Scratch.Step.MaterialID[step]);
+		}				
+	}
+}
+
+// Validation of recipe steps
+int recipeIndex = Deposition.Recipe.Scratch.Index;
+Editing.Recipes.ValidateRecipe(recipeIndex);
+
+// Check if there are any steps with zeros for front and back
+Editing.Recipes.determineIfRecipeRed(recipeIndex);
+ 
+// Show button for copying a recipe
+Deposition.Recipe.ShowCopyRecipe = 0;
+
+LoadSave.SaveRecipes();
+
+Editing.Recipes.ClearTotals();
+
+Editing.Recipes.gotoRecipePage();

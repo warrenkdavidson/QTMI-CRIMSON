@@ -1,0 +1,41 @@
+// Save the Scratch process back to the master process array (in the same spot it came from)
+
+// Don't allow processes that don't have names
+
+//if (!Editing.Material.ValidateScratchMaterial() && !Editing.Material.ValidateMaterialName()) return;
+//if (!Editing.Material.ValidateScratchMaterial() || !Editing.Material.ValidateMaterialName()) return;
+
+
+// If we're inserting a Process (rather than editing an existing one), we need
+// to perform the insertion by making room for it before saving it.
+/*
+if (HMI.Deposition.Material.Scratch.Inserting)
+{
+	Editing.Material.MakeRoomForMaterialAt(HMI.Deposition.Material.Scratch.Index);
+	HMI.Deposition.Material.Scratch.Inserting = false;
+}
+*/
+// check if Material is active in a recipe 
+
+
+if(Editing.Material.checkMaterialName(Deposition.Material.Scratch.Name, Deposition.Material.Scratch.Index)){
+	if(Deposition.Material.Active[Deposition.Material.Scratch.Index]){
+		Editing.Material.findAffectedRecipes(Deposition.Material.Scratch.Index);
+		GotoPage(Deposition.ActiveMaterial);
+		return;
+/*		
+		if (ShowModal(System.popups.Deposition.ActiveMaterial) == 0){
+		 return;
+		}else{
+			if (Deposition.Material.Scratch.Name == ""){
+			 Editing.Material.RemoveMaterialFromRecipe(Deposition.Material.Scratch.Index);
+			}	 
+		}
+*/
+	}
+	
+	Editing.Material.validateRecipes();
+	Editing.Material.SaveMaterialNoPrompt();
+}else{
+	ShowPopup(System.popups.Deposition.MaterialHasSameName);
+}

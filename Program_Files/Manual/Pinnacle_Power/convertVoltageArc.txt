@@ -1,0 +1,21 @@
+int returnValue = -1;
+
+if(index == 0) returnValue = 10;
+if(index == 1) returnValue = 20;
+if(index == 2) returnValue = 30;
+if(index == 3) returnValue = 40;
+if(index == 4) returnValue = 50;
+if(index == 5) returnValue = 60;
+if(index == 6) returnValue = 70;
+if(index == 7) returnValue = 80;
+if(index == 8) returnValue = 90;
+if(index == 9) returnValue = 100;
+if(index == 10) returnValue = 125;
+if(index == 11) returnValue = 150;
+if(index == 12) returnValue = 175;
+if(index == 13) returnValue = 200;
+if(index == 14) returnValue = 225;
+if(index == 15) returnValue = 250;
+
+
+return returnValue;

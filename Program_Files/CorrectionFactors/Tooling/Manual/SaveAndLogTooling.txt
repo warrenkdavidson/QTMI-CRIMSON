@@ -1,0 +1,3 @@
+CorrectionFactors.Tooling.Manual.Power.SaveTooling();
+CorrectionFactors.Tooling.Logger.writeLogToMemory();
+CorrectionFactors.Tooling.Logger.logToDisk();

@@ -1,0 +1,31 @@
+// Save the scratch process back to the master Process array.
+
+// Save to the index remembered in CopyProcessToScratch (or the new one specified during Save As)
+int recipeIndex = Deposition.Recipe.Scratch.Index;
+
+Deposition.Recipe.Name[recipeIndex] = Deposition.Recipe.Scratch.Name;
+Deposition.Recipe.Acoat[recipeIndex] = Deposition.Recipe.Scratch.Acoat;
+Deposition.Recipe.GlowTime[recipeIndex] = Deposition.Recipe.Scratch.GlowTime;
+Deposition.Recipe.GlowPressure[recipeIndex] = Deposition.Recipe.Scratch.GlowPressure;
+Deposition.Recipe.TotalSteps[recipeIndex] = Deposition.Recipe.Scratch.NextAvailableStep;
+
+int step;
+for (step = 0; step != System.Constants.StepsPerRecipe; ++step)
+{
+	int recipieStepIndex = Utility.StepIndex(recipeIndex, step);
+
+	Deposition.Material.Active[Deposition.Recipe.Scratch.Step.MaterialID[step]] = true;	
+	Deposition.Recipe.Step.MaterialID[recipieStepIndex] = Deposition.Recipe.Scratch.Step.MaterialID[step];
+	Deposition.Recipe.Step.FrontTime[recipieStepIndex] = Deposition.Recipe.Scratch.Step.FrontTime[step];
+	Deposition.Recipe.Step.BackTime[recipieStepIndex] = Deposition.Recipe.Scratch.Step.BackTime[step];
+	Deposition.Recipe.Step.FrontThickness[recipieStepIndex] = Deposition.Recipe.Scratch.Step.FrontThickness[step];
+	Deposition.Recipe.Step.BackThickness[recipieStepIndex] = Deposition.Recipe.Scratch.Step.BackThickness[step];
+}
+
+
+Deposition.Recipe.HydroFrontTime[recipeIndex] = Deposition.Recipe.Scratch.HydroFrontTime;
+Deposition.Recipe.HydroBackTime[recipeIndex] = Deposition.Recipe.Scratch.HydroBackTime;
+Deposition.Recipe.OvercoatTime[recipeIndex] = Deposition.Recipe.Scratch.OvercoatTime;
+
+
+

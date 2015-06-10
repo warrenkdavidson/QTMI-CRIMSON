@@ -1,0 +1,25 @@
+int returnPower;
+int materialTooling;
+
+if(Deposition.Material.Attributes.FrontMag1[materialId]){
+	materialTooling = MaterialToolingFactor.CurrentFactor.F_Chrome; 
+}
+
+if(Deposition.Material.Attributes.FrontMag2[materialId]){
+	materialTooling = MaterialToolingFactor.CurrentFactor.F_Low; 
+}
+
+if(Deposition.Material.Attributes.FrontMag2[materialId]){
+	materialTooling = MaterialToolingFactor.CurrentFactor.F_Hi; 
+}
+
+if(MaterialToolingFactor.useMaterialTooling){
+	returnPower = power*materialTooling/1000;
+	RecipeManager.infeedCheck.RecipeTracker.materialToolingF = materialTooling;
+	RecipeManager.infeedCheck.RecipeTracker.materialToolingPowerF = returnPower;	
+}else{
+	returnPower = power;
+	RecipeManager.infeedCheck.RecipeTracker.materialToolingF = 1000;
+	RecipeManager.infeedCheck.RecipeTracker.materialToolingPowerF = returnPower;	
+}
+return returnPower;

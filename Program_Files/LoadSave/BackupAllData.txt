@@ -1,0 +1,32 @@
+ // Using the built-in CopyFiles() API seems to go into an infinite loop on some USB drives
+// in some conditions, so we can't rely on it here.  Instead, we use our own loop and 
+// CopyFile() routine to do the job.
+LoadSave.SaveAllData();
+
+if (GetDriveStatus('D') == 1)
+{
+	if (ShowModal(System.popups.PowerOn_StartUp.PromptToReformatDrive))
+	{
+		FormatDrive('D');
+	}
+	else
+	{
+		return;
+	}
+}
+
+if (GetDriveStatus('D') != 0)
+{
+	if(CopyFiles(System.Constants.DataDirectory, System.Constants.BackupDirectory, 4))
+	ShowPopup(System.popups.Operator.AllDataSaved);
+	else	
+	ShowPopup(System.popups.Operator.TransferError);
+}else{
+	ShowPopup(System.popups.Operator.NoUSBDisk);
+}
+
+
+
+
+
+EjectDrive('D');

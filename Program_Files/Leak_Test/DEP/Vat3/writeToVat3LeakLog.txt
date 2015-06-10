@@ -1,0 +1,12 @@
+Leak_Test.DEP.Vat3.shiftLeakResultsDown();
+
+Leak_Test.DEP.Vat3.HMI.resultsLog.date[0] = Utility.TimeString();
+Leak_Test.DEP.Vat3.HMI.resultsLog.staticTolerance[0] = Leak_Test.DEP.Vat3.PLC.staticTolerance;
+Leak_Test.DEP.Vat3.HMI.resultsLog.dynamicTolerance[0] = Leak_Test.DEP.Vat3.PLC.dynamicTolerance;
+Leak_Test.DEP.Vat3.HMI.resultsLog.beginningPressure[0] = Utility.ConvertDepositionCount(Leak_Test.DEP.Vat3.PLC.beginningPressure);
+Leak_Test.DEP.Vat3.HMI.resultsLog.sampledPressure[0] = Utility.ConvertDepositionCount(Leak_Test.DEP.Vat3.PLC.sampledPressure);
+Leak_Test.DEP.Vat3.HMI.resultsLog.greatestDelta[0] = Leak_Test.DEP.Vat3.PLC.greatestDelta;
+Leak_Test.DEP.Vat3.HMI.resultsLog.result[0] = Leak_Test.DEP.Vat3.PLC.result;
+
+
+Leak_Test.DEP.Vat3.saveVat3LeakLog();

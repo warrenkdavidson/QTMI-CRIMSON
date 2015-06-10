@@ -1,0 +1,7 @@
+if(System.CorrectionFactors.ToolingFactors.Manual.Power.Front == 0) System.CorrectionFactors.ToolingFactors.Manual.Power.Front = 1000;
+if(System.CorrectionFactors.ToolingFactors.Manual.Power.Front_1 == 0) System.CorrectionFactors.ToolingFactors.Manual.Power.Front_1 = 1000;
+if(System.CorrectionFactors.ToolingFactors.Manual.Power.Front_2 == 0) System.CorrectionFactors.ToolingFactors.Manual.Power.Front_2 = 1000;
+
+if(System.CorrectionFactors.ToolingFactors.Manual.Power.Back == 0) System.CorrectionFactors.ToolingFactors.Manual.Power.Back = 1000;
+if(System.CorrectionFactors.ToolingFactors.Manual.Power.Back_1 == 0) System.CorrectionFactors.ToolingFactors.Manual.Power.Back_1 = 1000;
+if(System.CorrectionFactors.ToolingFactors.Manual.Power.Back_2 == 0) System.CorrectionFactors.ToolingFactors.Manual.Power.Back_2 = 1000;

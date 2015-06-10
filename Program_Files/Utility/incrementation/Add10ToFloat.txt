@@ -1,0 +1,5 @@
+// Convert a glow chamber pressure to the integer format required by the hardware.
+
+return floatValue + 10;
+
+

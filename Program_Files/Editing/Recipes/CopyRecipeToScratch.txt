@@ -1,0 +1,37 @@
+// Copy the process at processIndex into the Scratch area for editing.
+
+// Remember the index we came from so we can save it back to the same place.
+Deposition.Recipe.Scratch.Index = recipeIndex;
+Deposition.Recipe.Scratch.Name = Deposition.Recipe.Name[recipeIndex];
+Deposition.Recipe.Scratch.Acoat = Deposition.Recipe.Acoat[recipeIndex];
+Deposition.Recipe.Scratch.GlowTime = Deposition.Recipe.GlowTime[recipeIndex];
+Deposition.Recipe.Scratch.GlowPressure = Deposition.Recipe.GlowPressure[recipeIndex];
+Deposition.Recipe.Scratch.GlowPressure_E = Utility.ConvertGlowCount(Deposition.Recipe.Scratch.GlowPressure);
+
+// Keep track of the index of the next unused step.  This is used to control visibility in the EditProcess page.
+Deposition.Recipe.Scratch.NextAvailableStep = 0;
+
+
+int step;
+for (step = 0; step != System.Constants.StepsPerRecipe; ++step)
+{
+	int recipieStepIndex = Utility.StepIndex(recipeIndex, step);
+	int materialID = Deposition.Recipe.Step.MaterialID[recipieStepIndex];
+				
+	Deposition.Recipe.Scratch.Step.MaterialID[step] = materialID;
+	Deposition.Recipe.Scratch.Step.FrontTime[step] = Deposition.Recipe.Step.FrontTime[recipieStepIndex];
+	Deposition.Recipe.Scratch.Step.BackTime[step] = Deposition.Recipe.Step.BackTime[recipieStepIndex];
+	Deposition.Recipe.Scratch.Step.FrontThickness[step] = Deposition.Recipe.Step.FrontThickness[recipieStepIndex];
+	Deposition.Recipe.Scratch.Step.BackThickness[step] = Deposition.Recipe.Step.BackThickness[recipieStepIndex];
+	
+	// materialID of 0 == unused
+	if (materialID != 0)
+	{
+		++Deposition.Recipe.Scratch.NextAvailableStep;
+	}
+}
+
+
+Deposition.Recipe.Scratch.HydroFrontTime = Deposition.Recipe.HydroFrontTime[recipeIndex];
+Deposition.Recipe.Scratch.HydroBackTime = Deposition.Recipe.HydroBackTime[recipeIndex];
+Deposition.Recipe.Scratch.OvercoatTime = Deposition.Recipe.OvercoatTime[recipeIndex];

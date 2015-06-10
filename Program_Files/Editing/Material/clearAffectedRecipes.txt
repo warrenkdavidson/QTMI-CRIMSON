@@ -1,0 +1,7 @@
+int affectedIndex;
+for (affectedIndex = 0; affectedIndex != 20; ++affectedIndex)
+{
+	Deposition.Recipe.AffectedRecipes.Name[affectedIndex] = ""; 
+}
+
+Deposition.Recipe.AffectedRecipes.moreAffected = false;

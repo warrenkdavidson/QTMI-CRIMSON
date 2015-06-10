@@ -1,0 +1,14 @@
+int magnetron;
+
+if(Deposition.Material.Attributes.BackMag1[materialIndex])
+	magnetron = 1;
+if(Deposition.Material.Attributes.BackMag2[materialIndex])
+	magnetron = 2;
+if(Deposition.Material.Attributes.BackMag3[materialIndex])
+	magnetron = 3;
+	
+return magnetron;
+	
+
+	
+	

@@ -1,0 +1,2 @@
+if(IsBatteryLow())
+System.AlarmsAndPopups.OLD_AlarmsAndPopups.HMI_BATTERY_LOW = true;

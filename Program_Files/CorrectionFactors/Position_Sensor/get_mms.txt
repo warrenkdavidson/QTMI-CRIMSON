@@ -1,0 +1,1 @@
+return (tickCount*8.0)/1000.0;

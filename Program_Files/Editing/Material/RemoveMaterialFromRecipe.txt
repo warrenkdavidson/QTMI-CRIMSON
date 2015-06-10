@@ -1,0 +1,13 @@
+int processIndex;
+for (processIndex = 0; processIndex != System.Constants.RecipeCount; ++processIndex)
+{
+	int stepIndex;
+	for (stepIndex = 0; stepIndex != System.Constants.StepsPerRecipe; ++stepIndex)
+	{
+		int processStepIndex = Utility.StepIndex(processIndex, stepIndex);	
+		if(Deposition.Recipe.Step.MaterialID[processStepIndex] == materialId)
+			Deposition.Recipe.Step.MaterialID[processStepIndex] = -1;
+			Editing.Material.InvalidateRecipe(processIndex);
+			
+	}
+}

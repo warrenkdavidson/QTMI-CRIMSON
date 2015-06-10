@@ -1,0 +1,29 @@
+cstring filename = System.Constants.DataDirectory + "/Fastart.csv";
+
+int fileHandle = OpenFile(filename, 0);
+
+ReadFileLine(fileHandle); // ignore header
+
+cstring line;
+line = ReadFileLine(fileHandle);
+if (line == "") return; // no data to read
+
+Utility.Tokenize(line, ',');
+	
+// The order of data items must match those in SaveFastStartup
+
+Fast_Startup.Pressure.startPressure_SP = TextToInt(Utility.NextToken(), 10);	
+Fast_Startup.Preseting.power_HI = TextToInt(Utility.NextToken(), 10);	
+Fast_Startup.Preseting.time_HI = TextToInt(Utility.NextToken(), 10);
+Fast_Startup.Preseting.argon_HI = TextToInt(Utility.NextToken(), 10);
+Fast_Startup.Preseting.oxygen_HI = TextToInt(Utility.NextToken(), 10);
+Fast_Startup.Preseting.power_LI = TextToInt(Utility.NextToken(), 10);	
+Fast_Startup.Preseting.time_LI = TextToInt(Utility.NextToken(), 10);
+Fast_Startup.Preseting.argon_LI = TextToInt(Utility.NextToken(), 10);
+Fast_Startup.Preseting.oxygen_LI = TextToInt(Utility.NextToken(), 10);
+Fast_Startup.Preseting.power_CR = TextToInt(Utility.NextToken(), 10);	
+Fast_Startup.Preseting.time_CR = TextToInt(Utility.NextToken(), 10);
+Fast_Startup.Preseting.argon_CR = TextToInt(Utility.NextToken(), 10);
+Fast_Startup.Preseting.oxygen_CR = TextToInt(Utility.NextToken(), 10);								
+CloseFile(fileHandle);
+

@@ -1,0 +1,31 @@
+cstring filename = System.Constants.DataDirectory + "/Steps.csv";
+
+int fileHandle = OpenFile(filename, 0);
+
+ReadFileLine(fileHandle); // ignore header
+
+int processIndex;
+cstring line;
+for (processIndex = 0; processIndex != System.Constants.RecipeCount; ++processIndex)
+{
+	int stepIndex;
+	for (stepIndex = 0; stepIndex != System.Constants.StepsPerRecipe; ++stepIndex)
+	{
+		line = ReadFileLine(fileHandle);
+		if (line == "") return;
+
+		Utility.Tokenize(line, ',');
+	
+		// The order of data items must match those in SaveSteps
+
+		int processStepIndex = Utility.StepIndex(processIndex, stepIndex);
+		Deposition.Recipe.Step.MaterialID[processStepIndex] = TextToInt(Utility.NextToken(), 10);
+		Deposition.Recipe.Step.FrontTime[processStepIndex] = TextToInt(Utility.NextToken(), 10);
+		Deposition.Recipe.Step.BackTime[processStepIndex] = TextToInt(Utility.NextToken(), 10);
+		Deposition.Recipe.Step.FrontThickness[processStepIndex] = TextToInt(Utility.NextToken(), 10);
+		Deposition.Recipe.Step.BackThickness[processStepIndex] = TextToInt(Utility.NextToken(), 10);
+	}
+
+}
+
+CloseFile(fileHandle);

@@ -1,0 +1,8 @@
+Editing.RecipeLog.shiftLogsDown();
+
+System.Process_Run_Log.Name[0] = recipeName; 				
+System.Process_Run_Log.Date[0] = Utility.TimeString(); 
+System.Process_Run_Log.lensIndex[0] = lensIndex;
+
+LoadSave.SaveProcessRunLog();
+

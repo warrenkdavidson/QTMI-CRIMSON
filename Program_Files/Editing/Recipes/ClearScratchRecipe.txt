@@ -1,0 +1,20 @@
+// Reset the scratch process back to default values.
+
+// Don't reset the Index or Inserting flag here, because we use them
+// when saving the process
+Deposition.Recipe.Scratch.NextAvailableStep = 0;
+Deposition.Recipe.Scratch.Name = "";
+Deposition.Recipe.Scratch.Acoat = "";
+Deposition.Recipe.Scratch.GlowTime = 0;
+
+int stepIndex;
+for (stepIndex = 0; stepIndex != System.Constants.StepsPerRecipe; ++stepIndex)
+{
+	Editing.Recipes.ClearScratchStep(stepIndex);
+}
+
+Deposition.Recipe.Scratch.HydroFrontTime = 0;
+Deposition.Recipe.Scratch.HydroBackTime = 0;
+Deposition.Recipe.Scratch.OvercoatTime = 0;
+
+

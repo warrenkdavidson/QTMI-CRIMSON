@@ -1,0 +1,14 @@
+int materialIndex;
+for (materialIndex = 1; materialIndex <= System.Constants.MaterialCount; ++materialIndex)
+{
+	// The order of data items must match those in LoadProcesses
+ 	if(Deposition.Material.Attributes.MaxPowerWarning[materialIndex] == 0){
+		Deposition.Material.Attributes.MaxPowerWarning[materialIndex] = 1400;
+ 	}				
+ 	if(Deposition.Material.Attributes.MaxPowerLimit[materialIndex] == 0){
+		Deposition.Material.Attributes.MaxPowerLimit[materialIndex] = 1500;
+ 	}				
+	//	Deposition.Material.Attributes.ThicknessRate[materialIndex] = 0;			
+		
+}
+

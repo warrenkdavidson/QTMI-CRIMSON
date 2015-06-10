@@ -1,0 +1,7 @@
+// Convert a glow chamber pressure to the integer format required by the hardware.
+
+if(boolValue) return false;
+else
+return true;
+
+

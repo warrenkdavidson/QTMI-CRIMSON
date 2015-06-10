@@ -1,0 +1,23 @@
+// Conversion from count into mBars for System settings page
+System.Settings.GlowStartPressure_E = Utility.ConvertGlowCount(System.Settings.GlowStartPressure);
+System.Settings.DEPStartPressure_E = Utility.ConvertDepositionCount(System.Settings.DEPStartPressure); 
+System.Settings.HydroStartPressure_E = Utility.ConvertGlowCount(System.Settings.HydroStartPressure);
+System.Settings.Atmosphere_E = Utility.ConvertGlowCount(System.Settings.Atmosphere);
+
+/*
+PLC.System.Settings.GlowStartPressure_E = PLC.System.Settings.GlowStartPressure;
+PLC.System.Settings.DEPStartPressure_E = PLC.System.Settings.DEPStartPressure; 
+PLC.System.Settings.HydroStartPressure_E = PLC.System.Settings.HydroStartPressure;
+PLC.System.Settings.Atmosphere_E = PLC.System.Settings.Atmosphere;
+*/
+
+// Conversion from count into mBars for System startup settings page
+System.Settings.Startup_Cycle.GlowPressureSetPoint_E =  Utility.ConvertGlowCount(System.Settings.Startup_Cycle.GlowPressureSetPoint);
+System.Settings.Startup_Cycle.HydroPressureSetPoint_E =  Utility.ConvertGlowCount(System.Settings.Startup_Cycle.HydroPressureSetPoint);
+System.Settings.Startup_Cycle.DEPPressureSetPoint_E =  Utility.ConvertDepositionCount(System.Settings.Startup_Cycle.DEPPressureSetPoint);
+
+// Conversion from count into mBars for SHP settings page
+System.Settings.SHP.CoolingPressure_E = Utility.ConvertGlowCount(System.Settings.SHP.CoolingPressure_SP);
+
+//Conversion from count into mBars for Fast Startup settings page
+Fast_Startup.Pressure.startPressure_E = Utility.ConvertDepositionCount(Fast_Startup.Pressure.startPressure_SP);

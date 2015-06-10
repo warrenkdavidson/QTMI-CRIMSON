@@ -1,0 +1,18 @@
+if (Leak_Test.Glow.PLC.PumpTimer <= Leak_Test.Glow.PLC.maxTime*100){
+	Leak_Test.Glow.PLC.result = "No Leak";
+	}
+
+if (Leak_Test.Glow.PLC.PumpTimer > Leak_Test.Glow.PLC.maxTime*100 && Leak_Test.Glow.PLC.PumpTimer <=8000){
+	Leak_Test.Glow.PLC.result = "Small Leak";
+	Leak_Test.Glow.writeToVacLog();
+	}
+	
+if (Leak_Test.Glow.PLC.PumpTimer > 8000){ 
+	Leak_Test.Glow.PLC.result = "Large Leak";
+	Leak_Test.Glow.writeToVacLog();
+	}
+
+if (Leak_Test.Glow.PLC.result == "")
+	Leak_Test.Glow.PLC.lastRunTime = "";
+	
+else	Leak_Test.Glow.PLC.lastRunTime = Utility.TimeString();

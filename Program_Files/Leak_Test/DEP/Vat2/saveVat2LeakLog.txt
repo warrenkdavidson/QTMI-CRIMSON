@@ -1,0 +1,29 @@
+cstring directory = System.Constants.DataDirectory;
+cstring filename = directory + "/LkVat2.csv";
+
+DeleteFile(OpenFile(filename, 1));
+
+CreateDirectory(directory);
+CreateFile(filename);
+int fileHandle = OpenFile(filename, 1);
+
+// The header line is there for human readability
+WriteFileLine(fileHandle, "Date, Static Tolerance, Dynamic Tolerance, Beginning Pressure, Sampled Pressure, Pressure Change, Result");
+
+int processIndex;
+for (processIndex = 0; processIndex != System.Constants.LeakTestCount; ++processIndex)
+{
+	// The order of data items must match those in LoadProcesses
+	
+	WriteFileLine(fileHandle, Leak_Test.DEP.Vat2.HMI.resultsLog.date[processIndex]
+		+ ", " + Leak_Test.DEP.Vat2.HMI.resultsLog.staticTolerance[processIndex].AsText
+		+ ", " + Leak_Test.DEP.Vat2.HMI.resultsLog.dynamicTolerance[processIndex].AsText
+		+ ", " + Leak_Test.DEP.Vat2.HMI.resultsLog.beginningPressure[processIndex].AsText	   
+		+ ", " + Leak_Test.DEP.Vat2.HMI.resultsLog.sampledPressure[processIndex].AsText
+		+ ", " + Leak_Test.DEP.Vat2.HMI.resultsLog.greatestDelta[processIndex].AsText
+		+ ", " + Leak_Test.DEP.Vat2.HMI.resultsLog.result[processIndex]
+			);
+}
+
+CloseFile(fileHandle);
+

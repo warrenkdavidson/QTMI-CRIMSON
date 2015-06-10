@@ -1,0 +1,2 @@
+Utility.stopWatch.timing = 1;
+Utility.stopWatch.startTime = GetNowTime();

@@ -1,0 +1,12 @@
+int logIndex;
+for (logIndex = System.Constants.LeakTestCount-2; logIndex >= 0; logIndex--)
+{
+	Leak_Test.DEP.Vat2.HMI.resultsLog.date[logIndex+1] = Leak_Test.DEP.Vat2.HMI.resultsLog.date[logIndex];
+	Leak_Test.DEP.Vat2.HMI.resultsLog.staticTolerance[logIndex+1] = Leak_Test.DEP.Vat2.HMI.resultsLog.staticTolerance[logIndex];
+	Leak_Test.DEP.Vat2.HMI.resultsLog.dynamicTolerance[logIndex+1] = Leak_Test.DEP.Vat2.HMI.resultsLog.dynamicTolerance[logIndex];	
+	Leak_Test.DEP.Vat2.HMI.resultsLog.beginningPressure[logIndex+1] = Leak_Test.DEP.Vat2.HMI.resultsLog.beginningPressure[logIndex];
+	Leak_Test.DEP.Vat2.HMI.resultsLog.sampledPressure[logIndex+1] = Leak_Test.DEP.Vat2.HMI.resultsLog.sampledPressure[logIndex];
+	Leak_Test.DEP.Vat2.HMI.resultsLog.greatestDelta[logIndex+1] = Leak_Test.DEP.Vat2.HMI.resultsLog.greatestDelta[logIndex];	
+	Leak_Test.DEP.Vat2.HMI.resultsLog.result[logIndex+1] = Leak_Test.DEP.Vat2.HMI.resultsLog.result[logIndex];	
+	
+}

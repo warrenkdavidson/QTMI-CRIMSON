@@ -1,0 +1,29 @@
+
+cstring filename = System.Constants.DataDirectory + "/ToolP.csv";
+
+int fileHandle = OpenFile(filename, 0);
+
+ReadFileLine(fileHandle); // ignore header
+
+cstring line;
+line = ReadFileLine(fileHandle);
+//PLC.System.Settings.Defaults.GlowPowerCurrentMin = 13;	
+
+
+
+if (line == "") return; // no data to read
+
+Utility.Tokenize(line, ',');
+
+// The order of data items must match those in Save Tooling
+
+
+System.CorrectionFactors.ToolingFactors.Manual.Power.Front = TextToInt(Utility.NextToken(), 10);
+System.CorrectionFactors.ToolingFactors.Manual.Power.Front_1 = TextToInt(Utility.NextToken(), 10);
+System.CorrectionFactors.ToolingFactors.Manual.Power.Front_2 = TextToInt(Utility.NextToken(), 10);	
+System.CorrectionFactors.ToolingFactors.Manual.Power.Back = TextToInt(Utility.NextToken(), 10);
+System.CorrectionFactors.ToolingFactors.Manual.Power.Back_1 = TextToInt(Utility.NextToken(), 10);
+System.CorrectionFactors.ToolingFactors.Manual.Power.Back_2 = TextToInt(Utility.NextToken(), 10);
+System.CorrectionFactors.ToolingFactors.Manual.Power.loggerVersion = TextToInt(Utility.NextToken(), 10);
+
+CloseFile(fileHandle);

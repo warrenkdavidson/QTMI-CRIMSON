@@ -1,0 +1,6 @@
+if(recipeId != -1){
+	Queue.updateRecipeID(Queue.lensPosition,recipeId);
+//	Operator.UI.selectedRecipeIndex = recipeId;
+	// Set default lens index to NO FACTOR
+	GotoPage(Select_Index);
+} 

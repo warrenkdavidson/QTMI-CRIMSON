@@ -1,0 +1,11 @@
+int materialIndex;
+for (materialIndex = 1; materialIndex <= System.Constants.MaterialCount; ++materialIndex)
+{
+	// The order of data items must match those in LoadProcesses
+ 	if(Deposition.Material.Attributes.ThicknessRate[materialIndex] == 0){
+		Deposition.Material.Attributes.ThicknessRate[materialIndex] = 100;
+ 	}				
+	//	Deposition.Material.Attributes.ThicknessRate[materialIndex] = 0;			
+		
+}
+

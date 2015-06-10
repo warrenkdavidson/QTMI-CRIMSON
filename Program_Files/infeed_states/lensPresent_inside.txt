@@ -1,0 +1,5 @@
+if(Sensors.sensor_inside){
+	return 1;
+}else{
+	return 0;
+}

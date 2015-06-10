@@ -1,0 +1,28 @@
+cstring directory = System.Constants.DataDirectory;
+cstring filename = directory + "/GlowVac.csv";
+
+DeleteFile(OpenFile(filename, 1));
+
+CreateDirectory(directory);
+CreateFile(filename);
+int fileHandle = OpenFile(filename, 1);
+
+// The header line is there for human readability
+WriteFileLine(fileHandle, "Date, Process Pressure, Time to SP, Pressure at Timeout, Actual Time to SP, Result");
+
+int processIndex;
+for (processIndex = 0; processIndex != System.Constants.HydroVacLogCount; ++processIndex)
+{
+	// The order of data items must match those in LoadProcesses
+	
+	WriteFileLine(fileHandle, Leak_Test.Glow.HMI.resultsLog.date[processIndex]
+		+ ", " + Leak_Test.Glow.HMI.resultsLog.processPressure[processIndex].AsText	   
+		+ ", " + IntToText(Leak_Test.Glow.HMI.resultsLog.Timeout[processIndex], 10, 8)
+		+ ", " + Leak_Test.Glow.HMI.resultsLog.timeoutPressure[processIndex].AsText
+		+ ", " + IntToText(Leak_Test.Glow.HMI.resultsLog.PumpTimer[processIndex], 10, 8)
+		+ ", " + Leak_Test.Glow.HMI.resultsLog.result[processIndex]	
+			);
+}
+
+CloseFile(fileHandle);
+

@@ -1,0 +1,37 @@
+Hardcoater.Recipe.fusionInfeedId2 = Hardcoater.Recipe.fusionInfeedId2 -2; // convert back to 0-based. 
+int recipeId = Hardcoater.Recipe.fusionInfeedId2;
+recipeId = recipeId - 1;
+// Write recipe to log
+Editing.RecipeLog.writeToRecipeLog(Deposition.Recipe.Name[Operator.InfeedRecipieId], 
+					System.Process_Run_Log.indexLabel);
+//Write recipe to PLC
+Operator.Infeed_Recipie.LensId = recipeId;
+Operator.Infeed_Recipie.LensName = Deposition.Recipe.Name[recipeId];
+Operator.Infeed_Recipie.GlowTime = Deposition.Recipe.GlowTime[recipeId];
+Operator.Infeed_Recipie.GlowPressure = Deposition.Recipe.GlowPressure[recipeId];
+Operator.Infeed_Recipie.DepositionLayers = Deposition.Recipe.TotalSteps[recipeId];
+Operator.Infeed_Recipie.HydroFrontTime = Deposition.Recipe.HydroFrontTime[recipeId];
+Operator.Infeed_Recipie.HydroBackTime = Deposition.Recipe.HydroBackTime[recipeId];
+Operator.Infeed_Recipie.OvercoatTime = Deposition.Recipe.OvercoatTime[recipeId];
+Operator.Infeed_Recipie.HydroSimultaneous = false;
+// Set index
+Deposition.Recipe.CTC_index[recipeId] = Hardcoater.Recipe.fusionInfeedIndex;
+Operator.Infeed_Recipie.CTC_index = Deposition.Recipe.CTC_index[recipeId];
+
+//Position_Sensor.takeMeasurement(Operator.InfeedRecipieId);
+
+Operator.Infeed_Recipie.CTC_countFront = System.CorrectionFactors.Position_Sensor.Plc.read.FrontPosition;
+Operator.Infeed_Recipie.CTC_countBack = System.CorrectionFactors.Position_Sensor.Plc.read.BackPosition;
+
+//Position_Sensor.testValues(Operator.InfeedRecipieId, 1);
+Sleep(1000);
+
+Operator.ConfirmationOfRecipie = true;
+Operator.ConfirmationOfRecipie = false;
+
+Hardcoater.Recipe.confirmationOfRecipeHC = true;
+Sleep(2000);
+Hardcoater.Recipe.confirmationOfRecipeHC = false;
+
+Operator.UI.selectedRecipeIndex = -1;
+Operator.applyTF = 0;

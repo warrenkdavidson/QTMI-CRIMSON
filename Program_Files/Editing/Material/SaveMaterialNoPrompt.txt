@@ -1,0 +1,19 @@
+// Perform the basic process save operation without validation or confirmation prompting.
+// Should only be called when the validation/prompting has already happened, or when we are sure it isn't required.
+
+
+
+Editing.Material.CopyMaterialFromScratch();
+//if(!System.timesToThicknessDone){
+//	Editing.Material.thicknessToTimeForRecipes();
+//}
+LoadSave.SaveMaterials();
+Editing.Material.convertRecipeThicknessTime();
+//LoadSave.SaveMaterials();
+LoadSave.SaveRecipes();
+LoadSave.SaveSteps();
+Editing.Material.ClearMaterialScratch();
+LoadSave.LoadMaterials();
+LoadSave.LoadSteps();
+GotoPage(Deposition.Select_Material_1);
+

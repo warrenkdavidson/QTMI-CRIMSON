@@ -1,0 +1,17 @@
+if(Deposition.Recipe.Edit.Copying == 1){
+	if(Deposition.Recipe.Name[recipeIndex] != "") 
+		ShowPopup(System.popups.Deposition.SorrySpotHasName);
+	else
+		Editing.Recipes.SelectSpotForCopy(recipeIndex);
+}else{
+Editing.Recipes.CopyRecipeToScratch(recipeIndex);
+Editing.Recipes.CopyStepsToCancel();
+// Set Totals for front and back times and nm
+Editing.Recipes.totalsTimeNm();
+// Go to editing page for recipe
+GotoPage(Deposition.Build_Recipe_1);
+}
+
+
+
+

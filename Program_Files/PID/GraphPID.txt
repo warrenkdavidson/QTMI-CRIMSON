@@ -1,0 +1,22 @@
+int i;
+for(i = 0; i <= 1000; i++){
+	Deposition.PID.PID_Graph.Time_data[i] = i;
+	Deposition.PID.PID_Graph.Set_Point_Pressure[i]	= Deposition.PID.Write.Pressure;	
+}
+
+int j;
+for(j = 0; j < 1000; j++){	
+	Deposition.PID.PID_Graph.Graph_data[j] = 0;
+}
+
+
+for(j = 0; j < 1000; j++){	
+	Deposition.PID.PID_Graph.Graph_data[j] = 
+	Utility.ConvertDepositionCount(Deposition.PID.PID_Graph.Reverse_graph_data[Deposition.PID.PID_Graph.Number_of_data_points]);;
+}
+
+
+
+Deposition.PID.Controls.PIDEndRecieved = 1; 
+Sleep(50);
+Deposition.PID.Controls.PIDEndRecieved = 0;

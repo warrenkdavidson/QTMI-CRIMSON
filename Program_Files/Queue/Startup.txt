@@ -1,0 +1,8 @@
+Queue.recipeID[0] = -1;
+Queue.recipeID[1] = -1;
+
+
+Queue.lensIndex[0] = -1;
+Queue.lensIndex[1] = -1;
+
+Queue.lensPosition = 1;

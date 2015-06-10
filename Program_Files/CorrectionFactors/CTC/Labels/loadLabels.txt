@@ -1,0 +1,25 @@
+cstring filename = System.Constants.DataDirectory + "/CLabels.csv";
+
+int fileHandle = OpenFile(filename, 0);
+
+ReadFileLine(fileHandle); // ignore header
+
+cstring line;
+line = ReadFileLine(fileHandle);
+//PLC.System.Settings.Defaults.GlowPowerCurrentMin = 13;	
+
+
+
+if (line == "") return; // no data to read
+
+Utility.Tokenize(line, ',');
+
+// The order of data items must match those in Save Tooling
+
+
+System.CorrectionFactors.Labels.Index.FirstTerm = Utility.NextToken();
+System.CorrectionFactors.Labels.Index.SecondTerm = Utility.NextToken();
+System.CorrectionFactors.Labels.Index.ThirdTerm = Utility.NextToken();
+System.CorrectionFactors.Labels.Index.NoFactor = Utility.NextToken();
+
+CloseFile(fileHandle);

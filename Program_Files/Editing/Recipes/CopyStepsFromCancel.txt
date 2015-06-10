@@ -1,0 +1,9 @@
+int step;
+for (step = 0; step != System.Constants.StepsPerRecipe; ++step)
+{
+			
+	Deposition.Recipe.Scratch.Step.MaterialID[step] = Deposition.Recipe.Scratch.StepForCancel.MaterialID[step];
+	Deposition.Recipe.Scratch.Step.FrontTime[step] = Deposition.Recipe.Scratch.StepForCancel.FrontTime[step];
+	Deposition.Recipe.Scratch.Step.BackTime[step] = Deposition.Recipe.Scratch.StepForCancel.BackTime[step];
+	
+}

@@ -1,0 +1,17 @@
+if(System.CorrectionFactors.CTC.UI.thickness == 4){
+	System.CorrectionFactors.CTC.CTC_thickness = 1000;
+} 
+if(System.CorrectionFactors.CTC.UI.thickness == 0){
+	System.CorrectionFactors.CTC.CTC_thickness = System.CorrectionFactors.CTC.AdjustmentFactors.Thickness_2mm;
+} 
+if(System.CorrectionFactors.CTC.UI.thickness == 1){
+	System.CorrectionFactors.CTC.CTC_thickness = System.CorrectionFactors.CTC.AdjustmentFactors.Thickness_5mm;
+}
+if(System.CorrectionFactors.CTC.UI.thickness == 2){
+	System.CorrectionFactors.CTC.CTC_thickness = System.CorrectionFactors.CTC.AdjustmentFactors.Thickness_8mm;
+}
+if(System.CorrectionFactors.CTC.UI.thickness == 3){
+	System.CorrectionFactors.CTC.CTC_thickness = System.CorrectionFactors.CTC.AdjustmentFactors.Thickness_11mm;
+}
+
+Deposition.Recipe.CTC_thickness[Operator.UI.selectedRecipeIndex] = System.CorrectionFactors.CTC.CTC_thickness;

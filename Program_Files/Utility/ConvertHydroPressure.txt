@@ -1,0 +1,4 @@
+// Convert a hydro chamber pressure to the integer format required by the hardware.
+
+// Uses the same formula as the glow chamber.
+return Utility.ConvertGlowPressure(pressure);

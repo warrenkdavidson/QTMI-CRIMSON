@@ -1,0 +1,6 @@
+// Clear out the scratch Step at stepIndex.
+
+Editing.Material.DeactivateMaterial(Deposition.Recipe.Step.MaterialID[recipeStepIndex]);
+Deposition.Recipe.Step.MaterialID[recipeStepIndex] = 0;
+Deposition.Recipe.Step.FrontTime[recipeStepIndex] = 0;
+Deposition.Recipe.Step.BackTime[recipeStepIndex] = 0;

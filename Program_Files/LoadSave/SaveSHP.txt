@@ -1,0 +1,30 @@
+cstring directory = System.Constants.DataDirectory;
+cstring filename = directory + "/shp.csv";
+
+DeleteFile(OpenFile(filename, 1));
+
+CreateDirectory(directory);
+CreateFile(filename);
+int fileHandle = OpenFile(filename, 1);
+
+// The header line is there for human readability
+WriteFileLine(fileHandle, "Bypass SHP, Dispense with ISO Open, Time toReach HI SP, Evaporation Soak Time, Delay Time Before Opening RV, Delay Before Closing Vat 3 Valve, SHP Heater Cooling Timer SP, SHP Cooling Saftey Timer SP, SHP Cooling Pressure SP, SHP Front Dispense Time, SHP Back Dispense Time");
+
+
+// The order of data items must match those in LoadProcesses
+
+WriteFileLine(fileHandle, System.Settings.SHP.BypassSHP.AsText
+	+ ", " + System.Settings.SHP.EvaporateWithISOOpen.AsText  
+	+ ", " + IntToText(System.Settings.SHP.TimeToReachHI_SP, 10, 8)  
+	+ ", " + IntToText(System.Settings.SHP.EvaporationSoakTime, 10, 8) 
+	+ ", " + IntToText(System.Settings.SHP.DelayTimeBeforeOpeningRV, 10, 8) 
+	+ ", " + IntToText(System.Settings.SHP.DelayBeforeClosingVat3, 10, 8)
+	+ ", " + IntToText(System.Settings.SHP.SHP_heaterCoolingTimer_SP, 10, 8) 
+	+ ", " + IntToText(System.Settings.SHP.SHP_coolingSafetyTimer_SP, 10, 8) 
+	+ ", " + IntToText(System.Settings.SHP.CoolingPressure_SP, 10, 8) 
+	+ ", " + IntToText(System.Settings.SHP.FrontDispenseTime_SP, 10, 8) 
+	+ ", " + IntToText(System.Settings.SHP.BackDispenseTime_SP, 10, 8)
+			);
+
+CloseFile(fileHandle);
+

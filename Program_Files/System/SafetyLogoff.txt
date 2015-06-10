@@ -1,0 +1,7 @@
+if (!System.HydroDoorOpen && !System.GlowDoorOpen) {
+System.IsAdministratorLoggedIn = false;
+System.IsQuantumLoggedIn = false;
+UserLogOff();
+HideAllPopups();
+GotoPage(Operator);
+}

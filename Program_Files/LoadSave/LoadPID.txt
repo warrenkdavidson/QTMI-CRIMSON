@@ -1,0 +1,34 @@
+cstring filename = System.Constants.DataDirectory + "/Pid.csv";
+
+int fileHandle = OpenFile(filename, 0);
+
+ReadFileLine(fileHandle); // ignore header
+
+cstring line;
+line = ReadFileLine(fileHandle);
+if (line == "") return; // no data to read
+
+Utility.Tokenize(line, ',');
+	
+// The order of data items must match those in SaveSettings
+
+Deposition.PID.Scratch.Settings.O2SCCM = TextToInt(Utility.NextToken(), 10);	
+Deposition.PID.Scratch.Settings.ArFrontSCCM = TextToInt(Utility.NextToken(), 10);
+Deposition.PID.Scratch.Settings.ArBackSCCM = TextToInt(Utility.NextToken(), 10);	
+Deposition.PID.Scratch.Settings.Pressure_E = TextToInt(Utility.NextToken(), 10);
+Deposition.PID.Scratch.Settings.PercentO2 = TextToInt(Utility.NextToken(), 10);
+Deposition.PID.Scratch.Settings.AutoTune = Utility.TextToIntBoolean(Utility.NextToken()); 
+Deposition.PID.Scratch.Settings.PrePID = Utility.TextToIntBoolean(Utility.NextToken());			
+Deposition.PID.Scratch.Settings.PrePIDTime = TextToInt(Utility.NextToken(), 10);
+Deposition.PID.Scratch.Settings.Proportional = TextToInt(Utility.NextToken(), 10);
+Deposition.PID.Scratch.Settings.Integral = TextToInt(Utility.NextToken(), 10);
+Deposition.PID.Scratch.Settings.Derivative = TextToInt(Utility.NextToken(), 10);
+Deposition.PID.Scratch.Settings.SampleRate = TextToInt(Utility.NextToken(), 10);				
+Deposition.PID.Scratch.Settings.SampleRate = TextToInt(Utility.NextToken(), 10);				
+Deposition.PID.Scratch.Settings.POrV_Mode = Utility.TextToIntBoolean(Utility.NextToken());			
+Deposition.PID.Scratch.Settings.PID_Tolerance = TextToInt(Utility.NextToken(), 10);				
+Deposition.PID.Scratch.Settings.Voltage = TextToInt(Utility.NextToken(), 10);				
+
+
+
+CloseFile(fileHandle);

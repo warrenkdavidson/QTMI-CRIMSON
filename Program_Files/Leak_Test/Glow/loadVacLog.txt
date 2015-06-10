@@ -1,0 +1,31 @@
+cstring filename = System.Constants.DataDirectory + "/GlowVac.csv";
+
+int fileHandle = OpenFile(filename, 0);
+
+ReadFileLine(fileHandle); // ignore header
+
+
+
+
+int processIndex;
+cstring line;
+for (processIndex = 0; processIndex != System.Constants.HydroVacLogCount; ++processIndex)
+{
+
+	line = ReadFileLine(fileHandle);
+	if (line == "") break; // No more data, so we're done
+	
+	Utility.Tokenize(line, ',');
+	
+	// The order of data items must match those in SaveProcesses
+
+	Leak_Test.Glow.HMI.resultsLog.date[processIndex] = Utility.NextToken();
+	Leak_Test.Glow.HMI.resultsLog.processPressure[processIndex] = TextToFloat(Utility.NextToken());
+	Leak_Test.Glow.HMI.resultsLog.Timeout[processIndex] = TextToInt(Utility.NextToken(), 10);
+	Leak_Test.Glow.HMI.resultsLog.timeoutPressure[processIndex] = TextToFloat(Utility.NextToken());
+	Leak_Test.Glow.HMI.resultsLog.PumpTimer[processIndex] = TextToInt(Utility.NextToken(), 10);
+	Leak_Test.Glow.HMI.resultsLog.result[processIndex] = Utility.NextToken();
+}
+
+
+CloseFile(fileHandle);

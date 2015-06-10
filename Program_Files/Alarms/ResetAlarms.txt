@@ -1,0 +1,154 @@
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Power_Up.Air_Supply_Error){
+	ShowPopup(System.popups.PowerOn_StartUp.PowerUp_AirSupply);
+}
+if(System.AlarmsAndPopups.PowerOn.Oxygen_Pressure_Low){
+	ShowPopup(System.popups.PowerOn_StartUp.PowerUp_OxygenPressureLow);
+}
+if(System.AlarmsAndPopups.PowerOn.Argon_Pressure_Low){
+	ShowPopup(System.popups.PowerOn_StartUp.PowerUp_ArgonPressureLow);
+}
+if(System.AlarmsAndPopups.PowerOn.Hydro_Level_Low){
+	ShowPopup(System.popups.PowerOn_StartUp.PowerUp_HydroLevelLow);
+}
+if(System.AlarmsAndPopups.PowerOn.OCLevel_Low){
+	ShowPopup(System.popups.PowerOn_StartUp.PowerUp_OCLevelLow);
+}
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Power_Up.Wheel_In_Glow){
+	ShowPopup(System.popups.PowerOn_StartUp.StartUp_WheelInGlow);
+}
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Power_Up.Wheel_In_Deposition){
+	ShowPopup(System.popups.PowerOn_StartUp.StartUp_WheelInDeposition);
+}
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Power_Up.Wheel_In_Hydro){
+	ShowPopup(System.popups.PowerOn_StartUp.StartUp_WheelInHydro);
+}
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Power_Up.Glow_Door_Open){
+	ShowPopup(System.popups.PowerOn_StartUp.PowerUp_GlowDoorOpen);
+}
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Power_Up.Deposition_Front_Door_Open){
+	ShowPopup(System.popups.PowerOn_StartUp.PowerUp_DepFrontDoorOpen);
+}
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Power_Up.Deposition_Back_Door_Open){
+	ShowPopup(System.popups.PowerOn_StartUp.PowerUp_DepBackDoorOpen);
+}
+if(System.AlarmsAndPopups.PowerOn.Hydro_Door_Open){
+	ShowPopup(System.popups.PowerOn_StartUp.PowerUp_HydroDoorOpen);
+}
+
+if(System.AlarmsAndPopups.PowerOn.Hydro_Door_Open){
+	ShowPopup(System.popups.PowerOn_StartUp.PowerUp_HydroDoorOpen);
+}
+
+if(System.AlarmsAndPopups.PreStart.Glow_Door_Open){
+	ShowPopup(System.popups.PowerOn_StartUp.Startup_GlowDoorOpen);
+}
+if(System.AlarmsAndPopups.PreStart.Dep_Front_Door_Open){
+	ShowPopup(System.popups.PowerOn_StartUp.Startup_DEPFrontDoorOpen);
+}
+if(System.AlarmsAndPopups.PreStart.Dep_Rear_Door_Open){
+	ShowPopup(System.popups.PowerOn_StartUp.Startup_DEPRearDoorOpen);
+}
+if(System.AlarmsAndPopups.PreStart.Hydro_Door_Open){
+	ShowPopup(System.popups.PowerOn_StartUp.Startup_HydroDoorOpen);
+}
+if(System.AlarmsAndPopups.PreStart.Oxygen_Pressure_Low){
+	ShowPopup(System.popups.PowerOn_StartUp.Startup_OxygenPressureLow);
+}
+if(System.AlarmsAndPopups.PreStart.Argon_Pressure_Low){
+	ShowPopup(System.popups.PowerOn_StartUp.Startup_ArgonPressureLow);
+}
+if(System.AlarmsAndPopups.PreStart.Hydro_Level_Low){
+	ShowPopup(System.popups.PowerOn_StartUp.Startup_HydroLevelLow);
+}
+if(System.AlarmsAndPopups.PreStart.OC_Level_Low){
+	ShowPopup(System.popups.PowerOn_StartUp.Startup_OCLevelLow);
+}
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Start_Up.Glow_Not_To_Vac_Septpoint){
+	ShowPopup(System.popups.PowerOn_StartUp.Startup_GlowNotToSetpoint);
+}
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Start_Up.Hydro_Not_To_Vac_Setpoint){
+	ShowPopup(System.popups.PowerOn_StartUp.Startup_HydroNotToSetpoint);
+}
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Start_Up.Glow_Not_To_Vac_2nd){
+	ShowPopup(System.popups.PowerOn_StartUp.Startup_GlowNotToVacuum);
+}
+// In Process
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Process.Hydro_Front_Dispense){
+	ShowPopup(System.popups.PowerOn_StartUp.Process_Hydro_F_Dispense);
+} 
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Process.Hydro_Front_Dispense_Cont){
+	ShowPopup(System.popups.PowerOn_StartUp.Process_Hydro_F_Dispense_Cont);
+} 
+
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Process.Hydro_Back_Dispense){
+	ShowPopup(System.popups.PowerOn_StartUp.Process_Hydro_B_Dispense);
+}
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Process.Hydro_Back_Dispense_Cont){
+	ShowPopup(System.popups.PowerOn_StartUp.Process_Hydro_B_Dispense_Cont);
+} 
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Process.OC_Dispense){
+	ShowPopup(System.popups.PowerOn_StartUp.Process_OC_Dispense);
+}
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Process.OC_Dispense_Cont){
+	ShowPopup(System.popups.PowerOn_StartUp.Process_OC_Dispense_Cont);
+}
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Process.In_Process_GlowOpen){
+	ShowPopup(System.popups.PowerOn_StartUp.Process_Processing);
+}
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Process.In_Process_DEPOpen){
+	ShowPopup(System.popups.PowerOn_StartUp.Process_Processing);
+}
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Process.In_Process_HydroOpen){
+	ShowPopup(System.popups.PowerOn_StartUp.Process_Processing);
+}
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Process.In_Process_PIDSetup){
+	ShowPopup(System.popups.PowerOn_StartUp.Process_Processing);
+}
+
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Process.Process_Halted_GlowOpen){
+	ShowPopup(System.popups.PowerOn_StartUp.Auto_Process_Halted);
+}
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Process.Process_Halted_DEPOpen){
+	ShowPopup(System.popups.PowerOn_StartUp.Auto_Process_Halted);
+}
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Process.Process_Halted_HydroOpen){
+	ShowPopup(System.popups.PowerOn_StartUp.Auto_Process_Halted);
+}
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Process.Process_Halted_PIDSetup){
+	ShowPopup(System.popups.PowerOn_StartUp.Auto_Process_Halted);
+} 
+if(System.Settings.Defaults.LensCount > (System.Settings.Defaults.LensCount_Setpoint + System.Settings.Defaults.LensCount_OkAdder)){
+	ShowPopup(System.popups.PowerOn_StartUp.Process_LensCount_Limit);
+}
+
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Process.FRONT_CHROME_TARGET_EXCEEDED){
+	ShowPopup(System.popups.PowerOn_StartUp.Process_F_CHROME_TARGET_ex);
+} 
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Process.FRONT_LOW_INDEX_TARGET_EXCEEDED){
+	ShowPopup(System.popups.PowerOn_StartUp.Process_F_LOW_TARGET_ex);
+} 
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Process.FRONT_HIGH_INDEX_TARGET_EXCEEDED){
+	ShowPopup(System.popups.PowerOn_StartUp.Process_F_HIGH_TARGET_ex);
+}
+ 
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Process.BACK_CHROME_TARGET_EXCEEDED){
+	ShowPopup(System.popups.PowerOn_StartUp.Process_B_CHROME_TARGET_ex);
+} 
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Process.BACK_LOW_INDEX_TARGET_EXCEEDED){
+	ShowPopup(System.popups.PowerOn_StartUp.Process_B_LOW_TARGET_ex);
+} 
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Process.FRONT_HIGH_INDEX_TARGET_EXCEEDED){
+	ShowPopup(System.popups.PowerOn_StartUp.Process_B_HIGH_TARGET_ex);
+}
+if(System.AlarmsAndPopups.PreStart.Back_Side_Water_Flow){
+                ShowPopup(System.popups.PowerOn_StartUp.Prestart.Startup_Back_Water_Flow);
+}
+if(System.AlarmsAndPopups.PreStart.Front_Side_Water_Flow){
+                ShowPopup(System.popups.PowerOn_StartUp.Prestart.Startup_Front_Water_Flow);
+}
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Power_not_detected_in_front_mag){
+                ShowPopup(System.popups.PowerOn_StartUp.Process_Power_F_MAG_notDetected);
+}
+if(System.AlarmsAndPopups.OLD_AlarmsAndPopups.Power_not_detected_in_back_mag){
+                ShowPopup(System.popups.PowerOn_StartUp.Process_Power_B_MAG_notDetected);
+}

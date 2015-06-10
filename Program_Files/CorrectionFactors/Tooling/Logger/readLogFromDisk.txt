@@ -1,0 +1,46 @@
+cstring filename = System.Constants.DataDirectory + "/ToolLog.csv";
+
+int fileHandle = OpenFile(filename, 0);
+
+ReadFileLine(fileHandle); // ignore header
+
+int toolIndex;
+cstring line;
+for (toolIndex = 0; toolIndex != System.Constants.ToolingLogCount; ++toolIndex)
+{
+
+		line = ReadFileLine(fileHandle);
+		if (line == "") return;
+
+		Utility.Tokenize(line, ',');
+	
+		// The order of data items must match those in SaveSteps	
+	
+		System.CorrectionFactors.ToolingFactors.Logger.DateTime[toolIndex] = Utility.NextToken();
+		System.CorrectionFactors.ToolingFactors.Logger.PowerF[toolIndex] = TextToInt(Utility.NextToken(), 10);
+		System.CorrectionFactors.ToolingFactors.Logger.PowerF_1[toolIndex] = TextToInt(Utility.NextToken(), 10);
+		System.CorrectionFactors.ToolingFactors.Logger.PowerF_2[toolIndex] = TextToInt(Utility.NextToken(), 10);
+		System.CorrectionFactors.ToolingFactors.Logger.PowerB[toolIndex] = TextToInt(Utility.NextToken(), 10);
+		System.CorrectionFactors.ToolingFactors.Logger.PowerB_1[toolIndex] = TextToInt(Utility.NextToken(), 10);
+		System.CorrectionFactors.ToolingFactors.Logger.PowerB_2[toolIndex] = TextToInt(Utility.NextToken(), 10);
+		System.CorrectionFactors.ToolingFactors.Logger.TimeF[toolIndex] = TextToInt(Utility.NextToken(), 10);
+		System.CorrectionFactors.ToolingFactors.Logger.TimeF_1[toolIndex] = TextToInt(Utility.NextToken(), 10);
+		System.CorrectionFactors.ToolingFactors.Logger.TimeF_2[toolIndex] = TextToInt(Utility.NextToken(), 10);
+		System.CorrectionFactors.ToolingFactors.Logger.TimeB[toolIndex] = TextToInt(Utility.NextToken(), 10);
+		System.CorrectionFactors.ToolingFactors.Logger.TimeB_1[toolIndex] = TextToInt(Utility.NextToken(), 10);
+		System.CorrectionFactors.ToolingFactors.Logger.TimeB_2[toolIndex] = TextToInt(Utility.NextToken(), 10);
+      		System.CorrectionFactors.ToolingFactors.Logger.KwhrsF[toolIndex] = TextToInt(Utility.NextToken(), 10); 
+      		System.CorrectionFactors.ToolingFactors.Logger.KwhrsF_1[toolIndex] = TextToInt(Utility.NextToken(), 10);
+      		System.CorrectionFactors.ToolingFactors.Logger.KwhrsF_2[toolIndex] = TextToInt(Utility.NextToken(), 10);
+      		System.CorrectionFactors.ToolingFactors.Logger.KwhrsB[toolIndex] = TextToInt(Utility.NextToken(), 10);
+      		System.CorrectionFactors.ToolingFactors.Logger.KwhrsB_1[toolIndex] = TextToInt(Utility.NextToken(), 10);
+      		System.CorrectionFactors.ToolingFactors.Logger.KwhrsB_2[toolIndex] = TextToInt(Utility.NextToken(), 10);
+      		
+		if(System.CorrectionFactors.ToolingFactors.Logger.DateTime[toolIndex] == ""){
+			break;	   
+		}
+		System.CorrectionFactors.ToolingFactors.Logger.loggerIndex++;	   
+			
+}
+
+CloseFile(fileHandle);

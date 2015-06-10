@@ -1,0 +1,6 @@
+// Convert a depostion chamber pressure to the integer format required by the hardware.
+
+float tmp = (float)count;
+return exp10((tmp/200) - 11);
+
+

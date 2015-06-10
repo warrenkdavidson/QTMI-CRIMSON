@@ -1,0 +1,3 @@
+// Convert a glow chamber pressure to the integer format required by the hardware.
+
+return Utility.Round((log10(pressure) + 6) * 400);

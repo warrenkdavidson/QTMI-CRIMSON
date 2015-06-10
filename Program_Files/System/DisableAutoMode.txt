@@ -1,0 +1,33 @@
+//Disable Auto Mode when any of the following PB's are pushed
+
+if (System.CorrectionFactors.Position_Sensor.Manual.Front ||
+	System.CorrectionFactors.Position_Sensor.Manual.Back ||
+	Manual_Control.Glow.Controls.Rough_pump_signal ||
+	Manual_Control.Glow.Controls.Rough_valve_signal ||
+	Manual_Control.Glow.Controls.Vent_signal ||
+	Manual_Control.Glow.Controls.MKS_signal ||
+	Manual_Control.Glow.Controls.GlowPS_signal ||
+	Manual_Control.Deposition.Controls.Motor_Started_signal ||
+	Manual_Control.Deposition.Controls.Vent_signal ||
+	Manual_Control.Deposition.Controls.Rough_Pump_signal ||
+	Manual_Control.Deposition.Controls.Rough_Valve_signal ||
+	Manual_Control.Deposition.Controls.Turbo_Pump_signal ||
+	Manual_Control.Deposition.Controls.Power_supply_signal ||
+	Manual_Control.HydroOc.Controls.Rough_Pump_signal ||
+	Manual_Control.HydroOc.Controls.Rough_Valve_signal ||
+	Manual_Control.HydroOc.Controls.Vent_signal ||
+	Manual_Control.HydroOc.Controls.MKS_signal ||
+	Manual_Control.HydroOc.Controls.SHP.Hydro_Heaters_Relay_On_signal ||
+	Manual_Control.HydroOc.Controls.SHP.Front_Heater_High_signal ||
+	Manual_Control.HydroOc.Controls.SHP.Back_Heater_High_signal ||
+	Manual_Control.HydroOc.Controls.SHP.Cool_Heaters_signal ||
+	Manual_Control.Valves.V1_signal ||
+	Manual_Control.Valves.V2_signal ||
+	Manual_Control.Valves.V3_signal ||
+	Manual_Control.Valves.V4_signal ||
+	Manual_Control.Water_Chiller_signal)
+		
+		Operator.Controls.StopProcess = 1;
+	
+	
+	

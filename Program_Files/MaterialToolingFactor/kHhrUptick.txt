@@ -1,0 +1,40 @@
+int uptick = 0;
+
+if(position == 1){
+	uptick = MaterialToolingFactor.CurrentKwhr.F_Chrome - MaterialToolingFactor.StartKwhr.F_Chrome_Start_Kwhr;
+	uptick /= 10;
+	MaterialToolingFactor.CurrentFactor.F_Chrome = 1000 + uptick*MaterialToolingFactor.IncrementPerKwhr.F_Chrome;		
+}
+
+if(position == 2){
+	uptick = MaterialToolingFactor.CurrentKwhr.F_Low - MaterialToolingFactor.StartKwhr.F_Low_Start_Kwhr;
+	uptick /= 10;
+	MaterialToolingFactor.CurrentFactor.F_Low = 1000 + uptick*MaterialToolingFactor.IncrementPerKwhr.F_Low;		
+}
+
+if(position == 3){
+	uptick = MaterialToolingFactor.CurrentKwhr.F_Hi - MaterialToolingFactor.StartKwhr.F_Hi_Start_Kwhr;
+	uptick /= 10;
+	MaterialToolingFactor.CurrentFactor.F_Hi = 1000 + uptick*MaterialToolingFactor.IncrementPerKwhr.F_Hi;		
+}
+
+if(position == 4){
+	uptick = MaterialToolingFactor.CurrentKwhr.B_Chrome - MaterialToolingFactor.StartKwhr.B_Chrome_Start_Kwhr;
+	uptick /= 10;
+	MaterialToolingFactor.CurrentFactor.B_Chrome = 1000 + uptick*MaterialToolingFactor.IncrementPerKwhr.B_Chrome;		
+}
+
+if(position == 5){
+	uptick = MaterialToolingFactor.CurrentKwhr.B_Low - MaterialToolingFactor.StartKwhr.B_Low_Start_Kwhr;
+	uptick /= 10;
+	MaterialToolingFactor.CurrentFactor.B_Low = 1000 + uptick*MaterialToolingFactor.IncrementPerKwhr.B_Low;		
+}
+
+if(position == 6){
+	uptick = MaterialToolingFactor.CurrentKwhr.B_Hi - MaterialToolingFactor.StartKwhr.B_Hi_Start_Kwhr;
+	uptick /= 10;
+	MaterialToolingFactor.CurrentFactor.B_Hi = 1000 + uptick*MaterialToolingFactor.IncrementPerKwhr.B_Hi;		
+}
+
+
+MaterialToolingFactor.loadSave.SaveMaterialTooling();

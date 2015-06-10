@@ -1,0 +1,46 @@
+cstring directory = System.Constants.DataDirectory;
+cstring filename = directory + "/Mattool.csv";
+
+DeleteFile(OpenFile(filename, 1));
+
+CreateDirectory(directory);
+CreateFile(filename);
+int fileHandle = OpenFile(filename, 1);
+
+
+
+// The header line is there for human readability
+WriteFileLine(fileHandle, 
+"Front Chrome Current Factor, Front Low Current Factor, Front Hi Current Factor, Back Chrome Current Factor, Back Low Current Factor, Back Hi Current Factor, "+
+"Front Chrome Start kWhr, Front Low Start kWhr, Front Hi Start kWhr, Back Chrome Start kWhr, Back Low Start kWhr, Back Hi Start kWhr, "+
+"Front Chrome Increment per kWhr, Front Low Increment per kWhr, Front Hi Increment per kWhr, Back Chrome Increment per kWhr, Back Low Increment per kWhr, Back Hi Increment per kWhr, "+
+"Use Material Tooling"
+);
+
+WriteFileLine(fileHandle, IntToText(MaterialToolingFactor.CurrentFactor.F_Chrome, 10, 8)
+	+ ", " + IntToText(MaterialToolingFactor.CurrentFactor.F_Low, 10, 8)
+	+ ", " + IntToText(MaterialToolingFactor.CurrentFactor.F_Hi, 10, 8)
+	+ ", " + IntToText(MaterialToolingFactor.CurrentFactor.B_Chrome, 10, 8)
+	+ ", " + IntToText(MaterialToolingFactor.CurrentFactor.B_Low, 10, 8)
+	+ ", " + IntToText(MaterialToolingFactor.CurrentFactor.B_Hi, 10, 8)
+	
+	+ ", " + IntToText(MaterialToolingFactor.StartKwhr.F_Chrome_Start_Kwhr, 10, 8)
+	+ ", " + IntToText(MaterialToolingFactor.StartKwhr.F_Low_Start_Kwhr, 10, 8)
+	+ ", " + IntToText(MaterialToolingFactor.StartKwhr.F_Hi_Start_Kwhr, 10, 8)
+	+ ", " + IntToText(MaterialToolingFactor.StartKwhr.B_Chrome_Start_Kwhr, 10, 8)
+	+ ", " + IntToText(MaterialToolingFactor.StartKwhr.B_Low_Start_Kwhr, 10, 8)
+	+ ", " + IntToText(MaterialToolingFactor.StartKwhr.B_Hi_Start_Kwhr, 10, 8)
+
+	+ ", " + IntToText(MaterialToolingFactor.IncrementPerKwhr.F_Chrome, 10, 8)
+	+ ", " + IntToText(MaterialToolingFactor.IncrementPerKwhr.F_Low, 10, 8)
+	+ ", " + IntToText(MaterialToolingFactor.IncrementPerKwhr.F_Hi, 10, 8)
+	+ ", " + IntToText(MaterialToolingFactor.IncrementPerKwhr.B_Chrome, 10, 8)
+	+ ", " + IntToText(MaterialToolingFactor.IncrementPerKwhr.B_Low, 10, 8)
+	+ ", " + IntToText(MaterialToolingFactor.IncrementPerKwhr.B_Hi, 10, 8)
+
+	+ ", " + MaterialToolingFactor.useMaterialTooling.AsText
+
+);
+
+
+CloseFile(fileHandle);

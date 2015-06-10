@@ -1,0 +1,4 @@
+ShowPopup(System.popups.Manual.Cant_reset_target);
+Sleep(10000);
+HidePopup();
+Alarms.ResetAlarms();

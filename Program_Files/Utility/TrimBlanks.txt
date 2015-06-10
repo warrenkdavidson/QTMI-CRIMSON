@@ -1,0 +1,15 @@
+// Trim leading and trailing whitespace from a string
+
+int first = 0;
+while (first < Len(value) && value[first] == ' ')
+{
+	++first;
+}
+
+int last = Len(value) - 1;
+while (last >= 0 && value[last] == ' ')
+{
+	--last;
+}
+
+return Mid(value, first, last - first + 1);

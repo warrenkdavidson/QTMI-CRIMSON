@@ -1,0 +1,21 @@
+System.CorrectionFactors.CTC.UI.lensIndex = lensIndex;
+
+Queue.recipeHasntBeenWrittenToPLC = true;
+
+Queue.updateLensIndex(Queue.lensPosition,System.CorrectionFactors.CTC.UI.lensIndex);
+
+if(Queue.recipeID[0] != -1 && !Sensors.sensor_outside){
+	Queue.endQueueSelection();
+	Queue.processPause = 0;
+}
+if(Queue.recipeID[0] != -1 && Queue.recipeID[1] != -1)	{
+	Queue.endQueueSelection();
+	Queue.processPause = 0;
+}
+
+if(Sensors.sensor_outside && Queue.recipeID[1] == -1){
+	Queue.lensPosition = 1;
+//	GotoPage(Select_Recipe_1);
+}else{
+	GotoPage(Operator);
+}

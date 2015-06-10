@@ -1,0 +1,14 @@
+// Prepare to insert a new process at processIndex.
+
+// Make sure there's room for another process
+if (!Editing.Recipes.CanInsertRecipeAt(recipeIndex)) return;
+
+// New processes start out with default values.
+Editing.Recipes.ClearScratchRecipe();
+
+// Remember the index where the insertion is to be made.
+Deposition.Recipe.Scratch.Index = recipeIndex;
+
+// Set the flag that Editing.SaveProcess() uses to know when to perform the insertion.
+Deposition.Recipe.Scratch.Inserting = true;
+GotoPage(Deposition.Build_Recipe_1);

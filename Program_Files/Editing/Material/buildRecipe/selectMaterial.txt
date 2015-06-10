@@ -1,0 +1,15 @@
+// Change material id for this step
+if(!Deposition.PID.Scratch.savePID){
+	Deposition.Recipe.Scratch.Step.MaterialID[Deposition.Recipe.Scratch.stepIndex] = materialId;
+	
+	Editing.Recipes.syncStepThicknessToTime(Deposition.Recipe.Scratch.stepIndex, 1);
+	Editing.Recipes.syncStepThicknessToTime(Deposition.Recipe.Scratch.stepIndex, 2);
+	
+	if(Deposition.Recipe.Scratch.stepIndex > 9)
+		GotoPage(Deposition.Build_Recipe_2);
+	else
+		GotoPage(Deposition.Build_Recipe_1);
+}else{
+	Editing.PID.SelectMaterial(materialId);
+	Deposition.PID.Scratch.savePID = 0;
+}

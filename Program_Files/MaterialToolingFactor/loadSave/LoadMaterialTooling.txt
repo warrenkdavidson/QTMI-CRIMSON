@@ -1,0 +1,44 @@
+
+cstring filename = System.Constants.DataDirectory + "/Mattool.csv";
+
+int fileHandle = OpenFile(filename, 0);
+
+ReadFileLine(fileHandle); // ignore header
+
+cstring line;
+line = ReadFileLine(fileHandle);
+//PLC.System.Settings.Defaults.GlowPowerCurrentMin = 13;	
+
+if (line == "") return; // no data to read
+
+Utility.Tokenize(line, ',');
+
+//Current Factors
+MaterialToolingFactor.CurrentFactor.F_Chrome  = TextToInt(Utility.NextToken(), 10);
+MaterialToolingFactor.CurrentFactor.F_Low = TextToInt(Utility.NextToken(), 10);
+MaterialToolingFactor.CurrentFactor.F_Hi = TextToInt(Utility.NextToken(), 10);
+MaterialToolingFactor.CurrentFactor.B_Chrome = TextToInt(Utility.NextToken(), 10);
+MaterialToolingFactor.CurrentFactor.B_Low = TextToInt(Utility.NextToken(), 10);
+MaterialToolingFactor.CurrentFactor.B_Hi = TextToInt(Utility.NextToken(), 10);
+
+//Start kWhrs
+MaterialToolingFactor.StartKwhr.F_Chrome_Start_Kwhr  = TextToInt(Utility.NextToken(), 10);
+MaterialToolingFactor.StartKwhr.F_Low_Start_Kwhr  = TextToInt(Utility.NextToken(), 10);
+MaterialToolingFactor.StartKwhr.F_Hi_Start_Kwhr  = TextToInt(Utility.NextToken(), 10);
+MaterialToolingFactor.StartKwhr.B_Chrome_Start_Kwhr  = TextToInt(Utility.NextToken(), 10);
+MaterialToolingFactor.StartKwhr.B_Low_Start_Kwhr  = TextToInt(Utility.NextToken(), 10);
+MaterialToolingFactor.StartKwhr.B_Hi_Start_Kwhr  = TextToInt(Utility.NextToken(), 10);
+
+//Increment per kWhr
+MaterialToolingFactor.IncrementPerKwhr.F_Chrome  = TextToInt(Utility.NextToken(), 10);
+MaterialToolingFactor.IncrementPerKwhr.F_Low = TextToInt(Utility.NextToken(), 10);
+MaterialToolingFactor.IncrementPerKwhr.F_Hi = TextToInt(Utility.NextToken(), 10);
+MaterialToolingFactor.IncrementPerKwhr.B_Chrome  = TextToInt(Utility.NextToken(), 10);
+MaterialToolingFactor.IncrementPerKwhr.B_Low = TextToInt(Utility.NextToken(), 10);
+MaterialToolingFactor.IncrementPerKwhr.B_Hi = TextToInt(Utility.NextToken(), 10);
+
+MaterialToolingFactor.useMaterialTooling = Utility.TextToIntBoolean(Utility.NextToken());
+
+
+
+CloseFile(fileHandle);

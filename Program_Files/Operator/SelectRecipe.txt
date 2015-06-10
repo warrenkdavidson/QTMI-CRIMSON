@@ -1,0 +1,3 @@
+Operator.InfeedRecipieId = RecipeId;
+Operator.ShowRecipiePopUp = 0;
+//PLC.Operator.DepositionStepCounter = 0;

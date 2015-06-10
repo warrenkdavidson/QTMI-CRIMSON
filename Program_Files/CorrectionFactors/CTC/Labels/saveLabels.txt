@@ -1,0 +1,25 @@
+cstring directory = System.Constants.DataDirectory;
+cstring filename = directory + "/CLabels.csv";
+
+DeleteFile(OpenFile(filename, 1));
+
+CreateDirectory(directory);
+CreateFile(filename);
+int fileHandle = OpenFile(filename, 1);
+
+
+
+// The header line is there for human readability
+WriteFileLine(fileHandle, "Index 1, Index 2, Index 3, No Factor");
+
+// The order of data items must match those in LoadSettings
+
+
+
+WriteFileLine(fileHandle, System.CorrectionFactors.Labels.Index.FirstTerm.AsText
+	+ ", " + System.CorrectionFactors.Labels.Index.SecondTerm.AsText
+	+ ", " + System.CorrectionFactors.Labels.Index.ThirdTerm.AsText		
+	+ ", " + System.CorrectionFactors.Labels.Index.NoFactor.AsText		
+);
+
+CloseFile(fileHandle);

@@ -1,0 +1,5 @@
+
+Deposition.PID.Scratch.Settings.Proportional = Deposition.PID.Scratch.Defaulte.Proportional;
+Deposition.PID.Scratch.Settings.Integral = Deposition.PID.Scratch.Defaulte.Integral;
+Deposition.PID.Scratch.Settings.Derivative = Deposition.PID.Scratch.Defaulte.Derivative;
+Deposition.PID.Scratch.Settings.SampleRate = Deposition.PID.Scratch.Defaulte.SampleRate;

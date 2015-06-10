@@ -1,0 +1,83 @@
+cstring filename = System.Constants.DataDirectory + "/Aset.csv";
+
+int fileHandle = OpenFile(filename, 0);
+int placeHolder = OpenFile(filename, 0);
+
+ReadFileLine(fileHandle); // ignore header
+
+cstring line;
+line = ReadFileLine(fileHandle);
+line = ReadFileLine(fileHandle);
+line = ReadFileLine(fileHandle);
+//PLC.System.Settings.Defaults.GlowPowerCurrentMin = 13;	
+
+if (line == "") return; // no data to read
+
+Utility.Tokenize(line, ',');
+
+// The order of data items must match those in SaveSettings
+// Process Pressures
+System.Settings.GlowStartPressure  = TextToInt(Utility.NextToken(), 10);
+System.Settings.DEPStartPressure = TextToInt(Utility.NextToken(), 10);
+System.Settings.HydroStartPressure = TextToInt(Utility.NextToken(), 10);
+System.Settings.Atmosphere = TextToInt(Utility.NextToken(), 10);
+
+// Default Settings
+System.Settings.Defaults.MinRPMFromHMI = TextToInt(Utility.NextToken(), 10);
+System.Settings.Defaults.NumberSpokesOnWheel = TextToInt(Utility.NextToken(), 10);
+System.Settings.Defaults.HydroRVDispenseState = Utility.TextToIntBoolean(Utility.NextToken());
+System.Settings.Defaults.GlowGassesSCCM = TextToInt(Utility.NextToken(), 10);
+System.Settings.Defaults.DepChamberVentTimer = TextToInt(Utility.NextToken(), 10);
+System.Settings.Defaults.ValveActuationETimerSet = TextToInt(Utility.NextToken(), 10);
+System.Settings.Defaults.GasFlowSetpoint = TextToInt(Utility.NextToken(), 10);
+System.Settings.Defaults.GetGlowToPressureTime = TextToInt(Utility.NextToken(), 10);
+System.Settings.Defaults.GetDepToPressureTime = TextToInt(Utility.NextToken(), 10);
+System.Settings.Defaults.GetHydroToPressureTime = TextToInt(Utility.NextToken(), 10);
+System.Settings.Defaults.GlowPowerCurrentMin = TextToInt(Utility.NextToken(), 10);
+System.Settings.Defaults.DelayAfterDispenseTime = TextToInt(Utility.NextToken(), 10);
+System.Settings.Defaults.MiniUnityVersion = Utility.TextToIntBoolean(Utility.NextToken());
+System.Settings.Defaults.GlowVentOpenDelayTime = TextToInt(Utility.NextToken(), 10);
+System.Settings.Defaults.GlowDelayBeforeSense = TextToInt(Utility.NextToken(), 10);
+
+placeHolder = TextToInt(Utility.NextToken(), 10);
+placeHolder = TextToInt(Utility.NextToken(), 10);
+placeHolder = TextToInt(Utility.NextToken(), 10);
+placeHolder = TextToInt(Utility.NextToken(), 10);
+placeHolder = TextToInt(Utility.NextToken(), 10);
+
+//PID Settings
+System.Settings.PID.AutoTune = Utility.TextToIntBoolean(Utility.NextToken());
+System.Settings.PID.DepositPIDTDAfterSetPoint = TextToInt(Utility.NextToken(), 10);
+System.Settings.PID.PIDTolerance = TextToInt(Utility.NextToken(), 10);
+System.Settings.PID.PIDCountForAveraging = TextToInt(Utility.NextToken(), 10);
+System.Settings.PID.PrePIDTime = TextToInt(Utility.NextToken(), 10);
+
+//Startup Cycle
+System.Settings.Startup_Cycle.GlowTimerSetPoint	= TextToInt(Utility.NextToken(), 10);
+System.Settings.Startup_Cycle.GlowPressureSetPoint	 = TextToInt(Utility.NextToken(), 10);
+System.Settings.Startup_Cycle.HydroTimerSetPoint = TextToInt(Utility.NextToken(), 10);	
+System.Settings.Startup_Cycle.HydroPressureSetPoint = TextToInt(Utility.NextToken(), 10);	
+System.Settings.Startup_Cycle.HydroDispenseTimerSetPoint = TextToInt(Utility.NextToken(), 10);	
+System.Settings.Startup_Cycle.HydroDelaySetPoint = TextToInt(Utility.NextToken(), 10);
+System.Settings.Startup_Cycle.OCDispenseTimerSetPoint = TextToInt(Utility.NextToken(), 10);
+System.Settings.Startup_Cycle.DEPTimerSetPoint = TextToInt(Utility.NextToken(), 10);	
+System.Settings.Startup_Cycle.DEPPressureSetPoint = TextToInt(Utility.NextToken(), 10);	
+System.Settings.Startup_Cycle.TurboGetSpeedSetTime = TextToInt(Utility.NextToken(), 10);	
+System.Settings.Startup_Cycle.ChillerGetTempSetTime = TextToInt(Utility.NextToken(), 10);
+System.Settings.Defaults.activateGlow = Utility.TextToIntBoolean(Utility.NextToken());
+System.Settings.Defaults.activateBackSideChrome = Utility.TextToIntBoolean(Utility.NextToken());
+
+//Thickness Correction
+System.CorrectionFactors.Position_Sensor.Front_cal = TextToFloat(Utility.NextToken());	
+System.CorrectionFactors.Position_Sensor.Back_cal = TextToFloat(Utility.NextToken());
+
+// Extra Defaults
+System.Settings.Defaults.HardArcCountLimit = TextToInt(Utility.NextToken(), 10);
+
+
+
+
+
+CloseFile(fileHandle);
+
+LoadSave.LoadSettings2();

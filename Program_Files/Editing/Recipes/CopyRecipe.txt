@@ -1,0 +1,21 @@
+// Copy the Process at fromIndex into toIndex.
+
+Deposition.Recipe.Name[toIndex] = Deposition.Recipe.Name[fromIndex];
+Deposition.Recipe.Acoat[toIndex] = Deposition.Recipe.Acoat[fromIndex];
+Deposition.Recipe.GlowTime[toIndex] = Deposition.Recipe.GlowTime[fromIndex];
+
+int step;
+for (step = 0; step != System.Constants.StepsPerRecipe; ++step)
+{
+	int fromStepIndex = Utility.StepIndex(fromIndex, step);
+	int toStepIndex = Utility.StepIndex(toIndex, step);
+	
+	Deposition.Recipe.Step.MaterialID[toStepIndex] = Deposition.Recipe.Step.MaterialID[fromStepIndex];
+	Deposition.Recipe.Step.FrontTime[toStepIndex] = Deposition.Recipe.Step.FrontTime[fromStepIndex];
+	Deposition.Recipe.Step.BackTime[toStepIndex] = Deposition.Recipe.Step.BackTime[fromStepIndex];
+	Editing.Material.ActivateMaterial(Deposition.Recipe.Scratch.Step.MaterialID[toStepIndex]);	
+}
+
+Deposition.Recipe.HydroFrontTime[toIndex] = Deposition.Recipe.HydroFrontTime[fromIndex];
+Deposition.Recipe.HydroBackTime[toIndex] = Deposition.Recipe.HydroBackTime[fromIndex];
+Deposition.Recipe.OvercoatTime[toIndex] = Deposition.Recipe.OvercoatTime[fromIndex];

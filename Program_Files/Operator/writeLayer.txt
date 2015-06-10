@@ -1,0 +1,302 @@
+// Set Display times for Operator to 0
+LayerCountDown.totalFront = 0;
+LayerCountDown.totalBack = 0;
+ 
+// If we are ready to run layers for a new recipie, get recipie ID and number of steps from recipie 2, then 
+// copy next recipe info from recipie 1 to recipie 2 
+
+if(Operator.DepositionStepCounter == 0){
+Operator.DepositionRecipieId = Operator.Deposition_Recipie.LensId;
+Operator.DepositionNumberOfSteps = Operator.Deposition_Recipie.DepositionLayers;
+}
+
+/*
+if(Operator.DepositionStepCounter == Operator.DepositionNumberOfSteps){
+Operator.Step.DepositTimeFront = 0; 
+Operator.Step.DepositTimeBack = 0;
+					    
+// Confirm layer written
+Operator.ConfirmationDataEntered = true;	       	       
+Operator.ConfirmationDataEntered = false;
+Operator.DepositionStepCounter = 0;
+// Zero out the final front factors
+System.CorrectionFactors.Position_Sensor.testDep.finalFactorIntF = 0;
+System.CorrectionFactors.Position_Sensor.testDep.finalFactorIntB = 0;
+
+}
+*/
+
+int j;
+
+for(j = 0; j < Operator.DepositionNumberOfSteps; j++){
+
+int CTC_index = Operator.Deposition_Recipie.CTC_index;
+int CTC_thickness = Operator.Deposition_Recipie.CTC_thickness; 
+int CTC_positionFront = Operator.Deposition_Recipie.CTC_positionFront;
+int CTC_positionBack = Operator.Deposition_Recipie.CTC_positionBack;
+
+//CorrectionFactors.Position_Sensor.testValues(CTC_index, Operator.DepositionNumberOfSteps);
+
+System.CorrectionFactors.Position_Sensor.testDep.dep.countMeasuredF = CTC_positionFront;
+System.CorrectionFactors.Position_Sensor.testDep.dep.countMeasuredB = CTC_positionBack;
+
+float CTC_positionFront_mm = CorrectionFactors.Position_Sensor.get_mms(CTC_positionFront);
+float CTC_positionBack_mm = CorrectionFactors.Position_Sensor.get_mms(CTC_positionBack);
+
+System.CorrectionFactors.Position_Sensor.testDep.dep.measuredMMF = CTC_positionFront_mm;
+System.CorrectionFactors.Position_Sensor.testDep.dep.measuredMMB = CTC_positionBack_mm;
+
+float CTC_positionFront_mmDif = CorrectionFactors.Position_Sensor.get_mmFrontDif(CTC_positionFront_mm);
+float CTC_positionBack_mmDif = CorrectionFactors.Position_Sensor.get_mmBackDif(CTC_positionBack_mm);
+
+System.CorrectionFactors.Position_Sensor.testDep.dep.measuredMMDifF = CTC_positionFront_mmDif;
+System.CorrectionFactors.Position_Sensor.testDep.dep.measuredMMDifB = CTC_positionBack_mmDif;
+// Save values in vars for viewing
+System.CorrectionFactors.Position_Sensor.testDep.differenceF = System.CorrectionFactors.Position_Sensor.testDep.dep.measuredMMDifF;
+System.CorrectionFactors.Position_Sensor.testDep.differenceB = System.CorrectionFactors.Position_Sensor.testDep.dep.measuredMMDifB;
+
+// Get index for step, material ID, front and back times
+int processStepIndex = Utility.StepIndex(Operator.DepositionRecipieId, Operator.DepositionStepCounter);
+int materialId = Deposition.Recipe.Step.MaterialID[processStepIndex];
+
+// Populate Recipe tracker data (Recipe and Layer data)
+RecipeManager.infeedCheck.RecipeTracker.RecipeName = Deposition.Recipe.Name[Operator.In_Process_Recipes.DepositionRecipe];
+RecipeManager.infeedCheck.RecipeTracker.LayerName = Deposition.Material.Name[materialId];
+RecipeManager.infeedCheck.RecipeTracker.LayerNumber = Operator.DepositionStepCounter;
+
+// Initialize front and back power
+int frontPower = Deposition.Material.Attributes.PowerFront[materialId];
+int backPower = Deposition.Material.Attributes.PowerBack[materialId];
+
+// Populate Recipe tracker data (Original Powers)
+RecipeManager.infeedCheck.RecipeTracker.originalPowerF = frontPower;
+RecipeManager.infeedCheck.RecipeTracker.originalPowerB = backPower;
+
+// Initialize front and back time
+int frontTime = Deposition.Recipe.Step.FrontTime[processStepIndex];
+int backTime = Deposition.Recipe.Step.BackTime[processStepIndex];
+
+// Deprecated
+// Get tooling factors for front and back times.  Use Front tooling factor for both front and back
+//int timeToolingFront = CorrectionFactors.Tooling.Manual.Time.toolingFactorFront(Deposition.Material.Attributes.PowerFront[materialId], materialId);
+//int timeToolingBack = CorrectionFactors.Tooling.Manual.Time.toolingFactorBack(Deposition.Material.Attributes.PowerBack[materialId], materialId);
+
+// Populate Recipe tracker data (Magnetrons)
+RecipeManager.infeedCheck.RecipeTracker.magF = CorrectionFactors.Tooling.Manual.Power.getMagnetronF(Deposition.Material.Attributes.PowerFront[materialId], materialId);
+RecipeManager.infeedCheck.RecipeTracker.magB = CorrectionFactors.Tooling.Manual.Power.getMagnetronB(Deposition.Material.Attributes.PowerBack[materialId], materialId); 
+
+// Get tooling factors for front and back powers
+int powerToolingFront = CorrectionFactors.Tooling.Manual.Power.toolingFactorFront(Deposition.Material.Attributes.PowerFront[materialId], materialId);
+int powerToolingBack = CorrectionFactors.Tooling.Manual.Power.toolingFactorBack(Deposition.Material.Attributes.PowerBack[materialId], materialId); 
+
+// Deprecated
+// Apply time tooling factor to front and back times
+//frontTime = frontTime*timeToolingFront/100;
+//backTime = backTime*timeToolingBack/100;
+
+// Apply thickness CTC factor to back power only (DEPRECATED)
+//backPower = Utility.Round((backPower*CTC_thickness/100));
+
+// Set Color tooling and index values for display
+System.CorrectionFactors.Position_Sensor.testDep.frontTF = ((float)powerToolingFront)/1000.0;
+System.CorrectionFactors.Position_Sensor.testDep.backTF = ((float)powerToolingBack)/1000.0;
+System.CorrectionFactors.Position_Sensor.testDep.frontIndex = ((float)CTC_index)/1000.0;
+System.CorrectionFactors.Position_Sensor.testDep.backIndex = ((float)CTC_index)/1000.0;
+
+if(System.CorrectionFactors.Position_Sensor.Operator.Use){
+	// Save Final Tooling for display
+	System.CorrectionFactors.Position_Sensor.testDep.finalToolingF = ((float)powerToolingFront*(float)CTC_index)/1000000.0 - ((float)(CTC_positionFront_mmDif*System.CorrectionFactors.Position_Sensor.tfRatioFront));
+	System.CorrectionFactors.Position_Sensor.testDep.finalToolingB = ((float)powerToolingBack*(float)CTC_index)/1000000.0 - ((float)(CTC_positionBack_mmDif*System.CorrectionFactors.Position_Sensor.tfRatioBack));
+
+	// Populate Recipe tracker data (Tooling, Index, and Position Sensor data + All power values as they change)
+	RecipeManager.infeedCheck.RecipeTracker.toolingF = powerToolingFront;
+	RecipeManager.infeedCheck.RecipeTracker.toolingB = powerToolingBack; 
+	RecipeManager.infeedCheck.RecipeTracker.indexF = CTC_index;
+	RecipeManager.infeedCheck.RecipeTracker.indexB = CTC_index; 
+	RecipeManager.infeedCheck.RecipeTracker.positionDiffF = CTC_positionFront_mmDif;
+	RecipeManager.infeedCheck.RecipeTracker.positionDiffB = CTC_positionBack_mmDif;
+	RecipeManager.infeedCheck.RecipeTracker.toolingPowerF = ((float)powerToolingFront*frontPower/1000.0);
+	RecipeManager.infeedCheck.RecipeTracker.toolingPowerB = ((float)powerToolingBack*backPower/1000.0);
+	RecipeManager.infeedCheck.RecipeTracker.indexPowerF = ((float)powerToolingFront*(float)CTC_index)*frontPower/1000000.0; 
+	RecipeManager.infeedCheck.RecipeTracker.indexPowerB = ((float)powerToolingBack*(float)CTC_index)*backPower/1000000.0; 
+	RecipeManager.infeedCheck.RecipeTracker.positionDiffF = CTC_positionFront_mmDif;
+	RecipeManager.infeedCheck.RecipeTracker.positionDiffB = CTC_positionBack_mmDif;
+	RecipeManager.infeedCheck.RecipeTracker.positionCorrectionF = System.CorrectionFactors.Position_Sensor.tfRatioFront;
+	RecipeManager.infeedCheck.RecipeTracker.positionCorrectionB = System.CorrectionFactors.Position_Sensor.tfRatioBack;
+	RecipeManager.infeedCheck.RecipeTracker.positionDiffFactorF = (float)(CTC_positionFront_mmDif*System.CorrectionFactors.Position_Sensor.tfRatioFront);
+	RecipeManager.infeedCheck.RecipeTracker.positionDiffFactorB = (float)(CTC_positionBack_mmDif*System.CorrectionFactors.Position_Sensor.tfRatioBack);
+	RecipeManager.infeedCheck.RecipeTracker.positionDiffPowerF = ((float)powerToolingFront*(float)CTC_index)/1000000.0 - ((float)(CTC_positionFront_mmDif*System.CorrectionFactors.Position_Sensor.tfRatioFront));
+	RecipeManager.infeedCheck.RecipeTracker.positionDiffPowerB = ((float)powerToolingBack*(float)CTC_index)/1000000.0 - ((float)(CTC_positionBack_mmDif*System.CorrectionFactors.Position_Sensor.tfRatioBack));
+	
+	// Apply power tooling factor, index, and position sensor to front and back powers
+	frontPower = int(frontPower*System.CorrectionFactors.Position_Sensor.testDep.finalToolingF);
+	backPower = int(backPower*System.CorrectionFactors.Position_Sensor.testDep.finalToolingB);
+
+	// Apply Material Tooling factor, but only if Material tooling is being used.  Update Recipe Tracker as well.   
+	frontPower = MaterialToolingFactor.applyToLayer.applyToFront(frontPower, materialId);
+	backPower =  MaterialToolingFactor.applyToLayer.applyToBack(backPower, materialId);
+	
+	// Populate Recipe tracker data (Final powers, front and back)
+	RecipeManager.infeedCheck.RecipeTracker.finalPowerF = frontPower;
+	RecipeManager.infeedCheck.RecipeTracker.finalPowerB = backPower;
+
+}else{
+	// Save Final Tooling for display
+	System.CorrectionFactors.Position_Sensor.testDep.finalToolingF = (float)powerToolingFront*(float)CTC_index/(1000.0*1000.0);
+	System.CorrectionFactors.Position_Sensor.testDep.finalToolingB = (float)powerToolingBack*(float)CTC_index/(1000.0*1000.0);
+	
+	// Populate Recipe tracker data (Tooling, Index, and Position Sensor data + All power values as they change)
+	RecipeManager.infeedCheck.RecipeTracker.toolingF = powerToolingFront;
+	RecipeManager.infeedCheck.RecipeTracker.toolingB = powerToolingBack; 
+	RecipeManager.infeedCheck.RecipeTracker.indexF = CTC_index;
+	RecipeManager.infeedCheck.RecipeTracker.indexB = CTC_index; 
+	RecipeManager.infeedCheck.RecipeTracker.positionDiffF = CTC_positionFront_mmDif;
+	RecipeManager.infeedCheck.RecipeTracker.positionDiffB = CTC_positionBack_mmDif;
+	RecipeManager.infeedCheck.RecipeTracker.toolingPowerF = ((float)powerToolingFront*frontPower/1000.0);
+	RecipeManager.infeedCheck.RecipeTracker.toolingPowerB = ((float)powerToolingBack*backPower/1000.0);
+	RecipeManager.infeedCheck.RecipeTracker.indexPowerF = ((float)powerToolingFront*(float)CTC_index)*frontPower/1000000.0; 
+	RecipeManager.infeedCheck.RecipeTracker.indexPowerB = ((float)powerToolingBack*(float)CTC_index)*backPower/1000000.0; 
+	RecipeManager.infeedCheck.RecipeTracker.positionDiffF = CTC_positionFront_mmDif;
+	RecipeManager.infeedCheck.RecipeTracker.positionDiffB = CTC_positionBack_mmDif;
+	RecipeManager.infeedCheck.RecipeTracker.positionCorrectionF = System.CorrectionFactors.Position_Sensor.tfRatioFront;
+	RecipeManager.infeedCheck.RecipeTracker.positionCorrectionB = System.CorrectionFactors.Position_Sensor.tfRatioBack;
+	RecipeManager.infeedCheck.RecipeTracker.positionDiffFactorF = (float)(CTC_positionFront_mmDif*System.CorrectionFactors.Position_Sensor.tfRatioFront);
+	RecipeManager.infeedCheck.RecipeTracker.positionDiffFactorB = (float)(CTC_positionBack_mmDif*System.CorrectionFactors.Position_Sensor.tfRatioBack);
+	RecipeManager.infeedCheck.RecipeTracker.positionDiffPowerF = ((float)powerToolingFront*(float)CTC_index)/1000000.0 - ((float)(CTC_positionFront_mmDif*System.CorrectionFactors.Position_Sensor.tfRatioFront));
+	RecipeManager.infeedCheck.RecipeTracker.positionDiffPowerB = ((float)powerToolingBack*(float)CTC_index)/1000000.0 - ((float)(CTC_positionBack_mmDif*System.CorrectionFactors.Position_Sensor.tfRatioBack));
+	
+	// Apply color tooling and index to power
+	frontPower = frontPower*powerToolingFront/1000;
+	backPower = backPower*powerToolingBack/1000;
+	frontPower = frontPower*CTC_index/1000;
+	backPower = backPower*CTC_index/1000;
+	
+	// Apply Material Tooling factor, but only if Material tooling is being used.  Update Recipe Tracker as well.   
+	frontPower = MaterialToolingFactor.applyToLayer.applyToFront(frontPower, materialId);
+	backPower =  MaterialToolingFactor.applyToLayer.applyToBack(backPower, materialId);	
+
+	// Populate Recipe tracker data (Final powers, front and back)
+	RecipeManager.infeedCheck.RecipeTracker.finalPowerF = frontPower;
+	RecipeManager.infeedCheck.RecipeTracker.finalPowerB = backPower;
+}
+
+// Convert final factors to ints for display on Operator
+System.CorrectionFactors.Position_Sensor.testDep.finalFactorIntF = (int)(System.CorrectionFactors.Position_Sensor.testDep.finalToolingF*1000.0);
+System.CorrectionFactors.Position_Sensor.testDep.finalFactorIntB = (int)(System.CorrectionFactors.Position_Sensor.testDep.finalToolingB*1000.0);
+
+// Check if ether power value exceeds warning.  If so, pop up a message with the name of the material
+if(frontPower > Deposition.Material.Attributes.MaxPowerWarning[materialId]
+	|| backPower > Deposition.Material.Attributes.MaxPowerWarning[materialId]){
+	Operator.In_Process_Errors.MaxPowerWarningName = Deposition.Material.Name[materialId];
+	ShowPopup(System.popups.Operator.MaxPowerWarning);	
+}
+
+// Check if ether power value exceeds limit.  If so, pop up a message with the name of the material
+if(frontPower > Deposition.Material.Attributes.MaxPowerLimit[materialId]
+	|| backPower > Deposition.Material.Attributes.MaxPowerLimit[materialId]){
+	Operator.In_Process_Errors.MaxPowerLimitName = Deposition.Material.Name[materialId];
+	ShowPopup(System.popups.Operator.MaxPowerLimit);	
+	Operator.Step.DepositTimeFront = 0;
+	Operator.Step.DepositTimeBack = 0;
+}else{
+/*
+Operator.Step.FrontMag1 = Deposition.Material.Attributes.FrontMag1[materialId];
+Operator.Step.FrontMag2 = Deposition.Material.Attributes.FrontMag2[materialId];
+Operator.Step.FrontMag3 = Deposition.Material.Attributes.FrontMag3[materialId];
+Operator.Step.FrontMag4 = Deposition.Material.Attributes.BackMag1[materialId];
+Operator.Step.FrontMag5 = Deposition.Material.Attributes.BackMag2[materialId];
+Operator.Step.FrontMag6 = Deposition.Material.Attributes.BackMag3[materialId];
+Operator.Step.PowerFront = frontPower;
+Operator.Step.PowerFrontMode = Deposition.Material.Attributes.PowerFrontMode[materialId];
+Operator.Step.PowerBack = backPower;
+Operator.Step.PowerBackMode = Deposition.Material.Attributes.PowerBackMode[materialId];
+Operator.Step.FrequencyFront = Deposition.Material.Attributes.FrequencyFront[materialId];
+Operator.Step.FrequencyBack = Deposition.Material.Attributes.FrequencyBack[materialId];
+Operator.Step.ReverseTimeFront = Deposition.Material.Attributes.ReverseTimeFront[materialId];
+Operator.Step.ReverseTimeBack = Deposition.Material.Attributes.ReverseTimeBack[materialId];
+Operator.Step.Stabilization = Deposition.Material.Attributes.Stabilization[materialId];
+Operator.Step.O2SCCM = Deposition.Material.Attributes.O2SCCM[materialId];
+Operator.Step.ArFrontSCCM = Deposition.Material.Attributes.ArFrontSCCM[materialId];
+Operator.Step.ArBackSCCM = Deposition.Material.Attributes.ArBackSCCM[materialId];
+Operator.Step.Pressure = Deposition.Material.Attributes.Pressure[materialId];
+Operator.Step.PercentO2 = Deposition.Material.Attributes.PercentO2[materialId];
+Operator.Step.Proportional = Deposition.Material.Attributes.Proportional[materialId];
+Operator.Step.Integral = Deposition.Material.Attributes.Integral[materialId];
+Operator.Step.Derivative = Deposition.Material.Attributes.Derivative[materialId];
+Operator.Step.SampleRate = Deposition.Material.Attributes.SampleRate[materialId];
+Operator.Step.DepositTimeFront = frontTime;
+Operator.Step.DepositTimeBack = backTime;
+Operator.Step.PreBurn = Deposition.Material.Attributes.PreBurn[materialId];
+Operator.Step.ConditionTarget = Deposition.Material.Attributes.ConditionTarget[materialId];
+*/
+
+RecipeManager.Scratch.Layer = Operator.DepositionStepCounter + 1;
+RecipeManager.Scratch.FrontMag1 = Deposition.Material.Attributes.FrontMag1[materialId];
+RecipeManager.Scratch.FrontMag2 = Deposition.Material.Attributes.FrontMag2[materialId];
+RecipeManager.Scratch.FrontMag3 = Deposition.Material.Attributes.FrontMag3[materialId];
+RecipeManager.Scratch.BackMag1 = Deposition.Material.Attributes.BackMag1[materialId];
+RecipeManager.Scratch.BackMag2 = Deposition.Material.Attributes.BackMag2[materialId];
+RecipeManager.Scratch.BackMag3 = Deposition.Material.Attributes.BackMag3[materialId];
+RecipeManager.Scratch.PID_POrV = Deposition.Material.Attributes.POrV[materialId];
+RecipeManager.Scratch.UsePID = Deposition.Material.Attributes.UsePID[materialId];
+RecipeManager.Scratch.PowerFront = frontPower;
+RecipeManager.Scratch.PowerBack = backPower;
+RecipeManager.Scratch.FrequencyFront = Deposition.Material.Attributes.FrequencyFront[materialId];
+RecipeManager.Scratch.FrequencyBack = Deposition.Material.Attributes.FrequencyBack[materialId];
+RecipeManager.Scratch.ReverseTimeFront = Deposition.Material.Attributes.ReverseTimeFront[materialId];
+RecipeManager.Scratch.ReverseTimeBack = Deposition.Material.Attributes.ReverseTimeBack[materialId];
+RecipeManager.Scratch.Stabilization = Deposition.Material.Attributes.Stabilization[materialId];
+RecipeManager.Scratch.O2SCCM = Deposition.Material.Attributes.O2SCCM[materialId];
+RecipeManager.Scratch.ArFrontSCCM = Deposition.Material.Attributes.ArFrontSCCM[materialId];
+RecipeManager.Scratch.ArBackSCCM = Deposition.Material.Attributes.ArBackSCCM[materialId];
+RecipeManager.Scratch.Pressure = Deposition.Material.Attributes.Pressure[materialId];
+RecipeManager.Scratch.PIDSetpointTolerance = Deposition.Material.Attributes.PIDSetpointTolerance[materialId];
+RecipeManager.Scratch.Proportional = Deposition.Material.Attributes.Proportional[materialId];
+RecipeManager.Scratch.Integral = Deposition.Material.Attributes.Integral[materialId];
+RecipeManager.Scratch.Derivative = Deposition.Material.Attributes.Derivative[materialId];
+RecipeManager.Scratch.SampleRate = Deposition.Material.Attributes.SampleRate[materialId];
+RecipeManager.Scratch.DepositTimeFront = frontTime;
+RecipeManager.Scratch.DepositTimeBack = backTime;
+RecipeManager.Scratch.PreBurn = Deposition.Material.Attributes.PreBurn[materialId];
+RecipeManager.Scratch.PowerFrontMode = Deposition.Material.Attributes.PowerFrontMode[materialId];
+RecipeManager.Scratch.PowerBackMode = Deposition.Material.Attributes.PowerBackMode[materialId];
+RecipeManager.Scratch.ArMaxSCCM_PID = Deposition.Material.Attributes.ARMaxSCCM_PID[materialId];
+RecipeManager.Scratch.ArMinSCCM_PID = Deposition.Material.Attributes.ARMinSCCM_PID[materialId];
+RecipeManager.Scratch.FinalFactorFront = (int)(System.CorrectionFactors.Position_Sensor.testDep.finalToolingF*1000);
+RecipeManager.Scratch.FinalFactorBack = (int)(System.CorrectionFactors.Position_Sensor.testDep.finalToolingB*1000);
+
+//Add To Total Front and Back times for display on the Operator Page
+if(materialId > 0){
+	LayerCountDown.totalFront += frontTime;
+	//Add 3.2 sec per layer
+	LayerCountDown.totalFront += 32;
+}
+if(materialId > 0){ 
+	LayerCountDown.totalBack += backTime;
+	//Add 3.2 sec per layer
+	LayerCountDown.totalBack += 32;  
+}  
+// 3 seconds between layers
+
+RecipeManager.writeScratchToLayer(Operator.DepositionStepCounter + 1);
+					    
+//Increment the number of Layers that have been written
+Operator.DepositionStepCounter++;
+}
+
+
+//Zero out all PLC Recipe step data
+//RecipeManager.clearPLCLayers();
+
+}
+
+Sleep(600);
+
+// Confirm all layers written
+Operator.ConfirmationDataEntered = true;	       	       
+Operator.ConfirmationDataEntered = false;
+
+LayerCountDown.BeginDeposition();
+
+
+Operator.DepositionStepCounter = 0;

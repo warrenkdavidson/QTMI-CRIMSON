@@ -1,0 +1,17 @@
+Deposition.Recipe.Edit.stepIndex = currentIndex;
+
+int frontThickness = Deposition.Recipe.Scratch.Step.FrontThickness[Deposition.Recipe.Edit.stepIndex];
+int backThickness = Deposition.Recipe.Scratch.Step.BackThickness[Deposition.Recipe.Edit.stepIndex];
+
+int rate = Deposition.Material.Attributes.ThicknessRate[Deposition.Recipe.Scratch.Step.MaterialID[Deposition.Recipe.Edit.stepIndex]];
+cstring stepName = Deposition.Material.Name[Deposition.Recipe.Scratch.Step.MaterialID[Deposition.Recipe.Edit.stepIndex]];
+
+if(stepName != ""){
+	if(Side == 1){
+	Deposition.Recipe.Scratch.Step.FrontTime[Deposition.Recipe.Edit.stepIndex] = Utility.Round((((float)frontThickness/(float)rate)*100.0));
+	}
+	if(Side == 2){
+	Deposition.Recipe.Scratch.Step.BackTime[Deposition.Recipe.Edit.stepIndex] = Utility.Round((((float)backThickness/(float)rate)*100.0));
+	}
+}
+

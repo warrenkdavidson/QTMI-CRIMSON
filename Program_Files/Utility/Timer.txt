@@ -1,0 +1,2 @@
+Sensors.secondsAtStart = GetNowTime();
+return Sensors.secondsAtStart;

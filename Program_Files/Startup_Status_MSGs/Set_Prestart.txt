@@ -1,0 +1,29 @@
+cstring statusMessage = "";
+int statusId = System.Startup_Status_Msgs.Prestart;
+
+if(statusId == 0)
+statusMessage = "Initializing PLC";
+if(statusId == 1)
+statusMessage = "Checking Glow Chamber Door";
+if(statusId == 2)
+statusMessage = "Checking DEP Chamber Front Door";
+if(statusId == 3)
+statusMessage = "Checking DEP Chamber Back Door";
+if(statusId == 4)
+statusMessage = "Checking Hydro Chamber Door";
+if(statusId == 5)
+statusMessage = "Checking Oxygen Supply";
+if(statusId == 6)
+statusMessage = "Checking Argon Supply";
+if(statusId == 7)
+statusMessage = "Checking Hydro Level";
+if(statusId == 8)
+statusMessage = "Checking Overcoat Level";
+if(statusId == 9)
+statusMessage = "Turning on Water Chiller";
+if(statusId == 0x10)
+statusMessage = "Starting DEP Power Supply";
+
+System.Startup_Status_Msgs.Startup_Upper_Status_Msg = statusMessage;
+
+

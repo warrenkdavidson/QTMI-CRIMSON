@@ -1,0 +1,27 @@
+cstring directory = System.Constants.DataDirectory;
+cstring filename = directory + "/CTC.csv";
+
+DeleteFile(OpenFile(filename, 1));
+
+CreateDirectory(directory);
+CreateFile(filename);
+int fileHandle = OpenFile(filename, 1);
+
+
+
+// The header line is there for human readability
+WriteFileLine(fileHandle, "Index 1_5, Index 1_6, Index 1_7, Ratio Front, Ratio Back");
+
+// The order of data items must match those in LoadSettings
+
+
+
+WriteFileLine(fileHandle, IntToText(System.CorrectionFactors.CTC.AdjustmentFactors.Index_low, 10, 4)
+	+ ", " + IntToText(System.CorrectionFactors.CTC.AdjustmentFactors.Index_mid, 10, 4)
+	+ ", " + IntToText(System.CorrectionFactors.CTC.AdjustmentFactors.Index_hi, 10, 4)		
+	+ ", " + AsText(System.CorrectionFactors.Position_Sensor.tfRatioFront)		
+	+ ", " + AsText(System.CorrectionFactors.Position_Sensor.tfRatioBack)		
+	+ ", " + IntToText(System.CorrectionFactors.CTC.AdjustmentFactors.Index_NoFactor, 10, 4)		
+);
+
+CloseFile(fileHandle);

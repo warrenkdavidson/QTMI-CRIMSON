@@ -1,0 +1,4 @@
+if(System.CorrectionFactors.Position_Sensor.Manual.Front_state && System.CorrectionFactors.Position_Sensor.Manual.Back_state)
+	System.CorrectionFactors.Position_Sensor.calibrateReady = 1;
+else
+	System.CorrectionFactors.Position_Sensor.calibrateReady = 0;

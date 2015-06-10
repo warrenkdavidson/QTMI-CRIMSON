@@ -1,0 +1,25 @@
+cstring directory = System.Constants.DataDirectory;
+cstring filename = directory + "/CycleAvg.csv";
+
+DeleteFile(OpenFile(filename, 1));
+
+CreateDirectory(directory);
+CreateFile(filename);
+int fileHandle = OpenFile(filename, 1);
+
+// The header line is there for human readability
+WriteFileLine(fileHandle, "Hydro Vac Cycle Array, Hydro AVG Count, Glow Vac Cycle Array, Glow AVG Count");
+
+int processIndex;
+for (processIndex = 0; processIndex != System.Constants.VacCycleCount; ++processIndex)
+{
+	// The order of data items must match those in LoadProcesses
+	
+	WriteFileLine(fileHandle, Leak_Test.CycleCount.HydroCountArray[processIndex].AsText
+		+ ", " + Leak_Test.CycleCount.HydroAvgCount.AsText
+		+ ", " + Leak_Test.CycleCount.GlowCountArray[processIndex].AsText
+		+ ", " + Leak_Test.CycleCount.GlowAvgCount.AsText
+			);
+}
+
+CloseFile(fileHandle);

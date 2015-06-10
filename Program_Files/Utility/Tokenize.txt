@@ -1,0 +1,6 @@
+// Tokenize() and NextToken are loosely based on the C library function strtok().
+
+// Tokenize() is used to initialize the tokenizing operation, by remembering the 
+// string to be tokenized and the separator character.
+Utility.Tokenizer.Line = line;
+Utility.Tokenizer.Separator = separator;

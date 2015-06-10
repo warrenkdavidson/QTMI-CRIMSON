@@ -1,0 +1,32 @@
+cstring directory = System.Constants.DataDirectory;
+cstring filename = directory + "/Steps.csv";
+
+DeleteFile(OpenFile(filename, 1));
+
+CreateDirectory(directory);
+CreateFile(filename);
+int fileHandle = OpenFile(filename, 1);
+
+// The header line is there for human readability
+WriteFileLine(fileHandle, "Material ID, Front Time, Back Time, Front Thickness, Back Thickness");
+
+int processIndex;
+for (processIndex = 0; processIndex != System.Constants.RecipeCount; ++processIndex)
+{
+	int stepIndex;
+	for (stepIndex = 0; stepIndex != System.Constants.StepsPerRecipe; ++stepIndex)
+	{
+		// The order of data items must match those in LoadSteps
+
+		int processStepIndex = Utility.StepIndex(processIndex, stepIndex);
+		WriteFileLine(fileHandle, Deposition.Recipe.Step.MaterialID[processStepIndex].AsText
+			+ ", " + Deposition.Recipe.Step.FrontTime[processStepIndex].AsText
+			+ ", " + Deposition.Recipe.Step.BackTime[processStepIndex].AsText
+			+ ", " + Deposition.Recipe.Step.FrontThickness[processStepIndex].AsText
+			+ ", " + Deposition.Recipe.Step.BackThickness[processStepIndex].AsText
+			);
+	}
+}
+
+CloseFile(fileHandle);
+

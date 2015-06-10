@@ -1,0 +1,70 @@
+cstring directory = System.Constants.DataDirectory;
+cstring filename = directory + "/Material.csv";
+
+DeleteFile(OpenFile(filename, 1));
+
+CreateDirectory(directory);
+CreateFile(filename);
+int fileHandle = OpenFile(filename, 1);
+int materialIndex;
+
+// The header line is there for human readability
+//WriteFileLine(fileHandle, "Name, Active, ActiveCount, FrontMag1, FrontMag2, FrontMag3, BackMag4, BackMag5, BackMag6, PowerFront, PowMode, PowBack, PowBackMode, FreqFront, FreqBack, Reverse Time Front, Reverse Time Back, Stabilization, O2SCCM, AirFrontSCCM, AirBackSCCM, Pressure, PercentO2, PIDControl, Pre PID, Proportional, Integral, Derivative, Sample Rate, Deposit Time Front, Deposit Time Back, Pre Burn, Condition Target, Thickness Rate, MaxPowerWarning, MaxPowerLimit, PredPID, PIDControl, Layer, POrV, UsePID, PIDSetpointTolerance, ArMinSccmPid, ArMaxSccmPid");
+for (materialIndex = 1; materialIndex <= System.Constants.MaterialCount; ++materialIndex)
+{
+	// The order of data items must match those in LoadProcesses
+	
+	WriteFileLine(fileHandle, Deposition.Material.Name[materialIndex]
+	+ "," + Deposition.Material.Active[materialIndex].AsText
+	+ "," + Deposition.Material.ActiveCount[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.FrontMag1[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.FrontMag2[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.FrontMag3[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.BackMag1[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.BackMag2[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.BackMag3[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.PowerFront[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.PowerFrontMode[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.PowerBack[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.PowerBackMode[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.FrequencyFront[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.FrequencyBack[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.ReverseTimeFront[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.ReverseTimeBack[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.Stabilization[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.O2SCCM[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.ArFrontSCCM[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.ArBackSCCM[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.Pressure[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.PercentO2[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.PIDControl[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.PredPID[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.Proportional[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.Integral[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.Derivative[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.SampleRate[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.DepositTimeFront[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.DepositTimeBack[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.PreBurn[materialIndex].AsText				
+	+ "," + Deposition.Material.Attributes.ConditionTarget[materialIndex].AsText				
+	+ "," + Deposition.Material.Attributes.ThicknessRate[materialIndex].AsText				
+	+ "," + Deposition.Material.Attributes.MaxPowerWarning[materialIndex].AsText				
+	+ "," + Deposition.Material.Attributes.MaxPowerLimit[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.PredPID[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.PIDControl[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.Layer[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.POrV[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.UsePID[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.PIDSetpointTolerance[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.ARMinSCCM_PID[materialIndex].AsText
+	+ "," + Deposition.Material.Attributes.ARMaxSCCM_PID[materialIndex].AsText
+		);
+			
+		
+}
+
+
+CloseFile(fileHandle);	
+
+
+

@@ -1,0 +1,7 @@
+// Copy the scratch Step at fromIndex into toIndex.
+
+Deposition.Recipe.Scratch.Step.MaterialID[toIndex] = Deposition.Recipe.Scratch.Step.MaterialID[fromIndex];
+Deposition.Recipe.Scratch.Step.FrontTime[toIndex] = Deposition.Recipe.Scratch.Step.FrontTime[fromIndex];
+Deposition.Recipe.Scratch.Step.BackTime[toIndex] = Deposition.Recipe.Scratch.Step.BackTime[fromIndex];
+Deposition.Recipe.Scratch.Step.FrontThickness[toIndex] = Deposition.Recipe.Scratch.Step.FrontThickness[fromIndex];
+Deposition.Recipe.Scratch.Step.BackThickness[toIndex] = Deposition.Recipe.Scratch.Step.BackThickness[fromIndex];

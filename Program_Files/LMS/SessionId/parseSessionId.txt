@@ -1,0 +1,29 @@
+/*
+System.LMS.LMSScratchResponse = Strip(System.LMS.LMSScratchResponse, '?');
+System.LMS.LMSScratchResponse = Strip(System.LMS.LMSScratchResponse, ';');
+System.LMS.LMSScratchResponse = Strip(System.LMS.LMSScratchResponse, ' ');
+System.LMS.LMSScratchResponse = Strip(System.LMS.LMSScratchResponse, 10);
+//System.LMS.LMS_SessionId = TextToInt(System.LMS.LMSScratchResponse, 10);
+*/
+
+
+// Find the 6th occurance of "=", and grab everything to the right
+cstring parsedText = System.LMS.LMSScratchResponse;
+// Capture response for testing
+System.LMS.Test_Vars.Session_Id.LMSSessionIdResponse = parsedText;
+int character_pos = Find(parsedText, 61, 3);
+System.LMS.characterPos = character_pos;
+parsedText = Right(parsedText, character_pos - 7);
+// Find Position of "T" in Timeout, and grab everything to the left
+character_pos = Find(parsedText, 84, 0);
+parsedText = Left(parsedText, character_pos);
+System.LMS.textId = parsedText;
+//Convert the result to an int, and record the session id
+//System.LMS.LMSScratchResponse = parsedText;
+
+System.LMS.LMS_SessionId = TextToInt(System.LMS.textId, 10);
+
+//System.LMS.hasLMS = 1;
+
+if(System.LMS.LMS_SessionId > 0) System.LMS.hasLMS = 1;
+//HMI.WarrenScratch.session_id = TextToInt(HMI.WarrenScratch.LMS_Response_Text, 10);

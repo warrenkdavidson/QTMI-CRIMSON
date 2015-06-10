@@ -1,0 +1,13 @@
+int returnValue = -1;
+
+if(index == 0) returnValue = 200;
+if(index == 1) returnValue = 500;
+if(index == 2) returnValue = 1000;
+if(index == 3) returnValue = 1500;
+if(index == 4) returnValue = 2000;
+if(index == 5) returnValue = 2500;
+if(index == 6) returnValue = 3000;
+if(index == 7) returnValue = 4000;
+if(index == 8) returnValue = 5000;
+
+return returnValue;

@@ -1,0 +1,38 @@
+int frontThickness;
+int backThickness;
+int rate;
+cstring stepName;
+
+int processIndex;
+for (processIndex = 0; processIndex != System.Constants.RecipeCount; ++processIndex)
+{
+	int stepIndex;
+	for (stepIndex = 0; stepIndex != System.Constants.StepsPerRecipe; ++stepIndex)
+	{
+		Deposition.Recipe.Edit.stepIndex = Utility.StepIndex(processIndex, stepIndex);
+		
+		frontThickness = Deposition.Recipe.Step.FrontThickness[Deposition.Recipe.Edit.stepIndex];
+		backThickness = Deposition.Recipe.Step.BackThickness[Deposition.Recipe.Edit.stepIndex];		
+		stepName = Deposition.Material.Name[Deposition.Recipe.Step.MaterialID[Deposition.Recipe.Edit.stepIndex]];		
+		rate = Deposition.Material.Attributes.ThicknessRate[Deposition.Recipe.Step.MaterialID[Deposition.Recipe.Edit.stepIndex]];
+		
+
+if(frontThickness > 0 && backThickness > 0){
+System.development_vars.testRateConversion.frontThickness =frontThickness;
+System.development_vars.testRateConversion.backThickness =backThickness;
+System.development_vars.testRateConversion.stepName =stepName;
+System.development_vars.testRateConversion.rate =rate;
+}						
+												
+																		
+																														
+		if(stepName != ""){
+		Deposition.Recipe.Step.FrontTime[Deposition.Recipe.Edit.stepIndex] = Utility.Round(((((float)frontThickness/(float)rate))*100.0));
+		Deposition.Recipe.Step.BackTime[Deposition.Recipe.Edit.stepIndex] = Utility.Round(((((float)backThickness/(float)rate))*100.0));
+//		Deposition.Recipe.Step.FrontTime[Deposition.Recipe.Edit.stepIndex] = Utility.Round(((((float)frontThickness/(float)rate))));
+//		Deposition.Recipe.Step.BackTime[Deposition.Recipe.Edit.stepIndex] = Utility.Round(((((float)backThickness/(float)rate))));
+		}
+
+	}
+}
+

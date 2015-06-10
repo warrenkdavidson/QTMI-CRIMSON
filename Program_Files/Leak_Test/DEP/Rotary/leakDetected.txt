@@ -1,0 +1,2 @@
+Leak_Test.DEP.Rotary.PLC.result = "Leak"; 
+Leak_Test.DEP.Rotary.writeToRotaryLeakLog();

@@ -1,0 +1,10 @@
+//Position_Sensor.Deposition.FrontPosition = 2000;
+//Position_Sensor.Deposition.BackPosition = 150;
+
+//Sleep(20);
+
+System.CorrectionFactors.Position_Sensor.Front_cal = System.CorrectionFactors.Position_Sensor.Plc.actuate.FrontPosition_mm;
+System.CorrectionFactors.Position_Sensor.Back_cal = System.CorrectionFactors.Position_Sensor.Plc.actuate.BackPosition_mm;
+
+
+LoadSave.SaveSettings();

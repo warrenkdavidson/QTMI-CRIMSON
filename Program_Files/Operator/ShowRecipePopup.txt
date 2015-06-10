@@ -1,0 +1,7 @@
+//Sleep(2000);
+
+//if(Hardcoater.Recipe.fusionInfeedId2 == 0){
+Operator.ShowRecipiePopUp = 1;
+//}else{
+//Operator.writeRecipieHC();
+//}

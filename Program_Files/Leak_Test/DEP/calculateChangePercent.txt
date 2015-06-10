@@ -1,0 +1,1 @@
+return (int)(measuredChange*10000.0/basePressure);

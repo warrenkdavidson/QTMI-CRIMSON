@@ -1,0 +1,14 @@
+// Verify that all steps have materials selected and non-zero times.
+
+int stepIndex;
+for (stepIndex = 0; stepIndex != Deposition.Recipe.Scratch.NextAvailableStep; ++stepIndex)
+{
+	if (Deposition.Recipe.Scratch.Step.MaterialID[stepIndex] == 0 ||
+		(Deposition.Recipe.Scratch.Step.FrontTime[stepIndex] == 0 &&
+			Deposition.Recipe.Scratch.Step.BackTime[stepIndex] == 0))	
+	{
+		ShowPopup(System.popups.Deposition.AllStepsMustBeFullySpecified);
+		return false;
+	}
+}
+return true;

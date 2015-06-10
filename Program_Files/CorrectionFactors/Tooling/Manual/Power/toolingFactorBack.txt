@@ -1,0 +1,14 @@
+int toolingFactor;
+
+if(Deposition.Material.Attributes.BackMag1[materialIndex])
+	toolingFactor = System.CorrectionFactors.ToolingFactors.Manual.Power.Back;
+if(Deposition.Material.Attributes.BackMag2[materialIndex])
+	toolingFactor = System.CorrectionFactors.ToolingFactors.Manual.Power.Back_1;
+if(Deposition.Material.Attributes.BackMag3[materialIndex])
+	toolingFactor = System.CorrectionFactors.ToolingFactors.Manual.Power.Back_2;
+	
+return toolingFactor;
+	
+
+	
+	

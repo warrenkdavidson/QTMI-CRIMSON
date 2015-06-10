@@ -1,0 +1,32 @@
+cstring filename = System.Constants.DataDirectory + "/LkRotry.csv";
+
+int fileHandle = OpenFile(filename, 0);
+
+ReadFileLine(fileHandle); // ignore header
+
+
+
+
+int processIndex;
+cstring line;
+for (processIndex = 0; processIndex != System.Constants.LeakTestCount; ++processIndex)
+{
+
+	line = ReadFileLine(fileHandle);
+	if (line == "") break; // No more data, so we're done
+	
+	Utility.Tokenize(line, ',');
+	
+	// The order of data items must match those in SaveProcesses
+
+	Leak_Test.DEP.Rotary.HMI.resultsLog.date[processIndex] = Utility.NextToken();
+	Leak_Test.DEP.Rotary.HMI.resultsLog.staticTolerance[processIndex] = TextToFloat(Utility.NextToken());
+	Leak_Test.DEP.Rotary.HMI.resultsLog.dynamicTolerance[processIndex] = TextToFloat(Utility.NextToken());
+	Leak_Test.DEP.Rotary.HMI.resultsLog.beginningPressure[processIndex] = TextToFloat(Utility.NextToken());
+	Leak_Test.DEP.Rotary.HMI.resultsLog.sampledPressure[processIndex] = TextToFloat(Utility.NextToken());
+	Leak_Test.DEP.Rotary.HMI.resultsLog.greatestDelta[processIndex] = TextToFloat(Utility.NextToken());
+	Leak_Test.DEP.Rotary.HMI.resultsLog.result[processIndex] = Utility.NextToken();
+}
+
+
+CloseFile(fileHandle);

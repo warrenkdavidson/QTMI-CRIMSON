@@ -1,0 +1,72 @@
+cstring filename = System.Constants.DataDirectory + "/Material.csv";
+
+int fileHandle = OpenFile(filename, 0);
+
+//ReadFileLine(fileHandle); // ignore header
+//ReadFileLine(fileHandle); // ignore header
+
+int materialIndex;
+cstring line;
+cstring ignored;
+cstring name;
+for (materialIndex = 1; materialIndex <= System.Constants.MaterialCount; materialIndex++)
+{
+
+	line = ReadFileLine(fileHandle);
+	if (line == "") break; // No more data, so we're done
+	
+	Utility.Tokenize(line, ',');
+	
+	// The order of data items must match those in SaveProcesses
+
+	
+	name = Utility.NextToken();
+	Deposition.Material.Name[materialIndex] = name;
+	Deposition.Material.Active[materialIndex] = Utility.TextToIntBoolean(Utility.NextToken());
+	Deposition.Material.ActiveCount[materialIndex] = TextToInt(Utility.NextToken(), 10);
+	Deposition.Material.Attributes.FrontMag1[materialIndex] = Utility.TextToIntBoolean(Utility.NextToken()); 
+	Deposition.Material.Attributes.FrontMag2[materialIndex] = Utility.TextToIntBoolean(Utility.NextToken()); 
+	Deposition.Material.Attributes.FrontMag3[materialIndex] = Utility.TextToIntBoolean(Utility.NextToken());  
+	Deposition.Material.Attributes.BackMag1[materialIndex] = Utility.TextToIntBoolean(Utility.NextToken());  
+	Deposition.Material.Attributes.BackMag2[materialIndex] = Utility.TextToIntBoolean(Utility.NextToken()); 
+	Deposition.Material.Attributes.BackMag3[materialIndex] = Utility.TextToIntBoolean(Utility.NextToken());  
+	Deposition.Material.Attributes.PowerFront[materialIndex] = TextToInt(Utility.NextToken(), 10); 
+	Deposition.Material.Attributes.PowerFrontMode[materialIndex] = TextToInt(Utility.NextToken(), 10); 
+	Deposition.Material.Attributes.PowerBack[materialIndex] = TextToInt(Utility.NextToken(), 10); 
+	Deposition.Material.Attributes.PowerBackMode[materialIndex] = TextToInt(Utility.NextToken(), 10); 
+	Deposition.Material.Attributes.FrequencyFront[materialIndex] = TextToInt(Utility.NextToken(), 10); 
+	Deposition.Material.Attributes.FrequencyBack[materialIndex] = TextToInt(Utility.NextToken(), 10); 
+	Deposition.Material.Attributes.ReverseTimeFront[materialIndex] = TextToInt(Utility.NextToken(), 10); 
+	Deposition.Material.Attributes.ReverseTimeBack[materialIndex] = TextToInt(Utility.NextToken(), 10); 
+	Deposition.Material.Attributes.Stabilization[materialIndex] = TextToInt(Utility.NextToken(), 10); 
+	Deposition.Material.Attributes.O2SCCM[materialIndex] = TextToInt(Utility.NextToken(), 10); 
+	Deposition.Material.Attributes.ArFrontSCCM[materialIndex] = TextToInt(Utility.NextToken(), 10); 
+	Deposition.Material.Attributes.ArBackSCCM[materialIndex] = TextToInt(Utility.NextToken(), 10); 
+	Deposition.Material.Attributes.Pressure[materialIndex] = TextToInt(Utility.NextToken(), 10);  
+	Deposition.Material.Attributes.PercentO2[materialIndex] = TextToInt(Utility.NextToken(), 10); 
+	Deposition.Material.Attributes.PIDControl[materialIndex] = Utility.TextToIntBoolean(Utility.NextToken());  
+	Deposition.Material.Attributes.PredPID[materialIndex] = Utility.TextToIntBoolean(Utility.NextToken());  
+	Deposition.Material.Attributes.Proportional[materialIndex] = TextToInt(Utility.NextToken(), 10); 
+	Deposition.Material.Attributes.Integral[materialIndex] = TextToInt(Utility.NextToken(), 10); 
+	Deposition.Material.Attributes.Derivative[materialIndex] = TextToInt(Utility.NextToken(), 10); 
+	Deposition.Material.Attributes.SampleRate[materialIndex] = TextToInt(Utility.NextToken(), 10); 
+	Deposition.Material.Attributes.DepositTimeFront[materialIndex] = TextToInt(Utility.NextToken(), 10); 
+	Deposition.Material.Attributes.DepositTimeBack[materialIndex] = TextToInt(Utility.NextToken(), 10); 
+	Deposition.Material.Attributes.PreBurn[materialIndex] = TextToInt(Utility.NextToken(), 10); 				
+	Deposition.Material.Attributes.ConditionTarget[materialIndex] = Utility.TextToIntBoolean(Utility.NextToken());  				
+	Deposition.Material.Attributes.ThicknessRate[materialIndex] = TextToInt(Utility.NextToken(), 10); 				
+	Deposition.Material.Attributes.MaxPowerWarning[materialIndex] = TextToInt(Utility.NextToken(), 10); 				
+	Deposition.Material.Attributes.MaxPowerLimit[materialIndex] = TextToInt(Utility.NextToken(), 10); 
+	Deposition.Material.Attributes.PredPID[materialIndex] = Utility.TextToIntBoolean(Utility.NextToken()); 
+	Deposition.Material.Attributes.PIDControl[materialIndex] = Utility.TextToIntBoolean(Utility.NextToken()); 
+	Deposition.Material.Attributes.Layer[materialIndex] = TextToInt(Utility.NextToken(), 10); 
+	Deposition.Material.Attributes.POrV[materialIndex] = Utility.TextToIntBoolean(Utility.NextToken()); 
+	Deposition.Material.Attributes.UsePID[materialIndex] = Utility.TextToIntBoolean(Utility.NextToken()); 
+	Deposition.Material.Attributes.PIDSetpointTolerance[materialIndex] = TextToInt(Utility.NextToken(), 10); 
+	Deposition.Material.Attributes.ARMinSCCM_PID[materialIndex] = TextToInt(Utility.NextToken(), 10); 
+	Deposition.Material.Attributes.ARMaxSCCM_PID[materialIndex] = TextToInt(Utility.NextToken(), 10); 
+
+	
+}
+
+CloseFile(fileHandle);

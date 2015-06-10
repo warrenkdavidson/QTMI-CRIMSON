@@ -1,0 +1,16 @@
+//Queue.lensIndex[position] = lensIndex;
+//Queue.lensPosition = position;
+System.CorrectionFactors.CTC.UI.lensIndex = lensIndex;
+
+Queue.recipeHasntBeenWrittenToPLC = true;
+  
+CorrectionFactors.CTC.Apply_index();
+
+Deposition.Recipe.CTC_index[Queue.recipeID[Queue.lensPosition]] = System.CorrectionFactors.CTC.CTC_index;
+
+Queue.lensIndex[Queue.lensPosition] = System.CorrectionFactors.CTC.CTC_index;
+
+//CorrectionFactors.CTC.Apply();
+
+
+

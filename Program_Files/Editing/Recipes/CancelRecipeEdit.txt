@@ -1,0 +1,12 @@
+// Cancel the editing of a process.  Need to make sure we clear the Inserting flag.
+
+Editing.Recipes.CopyStepsFromCancel();
+
+Deposition.Recipe.Scratch.Inserting = false;
+
+// Show button for copying a recipie
+Deposition.Recipe.ShowCopyRecipe = 0;
+
+Editing.Recipes.ClearTotals();
+
+Editing.Recipes.gotoRecipePage();

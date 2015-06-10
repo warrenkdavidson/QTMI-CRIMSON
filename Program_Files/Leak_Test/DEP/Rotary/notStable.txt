@@ -1,0 +1,2 @@
+Leak_Test.DEP.Rotary.PLC.result = "DEP not stable";
+Leak_Test.DEP.Rotary.writeToRotaryLeakLog();

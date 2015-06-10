@@ -1,0 +1,8 @@
+if(Deposition.Recipe.Recipe_Page == 0)
+GotoPage(Deposition.Edit_Recipe_1); 
+if(Deposition.Recipe.Recipe_Page == 1)
+GotoPage(Deposition.Edit_Recipe_2);
+if(Deposition.Recipe.Recipe_Page == 2)
+GotoPage(Deposition.Edit_Recipe_3);
+if(Deposition.Recipe.Recipe_Page == 3)
+GotoPage(Deposition.Edit_Recipe_4);

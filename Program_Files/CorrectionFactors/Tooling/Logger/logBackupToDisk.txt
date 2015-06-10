@@ -1,0 +1,42 @@
+cstring directory = System.Constants.DataDirectory;
+cstring filename = directory + "/ToolLogB.csv";
+
+DeleteFile(OpenFile(filename, 1));
+
+CreateDirectory(directory);
+CreateFile(filename);
+int fileHandle = OpenFile(filename, 1);
+
+
+
+// The header line is there for human readability
+WriteFileLine(fileHandle, "DateTime, PowerF, PowerF_1, PowerF_2, PowerB, PowerB_1, PowerB_2, TimeF, TimeF_1, TimeF_2, TimeB, TimeB_1, TimeB_2, KwhrsF, KwhrsF_1, KwhrsF_2, KwhrsB, KwhrsB_1, KwhrsB_2");
+
+
+int toolIndex;
+for (toolIndex = 0; toolIndex != System.Constants.ToolingLogCount; ++toolIndex)
+{
+	WriteFileLine(fileHandle, System.CorrectionFactors.ToolingFactors.Logger.DateTime[toolIndex]
+		+ ", " + IntToText(System.CorrectionFactors.ToolingFactors.Logger.PowerF[toolIndex], 10, 3)
+		+ ", " + IntToText(System.CorrectionFactors.ToolingFactors.Logger.PowerF_1[toolIndex], 10, 3)
+		+ ", " + IntToText(System.CorrectionFactors.ToolingFactors.Logger.PowerF_2[toolIndex], 10, 3)	
+		+ ", " + IntToText(System.CorrectionFactors.ToolingFactors.Logger.PowerB[toolIndex], 10, 3)
+		+ ", " + IntToText(System.CorrectionFactors.ToolingFactors.Logger.PowerB_1[toolIndex], 10, 3)	
+		+ ", " + IntToText(System.CorrectionFactors.ToolingFactors.Logger.PowerB_2[toolIndex], 10, 3)	
+		+ ", " + IntToText(System.CorrectionFactors.ToolingFactors.Logger.TimeF[toolIndex], 10, 3)	
+		+ ", " + IntToText(System.CorrectionFactors.ToolingFactors.Logger.TimeF_1[toolIndex], 10, 3)	
+		+ ", " + IntToText(System.CorrectionFactors.ToolingFactors.Logger.TimeF_2[toolIndex], 10, 3)	
+		+ ", " + IntToText(System.CorrectionFactors.ToolingFactors.Logger.TimeB[toolIndex], 10, 3)	
+		+ ", " + IntToText(System.CorrectionFactors.ToolingFactors.Logger.TimeB_1[toolIndex], 10, 3)	
+		+ ", " + IntToText(System.CorrectionFactors.ToolingFactors.Logger.TimeB_2[toolIndex], 10, 3)
+		+ ", " + IntToText(System.CorrectionFactors.ToolingFactors.Logger.KwhrsF[toolIndex],10, 3)	
+		+ ", " + IntToText(System.CorrectionFactors.ToolingFactors.Logger.KwhrsF_1[toolIndex],10, 3)
+		+ ", " + IntToText(System.CorrectionFactors.ToolingFactors.Logger.KwhrsF_2[toolIndex],10, 3)
+		+ ", " + IntToText(System.CorrectionFactors.ToolingFactors.Logger.KwhrsB[toolIndex],10, 3)
+		+ ", " + IntToText(System.CorrectionFactors.ToolingFactors.Logger.KwhrsB_1[toolIndex],10, 3)
+		+ ", " + IntToText(System.CorrectionFactors.ToolingFactors.Logger.KwhrsB_2[toolIndex],10, 3)	
+	);
+}
+
+
+CloseFile(fileHandle);

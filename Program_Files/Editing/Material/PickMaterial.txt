@@ -1,0 +1,3 @@
+Deposition.Recipe.Scratch.stepIndex = stepIndex;
+
+GotoPage(Deposition.Build_Recipe.SelectMaterial_1);

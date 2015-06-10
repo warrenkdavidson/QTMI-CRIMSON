@@ -1,0 +1,31 @@
+cstring directory = System.Constants.DataDirectory;
+cstring filename = directory + "/Aset2.csv";
+
+DeleteFile(OpenFile(filename, 1));
+
+CreateDirectory(directory);
+CreateFile(filename);
+int fileHandle = OpenFile(filename, 1);
+
+
+
+// The header line is there for human readability
+WriteFileLine(fileHandle, 
+"Lens Count Set Point, Hydro Fire, Vent, Glow Hydro RP Limit, Dep RP Limit"
+);
+
+// The order of data items must match those in LoadSettings
+
+
+
+WriteFileLine(fileHandle, IntToText(System.Settings.Defaults.LensCount_Setpoint, 10, 8)	
+	+ ", " + System.Settings.Defaults.HydroFire.AsText
+	+ ", " + System.Settings.Defaults.Vent.AsText
+	+ ", " + IntToText(System.HourMeters.GlowHydroOilLimit, 10, 8)
+	+ ", " + IntToText(System.HourMeters.DepOilLimit, 10, 8)
+	
+);
+
+CloseFile(fileHandle);
+
+LoadSave.SaveSHP();

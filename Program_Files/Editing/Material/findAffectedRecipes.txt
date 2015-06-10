@@ -1,0 +1,22 @@
+Editing.Material.clearAffectedRecipes();
+
+int totalAffected = 0;
+int processIndex;
+for (processIndex = 0; processIndex != System.Constants.RecipeCount; ++processIndex)
+{
+	int stepIndex;
+	for (stepIndex = 0; stepIndex != System.Constants.StepsPerRecipe; ++stepIndex)
+	{
+		// The order of data items must match those in LoadSteps
+
+		int processStepIndex = Utility.StepIndex(processIndex, stepIndex);
+		if(Deposition.Recipe.Step.MaterialID[processStepIndex] == materialId){
+			Deposition.Recipe.AffectedRecipes.Name[totalAffected] = Deposition.Recipe.Name[processIndex];
+			totalAffected++;
+			stepIndex = System.Constants.StepsPerRecipe - 1;
+			
+		}
+	}
+}
+
+if(totalAffected > 19) Deposition.Recipe.AffectedRecipes.moreAffected = true;

@@ -1,0 +1,13 @@
+// Delete the process at processIndex
+
+if (ShowModal(System.popups.Deposition.DeletePrompt) == 0) return;
+
+
+// Clear out the former last step
+Editing.Recipes.ClearRecipe(recipeIndex);
+
+// Validation of recipe steps
+Editing.Recipes.ValidateRecipe(recipeIndex);
+
+
+LoadSave.SaveRecipes();

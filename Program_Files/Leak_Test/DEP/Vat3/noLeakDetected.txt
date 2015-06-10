@@ -1,0 +1,2 @@
+Leak_Test.DEP.Vat3.PLC.result = "No Leak";
+Leak_Test.DEP.Vat3.writeToVat3LeakLog();
